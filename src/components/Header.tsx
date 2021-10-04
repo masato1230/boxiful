@@ -1,15 +1,12 @@
 import { Link } from 'react-router-dom';
+import { GiBoxingGlove } from 'react-icons/gi';
+import { BsFillPeopleFill } from 'react-icons/bs';
+import { useState } from 'react';
 
 const Header = () => {
-  // return (
-  //   <div>
-  //     <h1>Boxiful</h1>
-  //     <ul>
-  //       <li><Link to="/status">Status</Link></li>
-  //       <li><Link to="/training">Training</Link></li>
-  //     </ul>
-  //   </div>
-  // )
+  // TODO: 下のログイン時にisAuthの値をちゃんと更新するようにする
+  const [isAuth, setIsAuth] = useState(true);
+
   return (
     <nav className="bg-white shadow-lg">
       <div className="max-w-6xl mx-auto px-4">
@@ -17,56 +14,47 @@ const Header = () => {
           <div className="flex space-x-7">
             <div>
               {/* <!-- Website Logo --> */}
-              <a href="#" className="flex items-center py-4 px-2">
-                <img src="logo.png" alt="Logo" className="h-8 w-8 mr-2" />
+              <Link to="/status" className="flex items-center py-4 px-2">
+                {/* <img src="logo.png" alt="Logo" className="h-8 w-8 mr-2" /> */}
+                <div className="text-yellow-500 pr-2">
+                  <GiBoxingGlove />
+                </div>
                 <span className="font-semibold text-gray-500 text-lg">
-                  Navigation
+                  Boxi<span className="text-yellow-500">ful</span>
                 </span>
-              </a>
-            </div>
-            {/* <!-- Primary Navbar items --> */}
-            <div className="hidden md:flex items-center space-x-1">
-              <a
-                href=""
-                className="py-4 px-2 text-green-500 border-b-4 border-green-500 font-semibold "
-              >
-                Home
-              </a>
-              <a
-                href=""
-                className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
-              >
-                Services
-              </a>
-              <a
-                href=""
-                className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
-              >
-                About
-              </a>
-              <a
-                href=""
-                className="py-4 px-2 text-gray-500 font-semibold hover:text-green-500 transition duration-300"
-              >
-                Contact Us
-              </a>
+              </Link>
             </div>
           </div>
           {/* <!-- Secondary Navbar items --> */}
-          <div className="hidden md:flex items-center space-x-3 ">
-            <a
-              href=""
-              className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"
-            >
-              Log In
-            </a>
-            <a
-              href=""
-              className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300"
-            >
-              Sign Up
-            </a>
-          </div>
+          {isAuth ? (
+            <div className="hidden md:flex items-center space-x-3">
+              <Link to="/status">
+                <div className="rounded text-gray-500 text-2xl mr-4">
+                  <BsFillPeopleFill />
+                </div>
+              </Link>
+              <Link to="/training">
+                <div className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-300 transition duration-300">
+                  Training
+                </div>
+              </Link>
+            </div>
+          ) : (
+            <div className="hidden md:flex items-center space-x-3 ">
+              <a
+                href=""
+                className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"
+              >
+                Log In
+              </a>
+              <a
+                href=""
+                className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300"
+              >
+                Sign Up
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </nav>
