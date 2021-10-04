@@ -5,7 +5,7 @@ import './index.css';
 import Header from './components/Header';
 import Status from './components/Status';
 import Top from './components/Top';
-import Training from './components/Training';
+import Training from './components/Training/Training';
 
 const App = () => {
   return (
