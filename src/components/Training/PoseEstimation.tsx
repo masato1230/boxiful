@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Pose, Results, POSE_CONNECTIONS } from '@mediapipe/pose';
 import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
+import './PoseEstimation.css';
 
 const PoseEstimation = () => {
   const videoRef = useRef<any>();
@@ -11,10 +12,15 @@ const PoseEstimation = () => {
     if (!results.poseLandmarks) {
       return;
     }
-    
+
     const canvasCtx = canvasRef.current.getContext('2d');
     canvasCtx.save();
-    canvasCtx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    canvasCtx.clearRect(
+      0,
+      0,
+      canvasRef.current.width,
+      canvasRef.current.height
+    );
 
     // Only overwrite existing pixels.
     canvasCtx.globalCompositeOperation = 'source-in';
@@ -72,11 +78,14 @@ const PoseEstimation = () => {
   }, []);
 
   return (
-    <div className="container">
-      <video ref={videoRef} className="hidden"></video>
+    <div className="container h-screen">
+      <video ref={videoRef} className="hidden h-screen w-screen"></video>
       <canvas
         ref={canvasRef}
+        width="1280px"
+        height="720px"
       ></canvas>
+      <div></div>
     </div>
   );
 };
