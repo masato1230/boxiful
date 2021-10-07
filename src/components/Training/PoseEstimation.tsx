@@ -39,11 +39,11 @@ const PoseEstimation = () => {
 
     canvasCtx.globalCompositeOperation = 'source-over';
     drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS, {
-      color: '#00FF00',
+      color: '#FFFFFF',
       lineWidth: 4,
     });
     drawLandmarks(canvasCtx, results.poseLandmarks, {
-      color: '#FF0000',
+      color: '#F59E0B',
       lineWidth: 2,
     });
     canvasCtx.restore();
