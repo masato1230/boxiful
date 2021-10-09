@@ -1,8 +1,9 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Pose, Results, POSE_CONNECTIONS } from '@mediapipe/pose';
 import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 import './PoseEstimation.css';
+import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle';
 
 const PoseEstimation = () => {
   const videoRef = useRef<any>();
@@ -47,6 +48,8 @@ const PoseEstimation = () => {
       lineWidth: 2,
     });
     canvasCtx.restore();
+
+    console.log(calculateLandmarkAngleXY_YZ_ZX(12, 11, 13, results.poseWorldLandmarks));
     return;
   };
 
@@ -78,9 +81,10 @@ const PoseEstimation = () => {
   }, []);
 
   return (
-    <div className="container h-screen">
-      <video ref={videoRef} className="hidden h-screen w-screen"></video>
+    <div className="bg-gray-500 rounded-xl h-screen">
+      <video ref={videoRef} className="hidden"></video>
       <canvas
+        className="rounded-xl border-yellow-500 border-4"
         ref={canvasRef}
         width="1280px"
         height="720px"

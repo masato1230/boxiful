@@ -1,5 +1,9 @@
+import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle'
+
 const PerformanceMonitor = () => {
-  return <div>Performance Monitor</div>
+  return <div>
+    Perform
+  </div>
 };
 
 export default PerformanceMonitor;

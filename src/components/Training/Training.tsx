@@ -3,11 +3,11 @@ import PoseEstimation from "./PoseEstimation";
 
 const Training = () => {
   return (
-    <div className="container px-5 grid grid-cols-2">
-      <div className="bg-gray-500 mx-5">
+    <div className="container mx-auto flex h-screen py-1">
+      <div className="bg-yellow-500 w-1/2 mx-3 rounded-xl">
         <PerformanceMonitor/>
       </div>
-      <div className="bg-yellow-500 mx-5">
+      <div className="w-1/2 mx-3 rounded-xl">
         <PoseEstimation/>
       </div>
     </div>
