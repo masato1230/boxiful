@@ -1,11 +1,15 @@
 import React, { useEffect, useRef } from 'react';
-import { Pose, Results, POSE_CONNECTIONS } from '@mediapipe/pose';
+import { Pose, Results, POSE_CONNECTIONS, NormalizedLandmarkList } from '@mediapipe/pose';
 import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 import './PoseEstimation.css';
 import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle';
 
-const PoseEstimation = () => {
+interface PoseEstimationProps {
+  setPoseLandmarks: React.Dispatch<React.SetStateAction<NormalizedLandmarkList | undefined>>
+}
+
+const PoseEstimation: React.FC<PoseEstimationProps> = ({ setPoseLandmarks }) => {
   const videoRef = useRef<any>();
   const canvasRef = useRef<any>();
 
@@ -48,6 +52,9 @@ const PoseEstimation = () => {
       lineWidth: 2,
     });
     canvasCtx.restore();
+    
+    // update Training Component's landmarks
+    setPoseLandmarks(results.poseWorldLandmarks);
 
     console.log(calculateLandmarkAngleXY_YZ_ZX(12, 11, 13, results.poseWorldLandmarks));
     return;
