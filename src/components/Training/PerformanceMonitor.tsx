@@ -6,11 +6,15 @@ interface PerformanceMonitorProps {
   poseLandmarks: NormalizedLandmarkList | undefined;
   leftArmAngel: number;
   rightArmAngle: number;
+  isLeftArmStretch: boolean;
+  isRightArmStretch: boolean;
 }
 
 const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
   leftArmAngel,
   rightArmAngle,
+  isLeftArmStretch,
+  isRightArmStretch,
 }) => {
 
   if (!leftArmAngel) {
@@ -24,7 +28,11 @@ const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
     <React.Fragment>
       left arm: {leftArmAngel}
       <br />
-      righ tarm: {rightArmAngle}
+      right arm: {rightArmAngle}
+      <br />
+      left stretch: {isLeftArmStretch && <>Stretch</>}
+      <br />
+      right stretch: {isRightArmStretch && <>Stretch</>}
     </React.Fragment>
   );
 };

@@ -8,7 +8,10 @@ const Training = () => {
   const [poseLandmarks, setPoseLandmarks] = useState<NormalizedLandmarkList>();
   const [leftArmAngle, setLeftArmAngle] = useState(0);
   const [rightArmAngle, setRightArmAngle] = useState(0);
+  const [isLeftArmStretch, setIsLeftArmStretch] = useState(false);
+  const [isRightArmStretch, setIsRightArmStretch] = useState(false);
 
+  // update angles
   useEffect(() => {
     if (poseLandmarks) {
       setLeftArmAngle(calculateLandmarkAngleXY_YZ_ZX(
@@ -22,9 +25,27 @@ const Training = () => {
         POSE_LANDMARKS.RIGHT_ELBOW,
         POSE_LANDMARKS.RIGHT_SHOULDER,
         poseLandmarks
-      ).angleXY);
+      ).angleXY);      
     }
   }, [poseLandmarks]);
+
+  // update left arm stretch state
+  useEffect(() => {
+    if (Math.abs(leftArmAngle) >= 150 && !isLeftArmStretch) {
+      setIsLeftArmStretch(!isLeftArmStretch);
+    } else if (Math.abs(leftArmAngle) < 60 && isLeftArmStretch) {
+      setIsLeftArmStretch(!isLeftArmStretch);
+    }
+  }, [leftArmAngle]);
+  
+  // update right arm stretch state
+  useEffect(() => {
+    if (Math.abs(rightArmAngle) >= 150 && !isRightArmStretch) {
+      setIsRightArmStretch(!isRightArmStretch);
+    } else if (Math.abs(rightArmAngle) < 60 && isRightArmStretch) {
+      setIsRightArmStretch(!isRightArmStretch);
+    }
+  }, [rightArmAngle]);
 
   return (
     <div className="container mx-auto flex h-screen py-1">
@@ -33,6 +54,8 @@ const Training = () => {
           poseLandmarks={poseLandmarks}
           leftArmAngel={leftArmAngle}
           rightArmAngle={rightArmAngle}
+          isLeftArmStretch={isLeftArmStretch}
+          isRightArmStretch={isRightArmStretch}
         />
       </div>
       <div className="w-1/2 mx-3 rounded-xl">
