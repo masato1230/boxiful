@@ -8,7 +8,7 @@ const Training = () => {
   return (
     <div className="container mx-auto flex h-screen py-1">
       <div className="bg-yellow-500 w-1/2 mx-3 rounded-xl">
-        <PerformanceMonitor/>
+        <PerformanceMonitor poseLandmarks={poseLandmarks}/>
       </div>
       <div className="w-1/2 mx-3 rounded-xl">
         <PoseEstimation setPoseLandmarks={setPoseLandmarks} />
