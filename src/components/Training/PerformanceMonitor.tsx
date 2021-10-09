@@ -1,25 +1,32 @@
-import React from 'react';
-import { NormalizedLandmarkList } from '@mediapipe/pose';
+import React, { useState, useEffect } from 'react';
+import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
 import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle';
 
 interface PerformanceMonitorProps {
   poseLandmarks: NormalizedLandmarkList | undefined;
+  leftArmAngel: number;
+  rightArmAngle: number;
 }
 
 const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
-  poseLandmarks,
+  leftArmAngel,
+  rightArmAngle,
 }) => {
-  if (!poseLandmarks) {
+
+  if (!leftArmAngel) {
     return <div>loading</div>;
   }
+  
+  // useEffect(() => {
+  // }, [poseLandmarks]);
 
-  const leftArmAngles = calculateLandmarkAngleXY_YZ_ZX(15, 13, 11, poseLandmarks);
-  const rightArmAngles = calculateLandmarkAngleXY_YZ_ZX(16, 14, 12, poseLandmarks);
-  return <React.Fragment>
-    leftarm: {leftArmAngles.angleXY}
-    <br />
-    rightarm: {rightArmAngles.angleXY}
-  </React.Fragment>;
+  return (
+    <React.Fragment>
+      left arm: {leftArmAngel}
+      <br />
+      righ tarm: {rightArmAngle}
+    </React.Fragment>
+  );
 };
 
 export default PerformanceMonitor;

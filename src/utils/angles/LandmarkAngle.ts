@@ -1,4 +1,4 @@
-import { NormalizedLandmark } from '@mediapipe/pose';
+import { NormalizedLandmark, NormalizedLandmarkList } from '@mediapipe/pose';
 import { Vector } from './Vector';
 import { Rotations } from './Rotation';
 import { angleSubtraction, calculateAngleXY, calculateAngleYZ, calculateAngleZX } from './angle';
@@ -18,7 +18,7 @@ export const calculateLandmarkAngleXY_YZ_ZX = (
   moveLandmark: number,
   midLandmark: number,
   baseLandmark: number,
-  poseLandmarks: NormalizedLandmark[]
+  poseLandmarks: NormalizedLandmarkList
 ) => {
   const moveVector = transformLandmarksToVector(
     poseLandmarks[midLandmark],
