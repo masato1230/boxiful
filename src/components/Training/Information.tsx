@@ -1,7 +1,7 @@
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import React, { useState, useEffect } from 'react';
 import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
 import sound from '../../sounds/good-punch.mp3';
-import Instruction from './Instruction';
 
 interface PerformanceMonitorProps {
   poseLandmarks: NormalizedLandmarkList | undefined;
@@ -20,12 +20,12 @@ const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
   const goodPunchSound = new Audio('../../sounds/good-punch.mp3');
   let count = 0;
 
-  useEffect(() => {
-    if (isLeftArmStretch) {
-      const audio = new Audio(sound);
-      audio.play();
-    }
-  }, [isLeftArmStretch]);
+  // useEffect(() => {
+  //   if (isLeftArmStretch) {
+  //     const audio = new Audio(sound);
+  //     audio.play();
+  //   }
+  // }, [isLeftArmStretch]);
 
   if (!leftArmAngel) {
     return <div>loading</div>;
@@ -43,7 +43,9 @@ const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
       <audio className="audio-element">
         <source src={process.env.PUBLIC_URL + '/audio/good-punch.mp3'}></source>
       </audio>
-      <Instruction/>
+      <h2 className="text-4xl">Left Jab</h2>
+      <BsArrowLeftCircleFill color="white" size="200" />
+      <BsArrowRightCircleFill color="white" size="200" />
     </React.Fragment>
   );
 };
