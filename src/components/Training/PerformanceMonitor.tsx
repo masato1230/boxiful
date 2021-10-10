@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
-// import sound from '../../sounds/good-punch.mp3';
+import sound from '../../sounds/good-punch.mp3';
 
 interface PerformanceMonitorProps {
   poseLandmarks: NormalizedLandmarkList | undefined;
@@ -20,16 +20,10 @@ const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
   let count = 0;
 
   useEffect(() => {
-    // if (isRightArmStretch) {
-    //   const audio = new Audio(sound);
-    //   audio.play();
-    // }
-    const audioEl = document.getElementsByClassName('audio-element')[0] as HTMLAudioElement;
-    if (audioEl !== undefined) {
-      audioEl.play();
-      console.log('Play');
+    if (isLeftArmStretch) {
+      const audio = new Audio(sound);
+      audio.play();
     }
-    console.log(audioEl);
   }, [isLeftArmStretch]);
 
   if (!leftArmAngel) {

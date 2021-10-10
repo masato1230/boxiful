@@ -79,10 +79,10 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
       },
     });
     pose.setOptions({
-      modelComplexity: 1,
+      modelComplexity: 0,
       smoothLandmarks: true,
       enableSegmentation: false,
-      smoothSegmentation: true,
+      smoothSegmentation: false,
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5,
     });

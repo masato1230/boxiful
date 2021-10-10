@@ -31,18 +31,18 @@ const Training = () => {
 
   // update left arm stretch state
   useEffect(() => {
-    if (Math.abs(leftArmAngle) >= 150 && !isLeftArmStretch) {
+    if (Math.abs(leftArmAngle) >= 140 && !isLeftArmStretch) {
       setIsLeftArmStretch(!isLeftArmStretch);
-    } else if (Math.abs(leftArmAngle) < 60 && isLeftArmStretch) {
+    } else if (Math.abs(leftArmAngle) < 90 && isLeftArmStretch) {
       setIsLeftArmStretch(!isLeftArmStretch);
     }
   }, [leftArmAngle]);
   
   // update right arm stretch state
   useEffect(() => {
-    if (Math.abs(rightArmAngle) >= 150 && !isRightArmStretch) {
+    if (Math.abs(rightArmAngle) >= 140 && !isRightArmStretch) {
       setIsRightArmStretch(!isRightArmStretch);
-    } else if (Math.abs(rightArmAngle) < 60 && isRightArmStretch) {
+    } else if (Math.abs(rightArmAngle) < 90 && isRightArmStretch) {
       setIsRightArmStretch(!isRightArmStretch);
     }
   }, [rightArmAngle]);
