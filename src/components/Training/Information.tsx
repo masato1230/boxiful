@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
 import sound from '../../sounds/good-punch.mp3';
+import Instruction from './Instruction';
 
 interface PerformanceMonitorProps {
   poseLandmarks: NormalizedLandmarkList | undefined;
@@ -42,6 +43,7 @@ const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
       <audio className="audio-element">
         <source src={process.env.PUBLIC_URL + '/audio/good-punch.mp3'}></source>
       </audio>
+      <Instruction/>
     </React.Fragment>
   );
 };

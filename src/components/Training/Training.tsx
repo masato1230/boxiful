@@ -1,7 +1,7 @@
 import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
 import { useEffect, useState } from 'react';
 import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle';
-import PerformanceMonitor from './PerformanceMonitor';
+import PerformanceMonitor from './Information';
 import PoseEstimation from './PoseEstimation';
 
 const Training = () => {
@@ -48,8 +48,8 @@ const Training = () => {
   }, [rightArmAngle]);
 
   return (
-    <div className="container mx-auto flex h-screen py-1">
-      <div className="bg-yellow-500 w-1/2 mx-3 rounded-xl">
+    <div className="mx-auto flex h-screen py-1">
+      <div className="bg-yellow-500 w-1/2 mx-1 rounded-xl">
         <PerformanceMonitor
           poseLandmarks={poseLandmarks}
           leftArmAngel={leftArmAngle}
@@ -58,7 +58,7 @@ const Training = () => {
           isRightArmStretch={isRightArmStretch}
         />
       </div>
-      <div className="w-1/2 mx-3 rounded-xl">
+      <div className="w-1/2 mx-1 rounded-xl">
         <PoseEstimation setPoseLandmarks={setPoseLandmarks} />
       </div>
     </div>
