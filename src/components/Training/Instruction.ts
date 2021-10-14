@@ -27,6 +27,19 @@ const detectLeftArmPunchReady = (poseLandmarks: NormalizedLandmarkList) => {
   return false;
 }
 
+const detectRightArmPunchReady = (poseLandmarks: NormalizedLandmarkList) => {
+  const rightArmAngle = calculateLandmarkAngleXY_YZ_ZX(
+    POSE_LANDMARKS.RIGHT_WRIST,
+    POSE_LANDMARKS.RIGHT_ELBOW,
+    POSE_LANDMARKS.RIGHT_SHOULDER,
+    poseLandmarks
+  ).angleXY;
+  if (Math.abs(rightArmAngle) <= 90) {
+    return true;
+  }
+  return false;
+}
+
 // 1-1.
 export const LeftHandLeftPunch: Instruction = {
   title: 'Left Hand Left Punch',
@@ -66,6 +79,29 @@ export const LeftHandRightPunch: Instruction = {
       Math.abs(leftArmAngle) >= 130 &&
       poseLandmarks[POSE_LANDMARKS.LEFT_WRIST].x <
         poseLandmarks[POSE_LANDMARKS.LEFT_SHOULDER].x
+    ) {
+      return true;
+    }
+    return false;
+  },
+}
+
+// 2-1.
+export const RightHandLeftPunch: Instruction = {
+  title: 'Right Hand Left Punch',
+  icon: BsArrowLeftCircleFill,
+  detectStartFunction: detectRightArmPunchReady,
+  detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
+    const rightArmAngle = calculateLandmarkAngleXY_YZ_ZX(
+      POSE_LANDMARKS.RIGHT_WRIST,
+      POSE_LANDMARKS.RIGHT_ELBOW,
+      POSE_LANDMARKS.RIGHT_SHOULDER,
+      poseLandmarks
+    ).angleXY;
+    if (
+      Math.abs(rightArmAngle) >= 130 &&
+      poseLandmarks[POSE_LANDMARKS.RIGHT_WRIST].x >
+        poseLandmarks[POSE_LANDMARKS.RIGHT_SHOULDER].x
     ) {
       return true;
     }
