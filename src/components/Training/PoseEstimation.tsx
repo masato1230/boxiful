@@ -68,7 +68,7 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
     // console.log(
     //   calculateLandmarkAngleXY_YZ_ZX(12, 11, 13, results.poseWorldLandmarks)
     // );
-    console.log(results.poseWorldLandmarks);
+    // console.log(results.poseWorldLandmarks);
     
     return;
   };
