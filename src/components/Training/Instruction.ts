@@ -14,7 +14,29 @@ export interface Instruction {
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => boolean;
 }
 
+// return true if visibility satisfy minimum visibility
+const minimumVisibilityCheck = (
+  poseLandmarks: NormalizedLandmarkList,
+  checkLandmarkIds: number[],
+  minimumVisibility: number = 0.8
+) => {
+  let isSatisfied = true;
+  checkLandmarkIds.forEach((landmarkId) => {
+    if ((poseLandmarks[landmarkId].visibility as number) < minimumVisibility) {
+      isSatisfied = false;
+    }
+  });
+  return isSatisfied;
+};
+
 const detectLeftArmPunchReady = (poseLandmarks: NormalizedLandmarkList) => {
+  if (!minimumVisibilityCheck(poseLandmarks, [
+    POSE_LANDMARKS.LEFT_WRIST,
+    POSE_LANDMARKS.LEFT_ELBOW,
+    POSE_LANDMARKS.LEFT_SHOULDER,
+  ])) {
+    return false;
+  }
   const leftArmAngle = calculateLandmarkAngleXY_YZ_ZX(
     POSE_LANDMARKS.LEFT_WRIST,
     POSE_LANDMARKS.LEFT_ELBOW,
@@ -25,9 +47,17 @@ const detectLeftArmPunchReady = (poseLandmarks: NormalizedLandmarkList) => {
     return true;
   }
   return false;
-}
+};
 
 const detectRightArmPunchReady = (poseLandmarks: NormalizedLandmarkList) => {
+  if (!minimumVisibilityCheck(poseLandmarks, [
+    POSE_LANDMARKS.RIGHT_WRIST,
+    POSE_LANDMARKS.RIGHT_ELBOW,
+    POSE_LANDMARKS.RIGHT_SHOULDER,
+  ])) {
+    return false;
+  }
+  
   const rightArmAngle = calculateLandmarkAngleXY_YZ_ZX(
     POSE_LANDMARKS.RIGHT_WRIST,
     POSE_LANDMARKS.RIGHT_ELBOW,
@@ -38,7 +68,7 @@ const detectRightArmPunchReady = (poseLandmarks: NormalizedLandmarkList) => {
     return true;
   }
   return false;
-}
+};
 
 // 1-1.
 export const LeftHandLeftPunch: Instruction = {
@@ -46,6 +76,13 @@ export const LeftHandLeftPunch: Instruction = {
   icon: BsArrowLeftCircleFill,
   detectStartFunction: detectLeftArmPunchReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
+    if (!minimumVisibilityCheck(poseLandmarks, [
+      POSE_LANDMARKS.LEFT_WRIST,
+      POSE_LANDMARKS.LEFT_ELBOW,
+      POSE_LANDMARKS.LEFT_SHOULDER,
+    ])) {
+      return false;
+    }
     const leftArmAngle = calculateLandmarkAngleXY_YZ_ZX(
       POSE_LANDMARKS.LEFT_WRIST,
       POSE_LANDMARKS.LEFT_ELBOW,
@@ -69,6 +106,13 @@ export const LeftHandRightPunch: Instruction = {
   icon: BsArrowRightCircleFill,
   detectStartFunction: detectLeftArmPunchReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
+    if (!minimumVisibilityCheck(poseLandmarks, [
+      POSE_LANDMARKS.LEFT_WRIST,
+      POSE_LANDMARKS.LEFT_ELBOW,
+      POSE_LANDMARKS.LEFT_SHOULDER,
+    ])) {
+      return false;
+    }
     const leftArmAngle = calculateLandmarkAngleXY_YZ_ZX(
       POSE_LANDMARKS.LEFT_WRIST,
       POSE_LANDMARKS.LEFT_ELBOW,
@@ -84,7 +128,7 @@ export const LeftHandRightPunch: Instruction = {
     }
     return false;
   },
-}
+};
 
 // 2-1.
 export const RightHandLeftPunch: Instruction = {
@@ -92,6 +136,13 @@ export const RightHandLeftPunch: Instruction = {
   icon: BsArrowLeftCircleFill,
   detectStartFunction: detectRightArmPunchReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
+    if (!minimumVisibilityCheck(poseLandmarks, [
+      POSE_LANDMARKS.RIGHT_WRIST,
+      POSE_LANDMARKS.RIGHT_ELBOW,
+      POSE_LANDMARKS.RIGHT_SHOULDER,
+    ])) {
+      return false;
+    }
     const rightArmAngle = calculateLandmarkAngleXY_YZ_ZX(
       POSE_LANDMARKS.RIGHT_WRIST,
       POSE_LANDMARKS.RIGHT_ELBOW,
@@ -107,7 +158,37 @@ export const RightHandLeftPunch: Instruction = {
     }
     return false;
   },
-}
+};
+
+// 2-2.
+export const RightHandRightPunch: Instruction = {
+  title: 'Right Hand Right Punch',
+  icon: BsArrowLeftCircleFill,
+  detectStartFunction: detectRightArmPunchReady,
+  detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
+    if (!minimumVisibilityCheck(poseLandmarks, [
+      POSE_LANDMARKS.RIGHT_WRIST,
+      POSE_LANDMARKS.RIGHT_ELBOW,
+      POSE_LANDMARKS.RIGHT_SHOULDER,
+    ])) {
+      return false;
+    }
+    const rightArmAngle = calculateLandmarkAngleXY_YZ_ZX(
+      POSE_LANDMARKS.RIGHT_WRIST,
+      POSE_LANDMARKS.RIGHT_ELBOW,
+      POSE_LANDMARKS.RIGHT_SHOULDER,
+      poseLandmarks
+    ).angleXY;
+    if (
+      Math.abs(rightArmAngle) >= 130 &&
+      poseLandmarks[POSE_LANDMARKS.RIGHT_WRIST].x <
+        poseLandmarks[POSE_LANDMARKS.RIGHT_SHOULDER].x
+    ) {
+      return true;
+    }
+    return false;
+  },
+};
 
 export const LeftJabInstruction: Instruction = {
   title: 'Left Jab',
