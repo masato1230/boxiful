@@ -31,7 +31,7 @@ const Information: React.FC<InformationProps> = ({
       left stretch: {isLeftArmStretch && <>Stretch</>}
       <br />
       right stretch: {isRightArmStretch && <>Stretch</>} */}
-      <h2 className="text-4xl">Left Jab</h2>
+      <h2 className="text-4xl">{instruction.title}</h2>
       <instruction.icon color="white" size="200" />
       <BsArrowLeftCircleFill color="white" size="200" />
       <BsArrowRightCircleFill color="white" size="200" />
