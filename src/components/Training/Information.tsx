@@ -2,30 +2,21 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import React, { useState, useEffect } from 'react';
 import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
 import sound from '../../sounds/good-punch.mp3';
+import { Instruction } from './Instruction';
 
-interface PerformanceMonitorProps {
-  poseLandmarks: NormalizedLandmarkList | undefined;
+interface InformationProps {
+  instruction: Instruction;
+  isMoveStarted: boolean;
+  isMoveEnded: boolean;
   leftArmAngel: number;
   rightArmAngle: number;
-  isLeftArmStretch: boolean;
-  isRightArmStretch: boolean;
 }
 
-const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
+const Information: React.FC<InformationProps> = ({
+  instruction,
   leftArmAngel,
   rightArmAngle,
-  isLeftArmStretch,
-  isRightArmStretch,
 }) => {
-  const goodPunchSound = new Audio('../../sounds/good-punch.mp3');
-  let count = 0;
-
-  // useEffect(() => {
-  //   if (isLeftArmStretch) {
-  //     const audio = new Audio(sound);
-  //     audio.play();
-  //   }
-  // }, [isLeftArmStretch]);
 
   if (!leftArmAngel) {
     return <div>loading</div>;
@@ -33,21 +24,19 @@ const PerformanceMonitor: React.FC<PerformanceMonitorProps> = ({
 
   return (
     <React.Fragment>
-      left arm: {leftArmAngel}
+      {/* left arm: {leftArmAngel}
       <br />
       right arm: {rightArmAngle}
       <br />
       left stretch: {isLeftArmStretch && <>Stretch</>}
       <br />
-      right stretch: {isRightArmStretch && <>Stretch</>}
-      <audio className="audio-element">
-        <source src={process.env.PUBLIC_URL + '/audio/good-punch.mp3'}></source>
-      </audio>
+      right stretch: {isRightArmStretch && <>Stretch</>} */}
       <h2 className="text-4xl">Left Jab</h2>
+      <instruction.icon color="white" size="200" />
       <BsArrowLeftCircleFill color="white" size="200" />
       <BsArrowRightCircleFill color="white" size="200" />
     </React.Fragment>
   );
 };
 
-export default PerformanceMonitor;
+export default Information;
