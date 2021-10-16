@@ -2,7 +2,7 @@ import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
 import { useEffect, useState } from 'react';
 import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle';
 import Information from './Information';
-import { Instruction, LeftHandLeftPunch, LeftHandRightPunch, LeftJabInstruction, LeftLegLeftKick, LeftLegRightKick, RightHandLeftPunch, RightHandRightPunch, RightLegLeftKick } from './Instructions';
+import { Instruction, LeftHandLeftPunch, LeftHandRightPunch, LeftJabInstruction, LeftLegLeftKick, LeftLegRightKick, RightHandLeftPunch, RightHandRightPunch, RightLegLeftKick, RightLegRighttKick } from './Instructions';
 import PoseEstimation from './PoseEstimation';
 import sound from '../../sounds/good-punch.mp3';
 
@@ -41,7 +41,7 @@ const Training = () => {
   // update instruction and initialize instruction states
   useEffect(() => {
     if (isMoveEnded) {
-      setInstruction(RightLegLeftKick);
+      setInstruction(RightLegRighttKick);
       setIsMoveStarted(false);
       setIsMoveEnded(false);
     }

@@ -337,6 +337,7 @@ export const LeftLegRightKick: Instruction = {
   },
 };
 
+// 4-1.
 export const RightLegLeftKick: Instruction = {
   title: 'Right Leg Left Kick',
   icon: BsArrowLeftCircleFill,
@@ -365,6 +366,43 @@ export const RightLegLeftKick: Instruction = {
     if (
       Math.abs(rightLegAngle) > 60 &&
       poseLandmarks[POSE_LANDMARKS_RIGHT.RIGHT_KNEE].x >
+        poseLandmarks[POSE_LANDMARKS.RIGHT_HIP].x
+    ) {
+      return true;
+    }
+    return false;
+  },
+}
+
+// 4-2.
+export const RightLegRighttKick: Instruction = {
+  title: 'Right Leg Right Kick',
+  icon: BsArrowLeftCircleFill,
+  detectStartFunction: detectRightLegKickReady,
+  detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
+    if (
+      !minimumVisibilityCheck(poseLandmarks, [
+        POSE_LANDMARKS_RIGHT.RIGHT_KNEE,
+        POSE_LANDMARKS.RIGHT_HIP,
+      ])
+    ) {
+      return false;
+    }
+    const rightLegVector: Vector = {
+      x:
+        poseLandmarks[POSE_LANDMARKS_RIGHT.RIGHT_KNEE].x -
+        poseLandmarks[POSE_LANDMARKS.RIGHT_HIP].x,
+      y:
+        poseLandmarks[POSE_LANDMARKS_RIGHT.RIGHT_KNEE].y -
+        poseLandmarks[POSE_LANDMARKS.RIGHT_HIP].y,
+      z:
+        poseLandmarks[POSE_LANDMARKS_RIGHT.RIGHT_KNEE].z -
+        poseLandmarks[POSE_LANDMARKS.RIGHT_HIP].z,
+    };
+    const rightLegAngle = calculateAngleXY(rightLegVector) - 90;
+    if (
+      Math.abs(rightLegAngle) > 60 &&
+      poseLandmarks[POSE_LANDMARKS_RIGHT.RIGHT_KNEE].x <
         poseLandmarks[POSE_LANDMARKS.RIGHT_HIP].x
     ) {
       return true;
