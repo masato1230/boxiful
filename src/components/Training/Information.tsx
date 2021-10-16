@@ -2,7 +2,7 @@ import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import React, { useState, useEffect } from 'react';
 import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
 import sound from '../../sounds/good-punch.mp3';
-import { Instruction } from './Instruction';
+import { Instruction } from './Instructions';
 
 interface InformationProps {
   instruction: Instruction;
