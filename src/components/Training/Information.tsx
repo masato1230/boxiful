@@ -33,8 +33,6 @@ const Information: React.FC<InformationProps> = ({
       right stretch: {isRightArmStretch && <>Stretch</>} */}
       <h2 className="text-4xl">{instruction.title}</h2>
       <instruction.icon color="white" size="200" />
-      <BsArrowLeftCircleFill color="white" size="200" />
-      <BsArrowRightCircleFill color="white" size="200" />
     </React.Fragment>
   );
 };
