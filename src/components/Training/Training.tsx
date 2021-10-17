@@ -5,8 +5,29 @@ import Information from './Information';
 import { Instruction, LeftHandLeftPunch, LeftHandRightPunch, LeftJabInstruction, LeftLegLeftKick, LeftLegRightKick, RightHandLeftPunch, RightHandRightPunch, RightLegLeftKick, RightLegRighttKick } from './Instructions';
 import PoseEstimation from './PoseEstimation';
 import sound from '../../sounds/good-punch.mp3';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const Training = () => {
+  // get actionCreators and redux state
+  const { setMenu, setInstructions,pushScore } = useActions();
+  const { menu, instructions, scores } = useTypedSelector((state) => {
+    return {
+      menu: state.training.menu,
+      instructions: state.training.instructions,
+      scores: state.training.scores,
+    }
+  });
+
+  // setup
+  useEffect(() => {
+    setMenu({
+      title: 'Test Menu',
+      timeLimit: 100000,
+      numOfInstructions: 10,
+    });
+  }, []);
+
   const [poseLandmarks, setPoseLandmarks] = useState<NormalizedLandmarkList>();
   const [leftArmAngle, setLeftArmAngle] = useState(0);
   const [rightArmAngle, setRightArmAngle] = useState(0);
@@ -67,6 +88,7 @@ const Training = () => {
 
   return (
     <div className="mx-auto flex h-screen py-1">
+      <h1>{menu.title}</h1>
       <div className="bg-yellow-500 w-1/2 mx-1 rounded-xl">
         <Information
           instruction={instruction}
