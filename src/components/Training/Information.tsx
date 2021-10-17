@@ -8,19 +8,11 @@ interface InformationProps {
   instruction: Instruction;
   isMoveStarted: boolean;
   isMoveEnded: boolean;
-  leftArmAngel: number;
-  rightArmAngle: number;
 }
 
 const Information: React.FC<InformationProps> = ({
   instruction,
-  leftArmAngel,
-  rightArmAngle,
 }) => {
-
-  if (!leftArmAngel) {
-    return <div>loading</div>;
-  }
 
   return (
     <React.Fragment>

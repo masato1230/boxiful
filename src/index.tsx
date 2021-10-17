@@ -8,6 +8,7 @@ import Status from './components/Status';
 import Top from './components/Top';
 import Training from './components/Training/Training';
 import { store } from './state/store';
+import Result from './components/Result';
 
 const App = () => {
   return (
@@ -16,7 +17,7 @@ const App = () => {
         <BrowserRouter>
           <Header />
           <Switch>
-            <Route path="/status">
+            <Route exact path="/">
               <Status />
             </Route>
             <Route path="/training">
@@ -24,6 +25,9 @@ const App = () => {
             </Route>
             <Route path="/top">
               <Top />
+            </Route>
+            <Route path="/result">
+              <Result />
             </Route>
           </Switch>
         </BrowserRouter>

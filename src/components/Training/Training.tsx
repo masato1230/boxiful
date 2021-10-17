@@ -20,7 +20,7 @@ import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 
 const Training = () => {
-  // get actionCreators and redux state
+  // Redux - get actionCreators adn states
   const { setMenu, setInstructions, pushScore } = useActions();
   const { menu, instructions, scores } = useTypedSelector((state) => {
     return {
@@ -30,9 +30,8 @@ const Training = () => {
     };
   });
 
+  // useState
   const [poseLandmarks, setPoseLandmarks] = useState<NormalizedLandmarkList>();
-  const [leftArmAngle, setLeftArmAngle] = useState(0);
-  const [rightArmAngle, setRightArmAngle] = useState(0);
   const [isMoveStarted, setIsMoveStarted] = useState(false);
   const [isMoveEnded, setIsMoveEnded] = useState(false);
 
@@ -90,28 +89,6 @@ const Training = () => {
     }
   }, [isMoveEnded]);
 
-  // update angles(not needed)
-  useEffect(() => {
-    if (poseLandmarks) {
-      setLeftArmAngle(
-        calculateLandmarkAngleXY_YZ_ZX(
-          POSE_LANDMARKS.LEFT_WRIST,
-          POSE_LANDMARKS.LEFT_ELBOW,
-          POSE_LANDMARKS.LEFT_SHOULDER,
-          poseLandmarks
-        ).angleXY
-      );
-      setRightArmAngle(
-        calculateLandmarkAngleXY_YZ_ZX(
-          POSE_LANDMARKS.RIGHT_WRIST,
-          POSE_LANDMARKS.RIGHT_ELBOW,
-          POSE_LANDMARKS.RIGHT_SHOULDER,
-          poseLandmarks
-        ).angleXY
-      );
-    }
-  }, [poseLandmarks]);
-
   return (
     <div className="mx-auto flex h-screen py-1">
       <div className="bg-yellow-500 w-1/2 mx-1 rounded-xl">
@@ -120,8 +97,6 @@ const Training = () => {
             instruction={instructions[scores.length]}
             isMoveStarted={isMoveStarted}
             isMoveEnded={isMoveEnded}
-            leftArmAngel={leftArmAngle}
-            rightArmAngle={rightArmAngle}
           />
         }
       </div>

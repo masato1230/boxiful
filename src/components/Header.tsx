@@ -14,7 +14,7 @@ const Header = () => {
           <div className="flex space-x-7">
             <div>
               {/* <!-- Website Logo --> */}
-              <Link to="/status" className="flex items-center py-4 px-2">
+              <Link to="/" className="flex items-center py-4 px-2">
                 {/* <img src="logo.png" alt="Logo" className="h-8 w-8 mr-2" /> */}
                 <div className="text-yellow-500 pr-2">
                   <GiBoxingGlove />
