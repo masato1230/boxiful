@@ -100,7 +100,6 @@ const Training = () => {
       <div className="bg-yellow-500 w-1/2 mx-1 rounded-xl">
         {instructions[scores.length] !== undefined &&
           <Information
-            instruction={instructions[scores.length]}
             isMoveStarted={isMoveStarted}
             isMoveEnded={isMoveEnded}
           />

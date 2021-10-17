@@ -77,12 +77,12 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
     });
     drawConnectors(canvasCtx, gatheredLandmarks, POSE_CONNECTIONS, {
       color: '#FFFFFF',
-      lineWidth: 2,
+      lineWidth: 4,
       visibilityMin: 0.5,
     });
     drawLandmarks(canvasCtx, gatheredLandmarks, {
       color: '#F59E0B',
-      lineWidth: 1,
+      lineWidth: 2,
       visibilityMin: 0.5,
     });
     canvasCtx.restore();

@@ -28,7 +28,7 @@ const Header = () => {
           {/* <!-- Secondary Navbar items --> */}
           {isAuth ? (
             <div className="hidden md:flex items-center space-x-3">
-              <Link to="/status">
+              <Link to="/">
                 <div className="rounded text-gray-500 text-2xl mr-4">
                   <BsFillPeopleFill />
                 </div>
