@@ -375,7 +375,7 @@ export const RightLegLeftKick: Instruction = {
 }
 
 // 4-2.
-export const RightLegRighttKick: Instruction = {
+export const RightLegRightKick: Instruction = {
   title: 'Right Leg Right Kick',
   icon: BsArrowLeftCircleFill,
   detectStartFunction: detectRightLegKickReady,
