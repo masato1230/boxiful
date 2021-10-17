@@ -18,6 +18,7 @@ import PoseEstimation from './PoseEstimation';
 import sound from '../../sounds/good-punch.mp3';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { Redirect } from 'react-router';
 
 const Training = () => {
   // Redux - get actionCreators adn states
@@ -88,6 +89,11 @@ const Training = () => {
       setIsMoveEnded(false);
     }
   }, [isMoveEnded]);
+
+  // When Training Finished
+  if (instructions.length === scores.length) {
+    return <Redirect to="/result" />
+  }
 
   return (
     <div className="mx-auto flex h-screen py-1">

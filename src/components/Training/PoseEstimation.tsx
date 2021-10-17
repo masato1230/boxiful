@@ -4,6 +4,9 @@ import {
   Results,
   POSE_CONNECTIONS,
   NormalizedLandmarkList,
+  POSE_LANDMARKS_LEFT,
+  POSE_LANDMARKS_RIGHT,
+  POSE_LANDMARKS_NEUTRAL,
 } from '@mediapipe/pose';
 import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
@@ -52,13 +55,35 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
     }
 
     canvasCtx.globalCompositeOperation = 'source-over';
-    drawConnectors(canvasCtx, results.poseLandmarks, POSE_CONNECTIONS, {
-      color: '#FFFFFF',
-      lineWidth: 4,
+
+    const extraFaceLandmarkIndexes = [
+      POSE_LANDMARKS_LEFT.LEFT_EYE,
+      POSE_LANDMARKS_LEFT.LEFT_EYE_INNER,
+      POSE_LANDMARKS_LEFT.LEFT_EYE_OUTER,
+      POSE_LANDMARKS_LEFT.LEFT_EAR,
+      POSE_LANDMARKS_LEFT.LEFT_RIGHT,
+      POSE_LANDMARKS_RIGHT.RIGHT_EYE,
+      POSE_LANDMARKS_RIGHT.RIGHT_EYE_INNER,
+      POSE_LANDMARKS_RIGHT.RIGHT_EYE_OUTER,
+      POSE_LANDMARKS_RIGHT.RIGHT_EAR,
+      POSE_LANDMARKS_RIGHT.RIGHT_LEFT,
+    ];
+
+    const gatheredLandmarks = results.poseLandmarks.map((value, index) => {
+      if (extraFaceLandmarkIndexes.includes(index)) {
+        return results.poseLandmarks[POSE_LANDMARKS_NEUTRAL.NOSE];
+      }
+      return value;
     });
-    drawLandmarks(canvasCtx, results.poseLandmarks, {
-      color: '#F59E0B',
+    drawConnectors(canvasCtx, gatheredLandmarks, POSE_CONNECTIONS, {
+      color: '#FFFFFF',
       lineWidth: 2,
+      visibilityMin: 0.5,
+    });
+    drawLandmarks(canvasCtx, gatheredLandmarks, {
+      color: '#F59E0B',
+      lineWidth: 1,
+      visibilityMin: 0.5,
     });
     canvasCtx.restore();
 
@@ -69,7 +94,7 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
     //   calculateLandmarkAngleXY_YZ_ZX(12, 11, 13, results.poseWorldLandmarks)
     // );
     // console.log(results.poseWorldLandmarks);
-    
+
     return;
   };
 
