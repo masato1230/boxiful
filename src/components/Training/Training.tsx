@@ -19,7 +19,7 @@ import sound from '../../sounds/good-punch.mp3';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { Redirect } from 'react-router';
-import { createInstructionsFromMenu, EasyMenu } from '../../state';
+import { createInstructionsFromMenu, EasyMenu, HardMenu, NormalMenu } from '../../state';
 
 const Training = () => {
   // Redux - get actionCreators adn states
@@ -42,7 +42,7 @@ const Training = () => {
 
   // set menu
   useEffect(() => {
-    setMenu(EasyMenu);
+    setMenu(HardMenu);
   }, []);
 
   // set instructions

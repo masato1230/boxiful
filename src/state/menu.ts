@@ -2,8 +2,12 @@ import {
   Instruction,
   LeftHandLeftPunch,
   LeftHandRightPunch,
+  LeftLegLeftKick,
+  LeftLegRightKick,
   RightHandLeftPunch,
   RightHandRightPunch,
+  RightLegLeftKick,
+  RightLegRightKick,
 } from '../components/Training/Instructions';
 
 export default interface Menu {
@@ -34,5 +38,37 @@ export const EasyMenu: Menu = {
     LeftHandRightPunch,
     RightHandLeftPunch,
     RightHandRightPunch,
+  ],
+};
+
+export const NormalMenu: Menu = {
+  title: 'Normal Menu',
+  timeLimit: 1000,
+  numOfInstructions: 50,
+  instructionTypes: [
+    LeftHandLeftPunch,
+    LeftHandRightPunch,
+    RightHandLeftPunch,
+    RightHandRightPunch,
+    LeftLegLeftKick,
+    LeftLegRightKick,
+    RightLegLeftKick,
+    RightLegRightKick,
+  ],
+};
+
+export const HardMenu: Menu = {
+  title: 'Hard Menu',
+  timeLimit: 1500,
+  numOfInstructions: 100,
+  instructionTypes: [
+    LeftHandLeftPunch,
+    LeftHandRightPunch,
+    RightHandLeftPunch,
+    RightHandRightPunch,
+    LeftLegLeftKick,
+    LeftLegRightKick,
+    RightLegLeftKick,
+    RightLegRightKick,
   ],
 };

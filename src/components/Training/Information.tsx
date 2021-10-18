@@ -6,8 +6,12 @@ import {
   Instruction,
   LeftHandLeftPunch,
   LeftHandRightPunch,
+  LeftLegLeftKick,
+  LeftLegRightKick,
   RightHandLeftPunch,
   RightHandRightPunch,
+  RightLegLeftKick,
+  RightLegRightKick,
 } from './Instructions';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
@@ -23,10 +27,16 @@ const determineIconColor = (instruction: Instruction) => {
   switch (instruction) {
     case LeftHandLeftPunch:
     case LeftHandRightPunch:
-      return 'rgba(0, 0, 255, 0.6)';
+      return 'rgba(0, 100, 255, 0.5)';
     case RightHandLeftPunch:
     case RightHandRightPunch:
-      return 'rgba(255, 0, 0, 0.6)';
+      return 'rgba(255, 50, 0, 0.5)';
+    case LeftLegLeftKick:
+    case LeftLegRightKick:
+      return 'rgba(0, 0, 255, 1)';
+    case RightLegLeftKick:
+    case RightLegRightKick:
+      return 'rgba(255, 0, 0, 1)';
     default:
       return 'rgba(0, 0, 0, 1)';
   }
