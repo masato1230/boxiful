@@ -19,6 +19,7 @@ import sound from '../../sounds/good-punch.mp3';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { Redirect } from 'react-router';
+import { createInstructionsFromMenu, EasyMenu } from '../../state';
 
 const Training = () => {
   // Redux - get actionCreators adn states
@@ -41,24 +42,14 @@ const Training = () => {
 
   // set menu
   useEffect(() => {
-    setMenu({
-      title: 'Test Menu',
-      timeLimit: 100000,
-      numOfInstructions: 10,
-    });
+    setMenu(EasyMenu);
   }, []);
 
   // set instructions
   useEffect(() => {
-    const newInstructions: Instruction[] = [];
-    for (let i = 0; i < menu.numOfInstructions; i++) {
-      if (i % 2 === 0) {
-        newInstructions.push(RightHandLeftPunch);
-      } else {
-        newInstructions.push(LeftHandLeftPunch)
-      }
+    if (menu) {
+      setInstructions(createInstructionsFromMenu(menu));
     }
-    setInstructions(newInstructions);
   }, [menu]);
 
   // manage instruction states

@@ -1,3 +1,4 @@
+import { EasyMenu } from '..';
 import { Instruction } from '../../components/Training/Instructions';
 import { ActionTypes } from '../action-types';
 import { Action } from '../actions';
@@ -10,11 +11,7 @@ interface TrainingState {
 }
 
 const initialState: TrainingState = {
-  menu: {
-    title: 'Nothing',
-    timeLimit: 0,
-    numOfInstructions: 0,
-  },
+  menu: EasyMenu,
   instructions: [],
   scores: [],
 };
