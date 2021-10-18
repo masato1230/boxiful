@@ -126,10 +126,10 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
   }, []);
 
   return (
-    <div className="bg-gray-500 rounded-xl h-screen">
+    <div className="bg-gray-500 rounded-xl h-full">
       <video ref={videoRef} className="hidden"></video>
       <canvas
-        className="rounded-xl border-yellow-500 border-4"
+        className="pose-estimation-canvas rounded-xl border-yellow-500 border-4"
         ref={canvasRef}
         width="1280px"
         height="720px"
