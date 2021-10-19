@@ -42,7 +42,7 @@ const Training = () => {
 
   // set menu
   useEffect(() => {
-    setMenu(HardMenu);
+    setMenu(NormalMenu);
   }, []);
 
   // set instructions

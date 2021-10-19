@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { AiOutlineLoading3Quarters } from 'react-icons/ai';
 import {
   Pose,
   Results,
@@ -11,7 +12,6 @@ import {
 import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 import './PoseEstimation.css';
-import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle';
 
 interface PoseEstimationProps {
   setPoseLandmarks: React.Dispatch<
@@ -22,10 +22,14 @@ interface PoseEstimationProps {
 const PoseEstimation: React.FC<PoseEstimationProps> = ({
   setPoseLandmarks,
 }) => {
+  const [isMediaPipeLoading, setIsMediaPipeLoading] = useState(true);
   const videoRef = useRef<any>();
   const canvasRef = useRef<any>();
 
   const onResults = (results: Results) => {
+    if (isMediaPipeLoading) {
+      setIsMediaPipeLoading(false);
+    }
     const canvasCtx = canvasRef.current.getContext('2d');
     canvasCtx.save();
     canvasCtx.clearRect(
@@ -89,12 +93,6 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
 
     // update Training Component's landmarks
     setPoseLandmarks(results.poseWorldLandmarks);
-
-    // console.log(
-    //   calculateLandmarkAngleXY_YZ_ZX(12, 11, 13, results.poseWorldLandmarks)
-    // );
-    // console.log(results.poseWorldLandmarks);
-
     return;
   };
 
@@ -126,15 +124,25 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
   }, []);
 
   return (
-    <div className="bg-gray-500 rounded-xl h-full">
+    <div className="bg-gray-500 rounded-xl h-full border-yellow-500 border-4">
       <video ref={videoRef} className="hidden"></video>
-      <canvas
-        className="pose-estimation-canvas rounded-xl border-yellow-500 border-4"
-        ref={canvasRef}
-        width="1280px"
-        height="720px"
-      ></canvas>
-      <div></div>
+      {isMediaPipeLoading ? (
+        <React.Fragment>
+          <div className="h-full flex">
+            <div className="p-5 m-auto">
+              <AiOutlineLoading3Quarters className="animate-spin mx-auto" color="white" size="200" />
+            <div className="text-3xl text-center text-white mt-20">Loading...</div>
+            </div>
+          </div>
+        </React.Fragment>
+      ) : (
+        <canvas
+          className="pose-estimation-canvas rounded-xl"
+          ref={canvasRef}
+          width="1280px"
+          height="720px"
+        ></canvas>
+      )}
     </div>
   );
 };

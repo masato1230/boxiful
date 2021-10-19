@@ -67,7 +67,6 @@ const Information: React.FC<InformationProps> = () => {
     // clear canvas
     if (chart) {
       chart.destroy();
-      console.log('destoroy');
     }
     // create datasets
     const datasets: ChartDataset[] = [
