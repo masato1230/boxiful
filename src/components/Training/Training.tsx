@@ -19,7 +19,13 @@ import sound from '../../sounds/good-punch.mp3';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { Redirect } from 'react-router';
-import { createInstructionsFromMenu, EasyMenu, HardMenu, NormalMenu } from '../../state';
+import {
+  createInstructionsFromMenu,
+  EasyMenu,
+  HardMenu,
+  NormalMenu,
+} from '../../state';
+import { calculateNormalMenuMoveScore } from '../../utils/scores';
 
 const Training = () => {
   // Redux - get actionCreators adn states
@@ -34,6 +40,7 @@ const Training = () => {
 
   // useState
   const [poseLandmarks, setPoseLandmarks] = useState<NormalizedLandmarkList>();
+  const [moveStartTime, setMoveStartTime] = useState<Date>();
   const [isMoveStarted, setIsMoveStarted] = useState(false);
   const [isMoveEnded, setIsMoveEnded] = useState(false);
 
@@ -55,6 +62,10 @@ const Training = () => {
   // manage instruction states
   useEffect(() => {
     if (poseLandmarks && instructions.length !== 0) {
+      if (!moveStartTime) {
+        // set first movement start time
+        setMoveStartTime(new Date());
+      }
       // when move is not yet started
       if (!isMoveStarted) {
         if (instructions[scores.length].detectStartFunction(poseLandmarks)) {
@@ -64,9 +75,14 @@ const Training = () => {
       }
       // when move is already started
       if (!isMoveEnded) {
-        if (instructions[scores.length].detectEndFunction(poseLandmarks)) {
+        if (instructions[scores.length].detectEndFunction(poseLandmarks) && moveStartTime) {
           setIsMoveEnded(true);
-          pushScore(1);
+          const now = new Date();
+          const score = calculateNormalMenuMoveScore(
+            (now.getTime() - moveStartTime.getTime()) / 1000
+          );
+          setMoveStartTime(now);
+          pushScore(score);
           audio.play();
         }
       }
@@ -83,18 +99,18 @@ const Training = () => {
 
   // When Training Finished
   if (instructions.length === scores.length) {
-    return <Redirect to="/result" />
+    return <Redirect to="/result" />;
   }
 
   return (
     <div className="mx-auto flex h-screen my-5 px-4">
       <div className="bg-white w-1/2 mx-2 rounded-xl border-4 border-yellow-500 h-5/6">
-        {instructions[scores.length] !== undefined &&
+        {instructions[scores.length] !== undefined && (
           <Information
             isMoveStarted={isMoveStarted}
             isMoveEnded={isMoveEnded}
           />
-        }
+        )}
       </div>
       <div className="w-1/2 mx-2 rounded-xl h-5/6">
         <PoseEstimation setPoseLandmarks={setPoseLandmarks} />

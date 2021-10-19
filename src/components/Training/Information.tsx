@@ -23,20 +23,20 @@ import {
   registerables,
 } from 'chart.js';
 
-const determineIconColor = (instruction: Instruction) => {
+const determineInstructionColor = (instruction: Instruction) => {
   switch (instruction) {
     case LeftHandLeftPunch:
     case LeftHandRightPunch:
-      return 'rgba(0, 100, 255, 0.5)';
+      return 'rgba(5, 150, 105, 0.3)';
     case RightHandLeftPunch:
     case RightHandRightPunch:
-      return 'rgba(255, 50, 0, 0.5)';
+      return 'rgba(109, 40, 217, 0.3)';
     case LeftLegLeftKick:
     case LeftLegRightKick:
-      return 'rgba(0, 0, 255, 1)';
+      return 'rgba(5, 150, 105, 1)';
     case RightLegLeftKick:
     case RightLegRightKick:
-      return 'rgba(255, 0, 0, 1)';
+      return 'rgba(109, 40, 217, 1)';
     default:
       return 'rgba(0, 0, 0, 1)';
   }
@@ -80,6 +80,7 @@ const Information: React.FC<InformationProps> = () => {
           return 'rgba(255, 99, 255, 1)';
         }),
         borderWidth: 1,
+        borderRadius: 1000,
       },
     ];
     // create chart
@@ -87,7 +88,7 @@ const Information: React.FC<InformationProps> = () => {
       new Chart(chartRef.current?.getContext('2d'), {
         type: 'bar',
         data: {
-          labels: instructions.map((instruction, index) => {
+          labels: scores.map((score, index) => {
             return index + 1;
           }),
           datasets,
@@ -96,6 +97,7 @@ const Information: React.FC<InformationProps> = () => {
           scales: {
             y: {
               beginAtZero: true,
+              suggestedMax: 100,
             },
           },
           responsive: true,
@@ -116,21 +118,22 @@ const Information: React.FC<InformationProps> = () => {
   // update chart
   useEffect(() => {
     if (chart?.data.datasets[0].data.length !== scores.length) {
+      chart?.data.labels?.push(chart.data.labels.length);
       chart?.data.datasets[0].data.push(scores[scores.length - 1]);
       chart?.update();
     }
   });
 
   return (
-    <div>
-      <h2 className="text-5xl text-black text-center py-5">
+    <div className="h-full">
+      <h2 className="text-5xl text-black text-center py-10 px-5">
         {instruction.title}
       </h2>
-      <div className="mx-auto w-min py-5">
-        <instruction.icon color={determineIconColor(instruction)} size="200" />
+      <div className="mx-auto w-min py-10">
+        <instruction.icon color={determineInstructionColor(instruction)} size="150" />
       </div>
-      <p className="text-right pr-5 text-3xl">{`${scores.length} / ${instructions.length}`}</p>
-      <canvas className="w-full h-full mx-2" ref={chartRef}></canvas>
+      <p className="text-right p-5 text-5xl">{`${scores.length} / ${instructions.length}`}</p>
+      <canvas className="w-full align-bottom mx-2 mt-5  rounded-xl " ref={chartRef}></canvas>
     </div>
   );
 };
