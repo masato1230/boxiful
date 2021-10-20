@@ -8,9 +8,11 @@ import {
   POSE_LANDMARKS_LEFT,
   POSE_LANDMARKS_RIGHT,
   POSE_LANDMARKS_NEUTRAL,
+  POSE_LANDMARKS,
 } from '@mediapipe/pose';
 import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
+import { raisePoseEstimationPositionWarnings } from '../../utils/warnings';
 import './PoseEstimation.css';
 
 interface PoseEstimationProps {
@@ -23,6 +25,7 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
   setPoseLandmarks,
 }) => {
   const [isMediaPipeLoading, setIsMediaPipeLoading] = useState(true);
+  const [warning, setWarning] = useState<string | null>(null);
   const videoRef = useRef<any>();
   const canvasRef = useRef<any>();
 
@@ -93,6 +96,9 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
 
     // update Training Component's landmarks
     setPoseLandmarks(results.poseWorldLandmarks);
+    // warning check
+    const warning = raisePoseEstimationPositionWarnings(results.poseLandmarks);
+    setWarning(warning);
     return;
   };
 
@@ -130,18 +136,30 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
         <React.Fragment>
           <div className="h-full flex">
             <div className="p-5 m-auto">
-              <AiOutlineLoading3Quarters className="animate-spin mx-auto" color="white" size="200" />
-            <div className="text-3xl text-center text-white mt-20">Loading...</div>
+              <AiOutlineLoading3Quarters
+                className="animate-spin mx-auto"
+                color="white"
+                size="200"
+              />
+              <div className="text-3xl text-center text-white mt-20">
+                Loading...
+              </div>
             </div>
           </div>
         </React.Fragment>
       ) : (
-        <canvas
-          className="pose-estimation-canvas rounded-xl"
-          ref={canvasRef}
-          width="1280px"
-          height="720px"
-        ></canvas>
+        <React.Fragment>
+          <div className="h-full w-full relative">
+            <canvas
+              className="pose-estimation-canvas rounded-xl h-full w-full"
+              ref={canvasRef}
+              width="1280px"
+              height="720px"
+            >
+            </canvas>
+          {warning && <div className="absolute bottom-0  bg-black bg-opacity-70 rounded-b-xl w-full text-4xl text-white p-5">{warning}</div>}
+          </div>
+        </React.Fragment>
       )}
     </div>
   );

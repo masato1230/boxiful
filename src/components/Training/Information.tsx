@@ -133,7 +133,7 @@ const Information: React.FC<InformationProps> = () => {
         <instruction.icon color={determineInstructionColor(instruction)} size="150" />
       </div>
       <p className="text-right p-5 text-5xl">{`${scores.length} / ${instructions.length}`}</p>
-      <canvas className="w-full align-bottom mx-2 mt-5  rounded-xl " ref={chartRef}></canvas>
+      <canvas className="w-full align-bottom mx-2 mt-5  rounded-xl border-4 border-gray-200" ref={chartRef}></canvas>
     </div>
   );
 };
