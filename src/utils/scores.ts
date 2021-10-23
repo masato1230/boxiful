@@ -7,3 +7,13 @@ export const calculateNormalMenuMoveScore = (time: number) => {
   }
   return Math.round(score);
 }
+
+export const judgeFromScore = (score: number): ('good' | 'great' | 'miss') => {
+  if (score >= 80) {
+    return 'great';
+  } else if (score >= 30) {
+    return 'good';
+  } else {
+    return 'miss';
+  }
+}

@@ -1,6 +1,7 @@
 import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
 import { useEffect, useState } from 'react';
 import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle';
+import { judgeFromScore } from '../../utils/scores';
 import Information from './Information';
 import {
   Instruction,
@@ -15,7 +16,9 @@ import {
   RightLegRightKick,
 } from './Instructions';
 import PoseEstimation from './PoseEstimation';
-import sound from '../../sounds/good-punch.mp3';
+import goodSound from '../../sounds/good-punch.mp3';
+import greatSound from '../../sounds/great-punch.mp3';
+import missSound from '../../sounds/miss-punch.mp3';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { Redirect } from 'react-router';
@@ -43,9 +46,12 @@ const Training = () => {
   const [moveStartTime, setMoveStartTime] = useState<Date>();
   const [isMoveStarted, setIsMoveStarted] = useState(false);
   const [isMoveEnded, setIsMoveEnded] = useState(false);
+  const [moveJudge, setMoveJudge] = useState<'great' | 'good' | 'miss' | null>(null);
 
   // good punch sound
-  const audio = new Audio(sound);
+  const goodAudio = new Audio(goodSound);
+  const greatAudio = new Audio(greatSound);
+  const missAudio = new Audio(missSound);
 
   // set menu
   useEffect(() => {
@@ -83,7 +89,16 @@ const Training = () => {
           );
           setMoveStartTime(now);
           pushScore(score);
-          audio.play();
+          // updateJudge
+          const newMoveJudge = judgeFromScore(score);
+          setMoveJudge(newMoveJudge);
+          if (newMoveJudge === 'good') {
+            goodAudio.play();
+          }  else if (newMoveJudge === 'great') {
+            greatAudio.play()
+          } else {
+            missAudio.play();
+          }
         }
       }
     }
@@ -107,6 +122,7 @@ const Training = () => {
       <div className="bg-white w-1/2 mx-2 h-5/6">
         {instructions[scores.length] !== undefined && (
           <Information
+            moveJudge={moveJudge}
             isMoveStarted={isMoveStarted}
             isMoveEnded={isMoveEnded}
           />

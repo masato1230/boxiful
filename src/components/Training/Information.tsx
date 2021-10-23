@@ -1,3 +1,4 @@
+import './Information.css';
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import React, { useState, useEffect, useRef } from 'react';
 import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
@@ -43,11 +44,12 @@ const determineInstructionColor = (instruction: Instruction) => {
 };
 
 interface InformationProps {
+  moveJudge: 'good' | 'great' | 'miss' | null;
   isMoveStarted: boolean;
   isMoveEnded: boolean;
 }
 
-const Information: React.FC<InformationProps> = () => {
+const Information: React.FC<InformationProps> = ({ moveJudge }) => {
   // Redux - get actionCreators adn states
   const { instructions, scores } = useTypedSelector((state) => {
     return {
@@ -59,9 +61,15 @@ const Information: React.FC<InformationProps> = () => {
 
   // useState
   const [chart, setChart] = useState<Chart>();
+  const [judgeVisibility, setJudgeVisibility] = useState<'visible' | 'hidden'>(
+    'hidden'
+  );
 
-  // chart set up
+  // refs
   const chartRef = useRef<HTMLCanvasElement>(null);
+  const judgeRef = useRef<HTMLParagraphElement | null>(null);
+  
+  // chart set up
   useEffect(() => {
     Chart.register(...registerables);
     // clear canvas
@@ -118,9 +126,26 @@ const Information: React.FC<InformationProps> = () => {
   // update chart
   useEffect(() => {
     if (chart?.data.datasets[0].data.length !== scores.length) {
+      // update chart
       chart?.data.labels?.push(chart.data.labels.length);
       chart?.data.datasets[0].data.push(scores[scores.length - 1]);
       chart?.update();
+
+      // update judge
+      if (!judgeRef.current) return;
+      judgeRef.current.style.display = 'inline-block';
+      if (moveJudge === 'good') {
+        judgeRef.current.style.backgroundColor = 'blue';
+      } else if (moveJudge === 'great') {
+        judgeRef.current.style.backgroundColor = 'red';
+      } else {
+        judgeRef.current.style.backgroundColor = 'gray';
+      }
+      judgeRef.current.textContent = moveJudge;
+      const timer = setTimeout(() => {
+        if (!judgeRef.current) return;
+        judgeRef.current.style.display = 'none';
+      }, 700);
     }
   });
 
@@ -130,14 +155,28 @@ const Information: React.FC<InformationProps> = () => {
         {instruction.title}
       </h2>
       <div className="align-middle mx-auto w-min h-2/6 pt-5">
-        <instruction.icon color={determineInstructionColor(instruction)} size="150" />
+        <instruction.icon
+          color={determineInstructionColor(instruction)}
+          size="150"
+        />
       </div>
       <div className="h-1/6 px-5">
         <div className="">
-          <p className="float-right inline-block text-right text-5xl"> {`${scores.length} / ${instructions.length}`}</p>
+          <p
+            ref={judgeRef}
+            className="inline-block text-white rounded-xl text-5xl p-1"
+          ></p>
+          <p className="float-right inline-block text-right text-5xl">
+            {' '}
+            {`${scores.length} / ${instructions.length}`}
+          </p>
         </div>
       </div>
-      <canvas className="mx-2 rounded-xl h-2/6" style={{ maxHeight: '33%', minHeight: '33%' }} ref={chartRef}></canvas>
+      <canvas
+        className="mx-2 rounded-xl h-2/6"
+        style={{ maxHeight: '33%', minHeight: '33%' }}
+        ref={chartRef}
+      ></canvas>
     </div>
   );
 };
