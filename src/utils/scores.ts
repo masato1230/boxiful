@@ -8,12 +8,12 @@ export const calculateNormalMenuMoveScore = (time: number) => {
   return Math.round(score);
 }
 
-export const judgeFromScore = (score: number): ('good' | 'great' | 'miss') => {
+export const judgeFromScore = (score: number): ('Good' | 'Great' | 'Slow') => {
   if (score >= 80) {
-    return 'great';
+    return 'Great';
   } else if (score >= 30) {
-    return 'good';
+    return 'Good';
   } else {
-    return 'miss';
+    return 'Slow';
   }
 }

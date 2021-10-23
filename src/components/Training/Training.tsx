@@ -46,7 +46,7 @@ const Training = () => {
   const [moveStartTime, setMoveStartTime] = useState<Date>();
   const [isMoveStarted, setIsMoveStarted] = useState(false);
   const [isMoveEnded, setIsMoveEnded] = useState(false);
-  const [moveJudge, setMoveJudge] = useState<'great' | 'good' | 'miss' | null>(null);
+  const [moveJudge, setMoveJudge] = useState<'Great' | 'Good' | 'Slow' | null>(null);
 
   // good punch sound
   const goodAudio = new Audio(goodSound);
@@ -92,9 +92,9 @@ const Training = () => {
           // updateJudge
           const newMoveJudge = judgeFromScore(score);
           setMoveJudge(newMoveJudge);
-          if (newMoveJudge === 'good') {
+          if (newMoveJudge === 'Good') {
             goodAudio.play();
-          }  else if (newMoveJudge === 'great') {
+          }  else if (newMoveJudge === 'Great') {
             greatAudio.play()
           } else {
             missAudio.play();

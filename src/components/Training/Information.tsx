@@ -44,7 +44,7 @@ const determineInstructionColor = (instruction: Instruction) => {
 };
 
 interface InformationProps {
-  moveJudge: 'good' | 'great' | 'miss' | null;
+  moveJudge: 'Good' | 'Great' | 'Slow' | null;
   isMoveStarted: boolean;
   isMoveEnded: boolean;
 }
@@ -134,9 +134,9 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
       // update judge
       if (!judgeRef.current) return;
       judgeRef.current.style.display = 'inline-block';
-      if (moveJudge === 'good') {
+      if (moveJudge === 'Good') {
         judgeRef.current.style.backgroundColor = 'blue';
-      } else if (moveJudge === 'great') {
+      } else if (moveJudge === 'Great') {
         judgeRef.current.style.backgroundColor = 'red';
       } else {
         judgeRef.current.style.backgroundColor = 'gray';
@@ -164,16 +164,15 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
         <div className="">
           <p
             ref={judgeRef}
-            className="inline-block text-white rounded-xl text-5xl p-1"
+            className="inline-block text-white rounded-full text-5xl p-8"
           ></p>
           <p className="float-right inline-block text-right text-5xl">
-            {' '}
             {`${scores.length} / ${instructions.length}`}
           </p>
         </div>
       </div>
       <canvas
-        className="mx-2 rounded-xl h-2/6"
+        className="mx-2 rounded-xl h-2/6 bg-black text-white"
         style={{ maxHeight: '33%', minHeight: '33%' }}
         ref={chartRef}
       ></canvas>

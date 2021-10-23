@@ -157,7 +157,7 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
               height="720px"
             >
             </canvas>
-          {warning && <div className="absolute bottom-0  bg-black bg-opacity-70 rounded-b-xl w-full text-4xl text-white p-5">{warning}</div>}
+          {warning && <div className="absolute bottom-0  bg-black bg-opacity-70 rounded-b-xl w-full text-5xl text-white p-10">{warning}</div>}
           </div>
         </React.Fragment>
       )}
