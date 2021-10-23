@@ -53,18 +53,6 @@ const Training = () => {
   const greatAudio = new Audio(greatSound);
   const missAudio = new Audio(missSound);
 
-  // set menu
-  useEffect(() => {
-    setMenu(NormalMenu);
-  }, []);
-
-  // set instructions
-  useEffect(() => {
-    if (menu) {
-      setInstructions(createInstructionsFromMenu(menu));
-    }
-  }, [menu]);
-
   // manage instruction states
   useEffect(() => {
     if (poseLandmarks && instructions.length !== 0) {
@@ -113,7 +101,7 @@ const Training = () => {
   }, [isMoveEnded]);
 
   // When Training Finished
-  if (instructions.length === scores.length) {
+  if (instructions.length === scores.length) {    
     return <Redirect to="/result" />;
   }
 

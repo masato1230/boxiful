@@ -17,3 +17,12 @@ export const judgeFromScore = (score: number): ('Good' | 'Great' | 'Slow') => {
     return 'Slow';
   }
 }
+
+export const calculateResultScore = (scores: number[]) => {
+  scores.sort();
+  const extractOutliersScores = scores.slice(3, scores.length - 4);
+  const extractOutliersSum =  extractOutliersScores.reduce((accumulator: number, currentValue: number) => {
+    return accumulator + currentValue;
+  });
+  return extractOutliersSum / extractOutliersScores.length;
+}
