@@ -137,7 +137,7 @@ const detectRightLegKickReady = (poseLandmarks: NormalizedLandmarkList) => {
 
 // 1-1.
 export const LeftHandLeftPunch: Instruction = {
-  title: 'Left Hand Left Punch',
+  title: '左手で左にパンチ',
   icon: BsArrowLeftCircleFill,
   detectStartFunction: detectLeftArmPunchReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
@@ -169,7 +169,7 @@ export const LeftHandLeftPunch: Instruction = {
 
 // 1-2.
 export const LeftHandRightPunch: Instruction = {
-  title: 'Left Hand Right Punch',
+  title: '左手で右にパンチ',
   icon: BsArrowRightCircleFill,
   detectStartFunction: detectLeftArmPunchReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
@@ -201,7 +201,7 @@ export const LeftHandRightPunch: Instruction = {
 
 // 2-1.
 export const RightHandLeftPunch: Instruction = {
-  title: 'Right Hand Left Punch',
+  title: '右手で左にパンチ',
   icon: BsArrowLeftCircleFill,
   detectStartFunction: detectRightArmPunchReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
@@ -233,7 +233,7 @@ export const RightHandLeftPunch: Instruction = {
 
 // 2-2.
 export const RightHandRightPunch: Instruction = {
-  title: 'Right Hand Right Punch',
+  title: '右手で右にパンチ',
   icon: BsArrowRightCircleFill,
   detectStartFunction: detectRightArmPunchReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
@@ -265,7 +265,7 @@ export const RightHandRightPunch: Instruction = {
 
 // 3-1.
 export const LeftLegLeftKick: Instruction = {
-  title: 'Left Leg Left Kick',
+  title: '左足で左にキック',
   icon: BsArrowLeftCircleFill,
   detectStartFunction: detectLeftLegKickReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
@@ -302,7 +302,7 @@ export const LeftLegLeftKick: Instruction = {
 
 // 3-2.
 export const LeftLegRightKick: Instruction = {
-  title: 'Left Leg Right Kick',
+  title: '左足で右にキック',
   icon: BsArrowRightCircleFill,
   detectStartFunction: detectLeftLegKickReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
@@ -339,7 +339,7 @@ export const LeftLegRightKick: Instruction = {
 
 // 4-1.
 export const RightLegLeftKick: Instruction = {
-  title: 'Right Leg Left Kick',
+  title: '右足で左にキック',
   icon: BsArrowLeftCircleFill,
   detectStartFunction: detectRightLegKickReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {
@@ -376,7 +376,7 @@ export const RightLegLeftKick: Instruction = {
 
 // 4-2.
 export const RightLegRightKick: Instruction = {
-  title: 'Right Leg Right Kick',
+  title: '右足で右にキック',
   icon: BsArrowRightCircleFill,
   detectStartFunction: detectRightLegKickReady,
   detectEndFunction: (poseLandmarks: NormalizedLandmarkList) => {

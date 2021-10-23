@@ -104,7 +104,7 @@ const Training = () => {
 
   return (
     <div className="mx-auto flex h-screen my-5 px-4">
-      <div className="bg-white w-1/2 mx-2 rounded-xl border-4 border-yellow-500 h-5/6">
+      <div className="bg-white w-1/2 mx-2 h-5/6">
         {instructions[scores.length] !== undefined && (
           <Information
             isMoveStarted={isMoveStarted}

@@ -126,14 +126,18 @@ const Information: React.FC<InformationProps> = () => {
 
   return (
     <div className="h-full">
-      <h2 className="text-5xl text-black text-center py-10 px-5">
+      <h2 className="pt-5 text-5xl text-black text-center font-bold px-5 h-1/6">
         {instruction.title}
       </h2>
-      <div className="mx-auto w-min py-10">
+      <div className="align-middle mx-auto w-min h-2/6 pt-5">
         <instruction.icon color={determineInstructionColor(instruction)} size="150" />
       </div>
-      <p className="text-right p-5 text-5xl">{`${scores.length} / ${instructions.length}`}</p>
-      <canvas className="w-full align-bottom mx-2 mt-5  rounded-xl border-4 border-gray-200" ref={chartRef}></canvas>
+      <div className="h-1/6 px-5">
+        <div className="">
+          <p className="float-right inline-block text-right text-5xl"> {`${scores.length} / ${instructions.length}`}</p>
+        </div>
+      </div>
+      <canvas className="mx-2 rounded-xl h-2/6" style={{ maxHeight: '33%', minHeight: '33%' }} ref={chartRef}></canvas>
     </div>
   );
 };
