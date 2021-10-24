@@ -6,8 +6,10 @@ interface ScoreDoughnutChartProps {
   color: string;
 }
 
-const ScoreDoughnutChart: React.FC<ScoreDoughnutChartProps> = ({ score, color='rgb(255, 99, 132)' }) => {
-
+const ScoreDoughnutChart: React.FC<ScoreDoughnutChartProps> = ({
+  score,
+  color = 'rgb(255, 99, 132)',
+}) => {
   const [doughnutChart, setDoughnutChart] = useState<Chart>();
   const doughnutChartRef = useRef<HTMLCanvasElement>(null);
 
@@ -24,7 +26,7 @@ const ScoreDoughnutChart: React.FC<ScoreDoughnutChartProps> = ({ score, color='r
       datasets: [
         {
           data: [score, 100 - score],
-          backgroundColor: ['rgb(255, 99, 132)', 'rgb(255, 255, 255)'],
+          backgroundColor: [color, 'rgb(255, 255, 255)'],
           hoverOffset: 4,
         },
       ],
@@ -45,7 +47,20 @@ const ScoreDoughnutChart: React.FC<ScoreDoughnutChartProps> = ({ score, color='r
       })
     );
   }, [score]);
-  return <div>PieChart</div>;
+  return (
+    <React.Fragment>
+      <div
+        className="justify-center content-center flex flex-wrap"
+        style={{ height: doughnutChartRef.current?.height || 0 }}
+      >
+        <canvas
+          className="mx-2 rounded-xl absolute"
+          ref={doughnutChartRef}
+        ></canvas>
+        <h2 className="text-2xl font-bold text-center">{score}点</h2>
+      </div>
+    </React.Fragment>
+  );
 };
 
 export default ScoreDoughnutChart;

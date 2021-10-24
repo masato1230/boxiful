@@ -8,6 +8,7 @@ import {
   calculateResultScore,
   calculateTotalCalorieFromInstructions,
 } from '../../utils/scores';
+import ResultDetail from './ResultDetail';
 import ScoreDoughnutChart from './ScoreDoughnutChart';
 
 const Result = () => {
@@ -64,7 +65,7 @@ const Result = () => {
   }, [score]);
 
   return (
-    <div>
+    <div className="container mx-auto">
       <div className="h-screen">
         <div className="flex">
           {/* スコア */}
@@ -96,23 +97,30 @@ const Result = () => {
           </div>
         </div>
         {/* パンチ・キック */}
-        <div className="w-1/2">
-          {calculatePunchScore(scores, instructions) && (
-            <div className="w-1/2">
-              <ScoreDoughnutChart
-                score={calculatePunchScore(scores, instructions) || 0}
-                color="rgb(54, 162, 235)"
-              />
-            </div>
-          )}
-          {calculateKickScore(scores, instructions) && (
-            <div className="w-1/2">
-              <ScoreDoughnutChart
-                score={calculateKickScore(scores, instructions) || 0}
-                color="rgb(255, 205, 86)"
-              />
-            </div>
-          )}
+        <div className="flex">
+          <div className="w-1/2">
+            {calculatePunchScore(scores, instructions) && (
+              <div className="w-1/2">
+                <h2 className="text-xl font-medium mb-2">パンチ評価</h2>
+                <ScoreDoughnutChart
+                  score={calculatePunchScore(scores, instructions) || 0}
+                  color="rgb(54, 162, 235)"
+                />
+              </div>
+            )}
+            {calculateKickScore(scores, instructions) && (
+              <div className="w-1/2">
+                <h2 className="text-xl font-medium mb-2">キック評価</h2>
+                <ScoreDoughnutChart
+                  score={calculateKickScore(scores, instructions) || 0}
+                  color="rgb(255, 205, 86)"
+                />
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <ResultDetail />
+          </div>
         </div>
         <p>Result</p>
         <p>score: {score} 点</p>
