@@ -8,6 +8,7 @@ import {
   calculateResultScore,
   calculateTotalCalorieFromInstructions,
 } from '../../utils/scores';
+import ScoreDoughnutChart from './ScoreDoughnutChart';
 
 const Result = () => {
   // reducer
@@ -16,7 +17,7 @@ const Result = () => {
   });
   // states
   const [score, setScore] = useState(0);
-  const [doughnutChart, setChart] = useState<Chart>();
+  const [doughnutChart, setDoughnutChart] = useState<Chart>();
 
   // set up
   useEffect(() => {
@@ -45,8 +46,8 @@ const Result = () => {
         },
       ],
     };
-    
-    setChart(
+
+    setDoughnutChart(
       new Chart(doughnutChartRef.current?.getContext('2d'), {
         type: 'doughnut',
         data,
@@ -95,13 +96,24 @@ const Result = () => {
           </div>
         </div>
         {/* パンチ・キック */}
-        {calculatePunchScore(scores, instructions) &&
-          calculateKickScore(scores, instructions) && (
+        <div className="w-1/2">
+          {calculatePunchScore(scores, instructions) && (
             <div className="w-1/2">
-              <div className="w-1/2">パンチ評価:</div>
-              <div className="w-1/2">キック評価</div>
+              <ScoreDoughnutChart
+                score={calculatePunchScore(scores, instructions) || 0}
+                color="rgb(54, 162, 235)"
+              />
             </div>
           )}
+          {calculateKickScore(scores, instructions) && (
+            <div className="w-1/2">
+              <ScoreDoughnutChart
+                score={calculateKickScore(scores, instructions) || 0}
+                color="rgb(255, 205, 86)"
+              />
+            </div>
+          )}
+        </div>
         <p>Result</p>
         <p>score: {score} 点</p>
         <p>point: {Math.round(scores.reduce((acc, cur) => acc + cur, 0))}</p>
