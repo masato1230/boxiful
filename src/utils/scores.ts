@@ -31,13 +31,13 @@ export const judgeFromScore = (score: number): 'Good' | 'Great' | 'Slow' => {
 
 export const calculateResultScore = (scores: number[]) => {
   scores.sort();
-  const extractOutliersScores = scores.slice(3, scores.length - 4);
+  const extractOutliersScores = scores.slice(3, scores.length - 3);
   const extractOutliersSum = extractOutliersScores.reduce(
     (accumulator: number, currentValue: number) => {
       return accumulator + currentValue;
     }
   );
-  return extractOutliersSum / extractOutliersScores.length;
+  return Math.round(extractOutliersSum / extractOutliersScores.length);
 };
 
 export const calculatePunchScore = (
@@ -45,7 +45,7 @@ export const calculatePunchScore = (
   instructions: Instruction[]
 ) => {
   scores.sort();
-  const extractOutliersScores = scores.slice(3, scores.length - 4);
+  const extractOutliersScores = scores.slice(3, scores.length - 3);
   const punchScores = extractOutliersScores.filter((score, index) => {
     return (
       [LeftHandLeftPunch,
@@ -60,7 +60,7 @@ export const calculatePunchScore = (
       return accumulator + currentValue;
     }
   );
-  return sum / punchScores.length;
+  return Math.round(sum / punchScores.length);
 };
 
 export const calculateKickScore = (
@@ -83,7 +83,7 @@ export const calculateKickScore = (
   const sum = kickScores.reduce((accumulator: number, currentValue: number) => {
     return accumulator + currentValue;
   });
-  return sum / kickScores.length;
+  return Math.round(sum / kickScores.length);
 };
 
 export const calculateTotalCalorieFromInstructions = (
