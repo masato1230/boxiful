@@ -12,6 +12,7 @@ import {
 
 export default interface Menu {
   title: string;
+  description: string;
   timeLimit: number;
   numOfInstructions: number;
   instructionTypes: Instruction[];
@@ -30,7 +31,9 @@ export const createInstructionsFromMenu = (menu: Menu) => {
 };
 
 export const EasyMenu: Menu = {
-  title: 'Easy Menu',
+  title: '簡単メニュー',
+  description:
+    'パンチだけの短めのメニューです。ノーマルメニューが難しい人におすすめ',
   timeLimit: 1000,
   numOfInstructions: 30,
   instructionTypes: [
@@ -42,7 +45,9 @@ export const EasyMenu: Menu = {
 };
 
 export const NormalMenu: Menu = {
-  title: 'Normal Menu',
+  title: 'ノーマルメニュー',
+  description:
+    'おすすめのメニュー!。パンチとキックを組み合わせたコースで、短い時間で気持ちよく運動できます。Ï',
   timeLimit: 1000,
   numOfInstructions: 50,
   instructionTypes: [
@@ -58,7 +63,9 @@ export const NormalMenu: Menu = {
 };
 
 export const HardMenu: Menu = {
-  title: 'Hard Menu',
+  title: 'ハードメニュー',
+  description:
+    'ノーマルメニューでは物足りない方におすすめ、長くて少しキツいメニューです。',
   timeLimit: 1500,
   numOfInstructions: 100,
   instructionTypes: [

@@ -118,7 +118,7 @@ const Result = () => {
               </div>
             )}
           </div>
-          <div className="w-1/2">
+          <div className="w-1/2 p-5">
             <ResultDetail />
           </div>
         </div>
