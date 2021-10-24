@@ -106,7 +106,7 @@ export const calculateTotalCalorieFromInstructions = (
 
 // TODO: Change
 export const calculateBoxfulAge = (score: number) => {
-  let age = 100 - score;
+  let age = 110 - score;
   if (age < 20) {
     age = 20;
   }
