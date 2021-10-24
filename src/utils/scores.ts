@@ -1,6 +1,7 @@
 import {
   Instruction,
   LeftHandLeftPunch,
+  LeftHandRightPunch,
   LeftLegLeftKick,
   LeftLegRightKick,
   RightHandLeftPunch,
@@ -32,6 +33,10 @@ export const judgeFromScore = (score: number): 'Good' | 'Great' | 'Slow' => {
 export const calculateResultScore = (scores: number[]) => {
   scores.sort();
   const extractOutliersScores = scores.slice(3, scores.length - 3);
+  console.log(extractOutliersScores);
+  console.log(scores);
+  
+  
   const extractOutliersSum = extractOutliersScores.reduce(
     (accumulator: number, currentValue: number) => {
       return accumulator + currentValue;
@@ -45,16 +50,18 @@ export const calculatePunchScore = (
   instructions: Instruction[]
 ) => {
   scores.sort();
+  
   const extractOutliersScores = scores.slice(3, scores.length - 3);
   const punchScores = extractOutliersScores.filter((score, index) => {
     return (
       [LeftHandLeftPunch,
-      LeftHandLeftPunch,
+      LeftHandRightPunch,
       RightHandLeftPunch,
       RightHandRightPunch].includes(instructions[index])
     );
   });
   if (punchScores.length === 0) return;
+  
   const sum = punchScores.reduce(
     (accumulator: number, currentValue: number) => {
       return accumulator + currentValue;

@@ -8,7 +8,7 @@ import Status from './components/Status';
 import Top from './components/Top';
 import Training from './components/Training/Training';
 import { store } from './state/store';
-import Result from './components/Result';
+import Result from './components/Result/Result';
 
 const App = () => {
   return (

@@ -1,13 +1,13 @@
 import { Chart, ChartDataset, registerables } from 'chart.js';
-import { useEffect, useRef, useState } from 'react';
-import { useTypedSelector } from '../hooks/useTypedSelector';
+import React, { useEffect, useRef, useState } from 'react';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
   calculateBoxfulAge,
   calculateKickScore,
   calculatePunchScore,
   calculateResultScore,
   calculateTotalCalorieFromInstructions,
-} from '../utils/scores';
+} from '../../utils/scores';
 
 const Result = () => {
   // reducer
@@ -45,11 +45,13 @@ const Result = () => {
         },
       ],
     };
+    
     setChart(
       new Chart(doughnutChartRef.current?.getContext('2d'), {
         type: 'doughnut',
         data,
         options: {
+          borderColor: 'rgba(255, 255, 255, 0.5)',
           plugins: {
             legend: {
               display: false,
@@ -63,7 +65,7 @@ const Result = () => {
   return (
     <div>
       <div className="h-screen">
-        <div className="h-4/6 flex">
+        <div className="flex">
           {/* スコア */}
           <div className="w-1/2 p-5">
             <h2 className="text-3xl font-medium mb-2">トレーニング評価</h2>
@@ -75,7 +77,7 @@ const Result = () => {
                 className="mx-2 rounded-xl absolute"
                 ref={doughnutChartRef}
               ></canvas>
-              <h2 className="text-5xl font-bold">{score}点</h2>
+              <h2 className="text-5xl font-bold text-center">{score}点</h2>
             </div>
           </div>
           {/* 年齢 */}
@@ -92,6 +94,14 @@ const Result = () => {
             </p>
           </div>
         </div>
+        {/* パンチ・キック */}
+        {calculatePunchScore(scores, instructions) &&
+          calculateKickScore(scores, instructions) && (
+            <div className="w-1/2">
+              <div className="w-1/2">パンチ評価:</div>
+              <div className="w-1/2">キック評価</div>
+            </div>
+          )}
         <p>Result</p>
         <p>score: {score} 点</p>
         <p>point: {Math.round(scores.reduce((acc, cur) => acc + cur, 0))}</p>
