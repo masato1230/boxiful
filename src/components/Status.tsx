@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useActions } from "../hooks/useActions";
 import { useTypedSelector } from "../hooks/useTypedSelector";
-import { createInstructionsFromMenu, EasyMenu } from "../state";
+import { createInstructionsFromMenu, EasyMenu, NormalMenu } from "../state";
 
 const Status = () => {
   // Redux - get actionCreators adn states
@@ -17,7 +17,7 @@ const Status = () => {
   // TODO: delete set menu and instructions for training test 
   // set menu
   useEffect(() => {
-    setMenu(EasyMenu);
+    setMenu(NormalMenu);
   }, []);
 
   // set instructions

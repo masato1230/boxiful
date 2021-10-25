@@ -51,7 +51,7 @@ const ScoreDoughnutChart: React.FC<ScoreDoughnutChartProps> = ({
     <React.Fragment>
       <div
         className="justify-center content-center flex flex-wrap"
-        style={{ height: doughnutChartRef.current?.height || 0 }}
+        style={{ height: doughnutChartRef.current?.style.height || 0 }}
       >
         <canvas
           className="mx-2 rounded-xl absolute"

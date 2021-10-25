@@ -65,7 +65,7 @@ const Result = () => {
   }, [score]);
 
   return (
-    <div className="container mx-auto">
+    <div className="container mx-auto px-3">
       <div className="h-screen">
         <div className="flex">
           {/* スコア */}
@@ -73,7 +73,7 @@ const Result = () => {
             <h2 className="text-3xl font-medium mb-2">トレーニング評価</h2>
             <div
               className="justify-center content-center flex flex-wrap"
-              style={{ height: doughnutChartRef.current?.height || 0 }}
+              style={{ height: doughnutChartRef.current?.style.height || 0 }}
             >
               <canvas
                 className="mx-2 rounded-xl absolute"
@@ -85,7 +85,7 @@ const Result = () => {
           {/* 年齢 */}
           <div
             className="w-1/2 p-5 flex flex-wrap content-center"
-            style={{ height: doughnutChartRef.current?.height || 0 }}
+            style={{ height: doughnutChartRef.current?.style.height || 0 }}
           >
             <p className="text-2xl font-medium">あなたのボクシフル年齢は</p>
             <h2 className="text-5xl font-bold text-center w-full mt-2 mb-10">
@@ -109,7 +109,7 @@ const Result = () => {
               </div>
             )}
             {calculateKickScore(scores, instructions) && (
-              <div className="w-1/2">
+              <div className="w-1/2 mt-5">
                 <h2 className="text-xl font-medium mb-2">キック評価</h2>
                 <ScoreDoughnutChart
                   score={calculateKickScore(scores, instructions) || 0}
@@ -122,15 +122,6 @@ const Result = () => {
             <ResultDetail />
           </div>
         </div>
-        <p>Result</p>
-        <p>score: {score} 点</p>
-        <p>point: {Math.round(scores.reduce((acc, cur) => acc + cur, 0) / 10)}</p>
-        <p>
-          消費カロリー: {calculateTotalCalorieFromInstructions(instructions)}
-        </p>
-        <p>あなたのボクシフル年齢: {calculateBoxfulAge(score)}</p>
-        <p>パンチのスコア: {calculatePunchScore(scores, instructions)}</p>
-        <p>キックのスコア: {calculateKickScore(scores, instructions)}</p>
       </div>
     </div>
   );
