@@ -118,13 +118,13 @@ const Result = () => {
               </div>
             )}
           </div>
-          <div className="w-1/2 p-5">
+          <div className="w-1/2">
             <ResultDetail />
           </div>
         </div>
         <p>Result</p>
         <p>score: {score} 点</p>
-        <p>point: {Math.round(scores.reduce((acc, cur) => acc + cur, 0))}</p>
+        <p>point: {Math.round(scores.reduce((acc, cur) => acc + cur, 0) / 10)}</p>
         <p>
           消費カロリー: {calculateTotalCalorieFromInstructions(instructions)}
         </p>
