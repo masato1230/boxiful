@@ -1,7 +1,9 @@
 import { Chart, ChartDataset, registerables } from 'chart.js';
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { createInstructionsFromMenu } from '../../state';
 import {
   calculateBoxfulAge,
   calculateKickScore,
@@ -17,9 +19,12 @@ const Result = () => {
   const { menu, instructions, scores } = useTypedSelector((state) => {
     return state.training;
   });
+  const { setInstructions, resetScores } = useActions();
   // states
   const [score, setScore] = useState(0);
   const [doughnutChart, setDoughnutChart] = useState<Chart>();
+
+  const history = useHistory();
 
   // set up
   useEffect(() => {
@@ -65,6 +70,14 @@ const Result = () => {
     );
   }, [score]);
 
+  const onAgainClick = () => {
+    // reset instructions and scores in reducer
+    setInstructions(createInstructionsFromMenu(menu));
+    resetScores();
+    // redirect to training page
+    history.push('/training');
+  };
+
   return (
     <div className="container mx-auto px-3">
       <div className="h-screen">
@@ -101,7 +114,10 @@ const Result = () => {
             >
               ダッシュボードに戻る
             </Link>
-            <div className=" inline-block bg-gray-500 hover:bg-gray-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1">
+            <div
+              className=" inline-block bg-gray-500 hover:bg-gray-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1"
+              onClick={onAgainClick}
+            >
               もう一度同じメニュー
             </div>
           </div>

@@ -17,4 +17,8 @@ export interface PushScoreAction {
   payload: number;
 }
 
-export type Action = SetMenuAction | SetInstructionsAction | PushScoreAction;
+export interface ResetScoresAction {
+  type: ActionTypes.RESET_SCORES;
+}
+
+export type Action = SetMenuAction | SetInstructionsAction | PushScoreAction | ResetScoresAction;

@@ -4,6 +4,7 @@ import {
   SetMenuAction,
   SetInstructionsAction,
   PushScoreAction,
+  ResetScoresAction,
 } from '../actions';
 import Menu from '../menu';
 
@@ -27,5 +28,11 @@ export const pushScore = (score: number): PushScoreAction => {
   return {
     type: ActionTypes.PUSH_SCORE,
     payload: score,
+  };
+};
+
+export const resetScores = (): ResetScoresAction => {
+  return {
+    type: ActionTypes.RESET_SCORES,
   };
 };

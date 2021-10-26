@@ -16,7 +16,10 @@ const initialState: TrainingState = {
   scores: [],
 };
 
-const reducer = (state: TrainingState = initialState, action: Action): TrainingState => {
+const reducer = (
+  state: TrainingState = initialState,
+  action: Action
+): TrainingState => {
   switch (action.type) {
     case ActionTypes.SET_MENU:
       return { ...state, menu: action.payload };
@@ -24,8 +27,10 @@ const reducer = (state: TrainingState = initialState, action: Action): TrainingS
       return { ...state, instructions: action.payload };
     case ActionTypes.PUSH_SCORE:
       let newScores = state.scores;
-      newScores.push(action.payload)
+      newScores.push(action.payload);
       return { ...state, scores: newScores };
+    case ActionTypes.RESET_SCORES:
+      return { ...state, scores: [] };
     default:
       return state;
   }
