@@ -1,5 +1,6 @@
 import { Chart, ChartDataset, registerables } from 'chart.js';
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
   calculateBoxfulAge,
@@ -94,6 +95,15 @@ const Result = () => {
             <p className="text-xs ml-10ƒ">
               ボクシフル年齢はあなたの瞬発力と体力を評価した年齢です。
             </p>
+            <Link
+              className="inline-block bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1"
+              to="/"
+            >
+              ダッシュボードに戻る
+            </Link>
+            <div className=" inline-block bg-gray-500 hover:bg-gray-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1">
+              もう一度同じメニュー
+            </div>
           </div>
         </div>
         {/* パンチ・キック */}

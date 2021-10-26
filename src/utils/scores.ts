@@ -108,7 +108,7 @@ export const calculateTotalCalorieFromInstructions = (
       return accumulator + 0.6;
     }
   }, 0);
-  return totalCalorie;
+  return Math.round(totalCalorie);
 };
 
 // TODO: Change
