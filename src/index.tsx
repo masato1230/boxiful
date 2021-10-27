@@ -4,7 +4,7 @@ import { Router, BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import Header from './components/Header';
-import Status from './components/Status';
+import Status from './components/Status/Status';
 import Top from './components/Top';
 import Training from './components/Training/Training';
 import { store } from './state/store';

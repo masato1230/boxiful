@@ -1,7 +1,8 @@
-import { useEffect } from "react";
-import { useActions } from "../hooks/useActions";
-import { useTypedSelector } from "../hooks/useTypedSelector";
-import { createInstructionsFromMenu, EasyMenu, NormalMenu } from "../state";
+import { useEffect } from 'react';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { createInstructionsFromMenu, EasyMenu, NormalMenu } from '../../state';
+import MenuCards from './MenuCards';
 
 const Status = () => {
   // Redux - get actionCreators adn states
@@ -14,7 +15,7 @@ const Status = () => {
     };
   });
 
-  // TODO: delete set menu and instructions for training test 
+  // TODO: delete set menu and instructions for training test
   // set menu
   useEffect(() => {
     setMenu(EasyMenu);
@@ -27,7 +28,11 @@ const Status = () => {
     }
   }, [menu]);
 
-  return <div>Status Component</div>
+  return (
+    <div className="container mx-auto px-3">
+      <MenuCards />
+    </div>
+  );
 };
 
 export default Status;
