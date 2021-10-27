@@ -28,6 +28,10 @@ const Result = () => {
 
   // set up
   useEffect(() => {
+    // redirect to dashboard when scores are empty
+    if (typeof scores[0] === 'undefined') {
+      history.push('/');
+    }
     setScore(calculateResultScore(scores));
   }, []);
 
