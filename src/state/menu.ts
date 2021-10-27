@@ -51,7 +51,7 @@ export const EasyMenu: Menu = {
 export const NormalMenu: Menu = {
   title: 'ノーマルメニュー',
   description:
-    'おすすめのメニュー!。パンチとキックを組み合わせたコースで、短い時間で気持ちよく運動できます。Ï',
+    'おすすめのメニュー!。パンチとキックを組み合わせたコースで、短い時間で気持ちよく運動できます。',
   timeLimit: 1000,
   numOfInstructions: 50,
   instructionTypes: [
