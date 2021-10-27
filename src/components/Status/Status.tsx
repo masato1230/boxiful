@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { createInstructionsFromMenu, EasyMenu, NormalMenu } from '../../state';
+import { createInstructionsFromMenu, EasyMenu, HardMenu, NormalMenu } from '../../state';
 import MenuCards from './MenuCards';
 
 const Status = () => {

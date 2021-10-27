@@ -16,6 +16,8 @@ export default interface Menu {
   timeLimit: number;
   numOfInstructions: number;
   instructionTypes: Instruction[];
+  approximateCalorieConsumption: number;
+  durationInMinutes: number;
 }
 
 export const createInstructionsFromMenu = (menu: Menu) => {
@@ -31,7 +33,7 @@ export const createInstructionsFromMenu = (menu: Menu) => {
 };
 
 export const EasyMenu: Menu = {
-  title: '簡単メニュー',
+  title: 'イージーメニュー',
   description:
     'パンチだけの短めのメニューです。ノーマルメニューが難しい人におすすめ',
   timeLimit: 1000,
@@ -42,6 +44,8 @@ export const EasyMenu: Menu = {
     RightHandLeftPunch,
     RightHandRightPunch,
   ],
+  approximateCalorieConsumption: 9,
+  durationInMinutes: 1,
 };
 
 export const NormalMenu: Menu = {
@@ -60,6 +64,8 @@ export const NormalMenu: Menu = {
     RightLegLeftKick,
     RightLegRightKick,
   ],
+  approximateCalorieConsumption: 15,
+  durationInMinutes: 2,
 };
 
 export const HardMenu: Menu = {
@@ -78,4 +84,6 @@ export const HardMenu: Menu = {
     RightLegLeftKick,
     RightLegRightKick,
   ],
+  approximateCalorieConsumption: 30,
+  durationInMinutes: 3,
 };
