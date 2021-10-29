@@ -25,7 +25,7 @@ const Result = () => {
   // states
   const [score, setScore] = useState(0);
   const [doughnutChart, setDoughnutChart] = useState<Chart>();
-  const [isBrowserBackModalShow, setIsBrowserBackModalShow] = useState(true);
+  const [isBrowserBackModalShow, setIsBrowserBackModalShow] = useState(false);
 
   const history = useHistory();
 
@@ -110,7 +110,7 @@ const Result = () => {
 
   return (
     <React.Fragment>
-      <BrowserBackModal />
+      {isBrowserBackModalShow && <BrowserBackModal />}
       <div className="container mx-auto px-3">
         <div className="h-screen">
           <div className="flex">
