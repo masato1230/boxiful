@@ -25,13 +25,13 @@ const PageTransitionButtons = () => {
   return (
     <div className="flex">
       <Link
-        className="w-5/12 bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1"
+        className="w-1/2 bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1"
         to="/"
       >
         ダッシュボードに戻る
       </Link>
       <div
-        className="w-5/12 bg-gray-500 hover:bg-gray-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1"
+        className="w-1/2 bg-gray-500 hover:bg-gray-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1"
         onClick={onAgainClick}
       >
         もう一度同じメニュー

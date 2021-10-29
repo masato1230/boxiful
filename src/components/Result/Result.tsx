@@ -31,13 +31,13 @@ const Result = () => {
 
   // manage browser back
   const browserBackListener = (e: PopStateEvent) => {
-    alert('トレーニング画面には戻れません。');
-    setIsBrowserBackModalShow(true);
+    e.preventDefault();
     history.go(1);
-    window.removeEventListener('popstate', browserBackListener);
+    setIsBrowserBackModalShow(true);
   };
 
   const setBrowserBackWarning = () => {
+    console.log('set');
     window.addEventListener('popstate', browserBackListener);
   };
 
@@ -100,17 +100,13 @@ const Result = () => {
     );
   }, [score]);
 
-  const onAgainClick = () => {
-    // reset instructions and scores in reducer
-    setInstructions(createInstructionsFromMenu(menu));
-    resetScores();
-    // redirect to training page
-    history.push('/training');
-  };
-
   return (
     <React.Fragment>
-      {isBrowserBackModalShow && <BrowserBackModal />}
+      {isBrowserBackModalShow && (
+        <BrowserBackModal
+          setIsBrowserBackModalShow={setIsBrowserBackModalShow}
+        />
+      )}
       <div className="container mx-auto px-3">
         <div className="h-screen">
           <div className="flex">
