@@ -1,8 +1,5 @@
 import './Information.css';
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import React, { useState, useEffect, useRef } from 'react';
-import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
-import sound from '../../sounds/good-punch.mp3';
 import {
   Instruction,
   LeftHandLeftPunch,
@@ -14,12 +11,9 @@ import {
   RightLegLeftKick,
   RightLegRightKick,
 } from './Instructions';
-import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import {
   Chart,
-  ChartConfiguration,
-  ChartData,
   ChartDataset,
   registerables,
 } from 'chart.js';
@@ -61,9 +55,6 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
 
   // useState
   const [chart, setChart] = useState<Chart>();
-  const [judgeVisibility, setJudgeVisibility] = useState<'visible' | 'hidden'>(
-    'hidden'
-  );
 
   // refs
   const chartRef = useRef<HTMLCanvasElement>(null);
@@ -138,8 +129,6 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
         judgeRef.current.style.backgroundColor = 'blue';
       } else if (moveJudge === 'Great') {
         judgeRef.current.style.backgroundColor = 'red';
-      } else {
-        judgeRef.current.style.backgroundColor = 'gray';
       }
       judgeRef.current.textContent = moveJudge;
       const timer = setTimeout(() => {
@@ -164,7 +153,7 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
         <div className="">
           <p
             ref={judgeRef}
-            className="inline-block text-white rounded-full text-5xl p-8"
+            className="inline-block text-white rounded-full text-5xl p-8 hidden"
           ></p>
           <p className="float-right inline-block text-right text-5xl">
             {`${scores.length} / ${instructions.length}`}

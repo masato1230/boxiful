@@ -19,6 +19,7 @@ import PoseEstimation from './PoseEstimation';
 import goodSound from '../../sounds/good-punch.mp3';
 import greatSound from '../../sounds/great-punch.mp3';
 import missSound from '../../sounds/miss-punch.mp3';
+import finishSound from '../../sounds/finish.mp3';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { Redirect, useHistory } from 'react-router';
@@ -54,6 +55,7 @@ const Training = () => {
   const goodAudio = new Audio(goodSound);
   const greatAudio = new Audio(greatSound);
   const missAudio = new Audio(missSound);
+  const finishAudio = new Audio(finishSound);
 
   // redirect if scores are full
   useEffect(() => {
@@ -107,7 +109,11 @@ const Training = () => {
       setTimeout(() => {
         history.push('/result');
       }, 2000);
-      // return <Redirect to="/result" />;
+      // play finish sound
+      setTimeout(() => {        
+        finishAudio.play();
+      }, 500);
+      // show finish modal
       return;
     }
 
