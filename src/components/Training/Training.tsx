@@ -1,20 +1,7 @@
 import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
-import { useEffect, useState } from 'react';
-import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle';
+import React, { useEffect, useState } from 'react';
 import { judgeFromScore } from '../../utils/scores';
 import Information from './Information';
-import {
-  Instruction,
-  LeftHandLeftPunch,
-  LeftHandRightPunch,
-  LeftJabInstruction,
-  LeftLegLeftKick,
-  LeftLegRightKick,
-  RightHandLeftPunch,
-  RightHandRightPunch,
-  RightLegLeftKick,
-  RightLegRightKick,
-} from './Instructions';
 import PoseEstimation from './PoseEstimation';
 import goodSound from '../../sounds/good-punch.mp3';
 import greatSound from '../../sounds/great-punch.mp3';
@@ -22,19 +9,14 @@ import missSound from '../../sounds/miss-punch.mp3';
 import finishSound from '../../sounds/finish.mp3';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { Redirect, useHistory } from 'react-router';
-import {
-  createInstructionsFromMenu,
-  EasyMenu,
-  HardMenu,
-  NormalMenu,
-} from '../../state';
+import { useHistory } from 'react-router';
 import { calculateNormalMenuMoveScore } from '../../utils/scores';
+import FinishModal from './FinishModal';
 
 const Training = () => {
   // Redux - get actionCreators adn states
-  const { setMenu, setInstructions, pushScore } = useActions();
-  const { menu, instructions, scores } = useTypedSelector((state) => {
+  const { setInstructions, pushScore } = useActions();
+  const { instructions, scores } = useTypedSelector((state) => {
     return {
       menu: state.training.menu,
       instructions: state.training.instructions,
@@ -49,7 +31,10 @@ const Training = () => {
   const [moveStartTime, setMoveStartTime] = useState<Date>();
   const [isMoveStarted, setIsMoveStarted] = useState(false);
   const [isMoveEnded, setIsMoveEnded] = useState(false);
-  const [moveJudge, setMoveJudge] = useState<'Great' | 'Good' | 'Slow' | null>(null);
+  const [moveJudge, setMoveJudge] = useState<'Great' | 'Good' | 'Slow' | null>(
+    null
+  );
+  const [isShowFinishModal, setIsShowFinishModal] = useState(false);
 
   // good punch sound
   const goodAudio = new Audio(goodSound);
@@ -80,7 +65,10 @@ const Training = () => {
       }
       // when move is already started
       if (!isMoveEnded) {
-        if (instructions[scores.length].detectEndFunction(poseLandmarks) && moveStartTime) {
+        if (
+          instructions[scores.length].detectEndFunction(poseLandmarks) &&
+          moveStartTime
+        ) {
           setIsMoveEnded(true);
           const now = new Date();
           const score = calculateNormalMenuMoveScore(
@@ -93,8 +81,8 @@ const Training = () => {
           setMoveJudge(newMoveJudge);
           if (newMoveJudge === 'Good') {
             goodAudio.play();
-          }  else if (newMoveJudge === 'Great') {
-            greatAudio.play()
+          } else if (newMoveJudge === 'Great') {
+            greatAudio.play();
           } else {
             missAudio.play();
           }
@@ -105,15 +93,17 @@ const Training = () => {
 
   // reset instruction state
   useEffect(() => {
+    // when menu finished
     if (instructions.length === scores.length) {
       setTimeout(() => {
         history.push('/result');
       }, 2000);
       // play finish sound
-      setTimeout(() => {        
+      setTimeout(() => {
+        // show finish modal
+        setIsShowFinishModal(true);
         finishAudio.play();
       }, 500);
-      // show finish modal
       return;
     }
 
@@ -126,20 +116,23 @@ const Training = () => {
   // When Training Finished
 
   return (
-    <div className="mx-auto flex h-screen my-5 px-4">
-      <div className="bg-white w-1/2 mx-2 h-5/6">
-        {instructions[scores.length] !== undefined && (
-          <Information
-            moveJudge={moveJudge}
-            isMoveStarted={isMoveStarted}
-            isMoveEnded={isMoveEnded}
-          />
-        )}
+    <React.Fragment>
+      {isShowFinishModal && <FinishModal />}
+      <div className="mx-auto flex h-screen my-5 px-4">
+        <div className="bg-white w-1/2 mx-2 h-5/6">
+          {instructions[scores.length] !== undefined && (
+            <Information
+              moveJudge={moveJudge}
+              isMoveStarted={isMoveStarted}
+              isMoveEnded={isMoveEnded}
+            />
+          )}
+        </div>
+        <div className="w-1/2 mx-2 rounded-xl h-5/6">
+          <PoseEstimation setPoseLandmarks={setPoseLandmarks} />
+        </div>
       </div>
-      <div className="w-1/2 mx-2 rounded-xl h-5/6">
-        <PoseEstimation setPoseLandmarks={setPoseLandmarks} />
-      </div>
-    </div>
+    </React.Fragment>
   );
 };
 
