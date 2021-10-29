@@ -11,6 +11,7 @@ import {
   calculateResultScore,
   calculateTotalCalorieFromInstructions,
 } from '../../utils/scores';
+import BrowserBackModal from './BrowserBackModal';
 import ResultDetail from './ResultDetail';
 import ResultMain from './ResultMain';
 import ScoreDoughnutChart from './ScoreDoughnutChart';
@@ -24,12 +25,14 @@ const Result = () => {
   // states
   const [score, setScore] = useState(0);
   const [doughnutChart, setDoughnutChart] = useState<Chart>();
+  const [isBrowserBackModalShow, setIsBrowserBackModalShow] = useState(true);
 
   const history = useHistory();
 
   // manage browser back
   const browserBackListener = (e: PopStateEvent) => {
     alert('トレーニング画面には戻れません。');
+    setIsBrowserBackModalShow(true);
     history.go(1);
     window.removeEventListener('popstate', browserBackListener);
   };
@@ -106,57 +109,60 @@ const Result = () => {
   };
 
   return (
-    <div className="container mx-auto px-3">
-      <div className="h-screen">
-        <div className="flex">
-          {/* スコア */}
-          <div className="w-4/12 p-5">
-            <h2 className="text-3xl font-medium mb-2">トレーニング評価</h2>
-            <div
-              className="justify-center content-center flex flex-wrap"
-              style={{ height: doughnutChartRef.current?.style.height || 0 }}
-            >
-              <canvas
-                className="mx-2 rounded-xl absolute"
-                ref={doughnutChartRef}
-              ></canvas>
-              <h2 className="text-5xl font-bold text-center">{score}点</h2>
+    <React.Fragment>
+      <BrowserBackModal />
+      <div className="container mx-auto px-3">
+        <div className="h-screen">
+          <div className="flex">
+            {/* スコア */}
+            <div className="w-4/12 p-5">
+              <h2 className="text-3xl font-medium mb-2">トレーニング評価</h2>
+              <div
+                className="justify-center content-center flex flex-wrap"
+                style={{ height: doughnutChartRef.current?.style.height || 0 }}
+              >
+                <canvas
+                  className="mx-2 rounded-xl absolute"
+                  ref={doughnutChartRef}
+                ></canvas>
+                <h2 className="text-5xl font-bold text-center">{score}点</h2>
+              </div>
+            </div>
+            <div className="w-2/12"></div>
+            <div className="w-6/12 mr-max">
+              <ResultMain score={score} doughnutChartRef={doughnutChartRef} />
             </div>
           </div>
-          <div className="w-2/12"></div>
-          <div className="w-6/12 mr-max">
-            <ResultMain score={score} doughnutChartRef={doughnutChartRef} />
-          </div>
-        </div>
-        {/* パンチ・キック */}
-        <div className="flex">
-          <div className="w-1/2 flex">
-            {calculatePunchScore(scores, instructions) && (
-              <div className="w-5/12 mt-5">
-                <h2 className="text-xl font-medium mb-2">パンチ評価</h2>
-                <ScoreDoughnutChart
-                  score={calculatePunchScore(scores, instructions) || 0}
-                  color="rgb(54, 162, 235)"
-                />
-              </div>
-            )}
-            <div className="w-1/12"></div>
-            {calculateKickScore(scores, instructions) && (
-              <div className="w-5/12 mt-5">
-                <h2 className="text-xl font-medium mb-2">キック評価</h2>
-                <ScoreDoughnutChart
-                  score={calculateKickScore(scores, instructions) || 0}
-                  color="rgb(255, 205, 86)"
-                />
-              </div>
-            )}
-          </div>
-          <div className="w-1/2">
-            <ResultDetail />
+          {/* パンチ・キック */}
+          <div className="flex">
+            <div className="w-1/2 flex">
+              {calculatePunchScore(scores, instructions) && (
+                <div className="w-5/12 mt-5">
+                  <h2 className="text-xl font-medium mb-2">パンチ評価</h2>
+                  <ScoreDoughnutChart
+                    score={calculatePunchScore(scores, instructions) || 0}
+                    color="rgb(54, 162, 235)"
+                  />
+                </div>
+              )}
+              <div className="w-1/12"></div>
+              {calculateKickScore(scores, instructions) && (
+                <div className="w-5/12 mt-5">
+                  <h2 className="text-xl font-medium mb-2">キック評価</h2>
+                  <ScoreDoughnutChart
+                    score={calculateKickScore(scores, instructions) || 0}
+                    color="rgb(255, 205, 86)"
+                  />
+                </div>
+              )}
+            </div>
+            <div className="w-1/2">
+              <ResultDetail />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 

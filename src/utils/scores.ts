@@ -32,10 +32,7 @@ export const judgeFromScore = (score: number): 'Good' | 'Great' | 'Slow' => {
 
 export const calculateResultScore = (scores: number[]) => {
   scores.sort();
-  const extractOutliersScores = scores.slice(3, scores.length - 3);
-  console.log(extractOutliersScores);
-  console.log(scores);
-  
+  const extractOutliersScores = scores.slice(3, scores.length - 3);  
   
   const extractOutliersSum = extractOutliersScores.reduce(
     (accumulator: number, currentValue: number) => {
