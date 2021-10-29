@@ -15,12 +15,6 @@ const Status = () => {
     };
   });
 
-  // TODO: delete set menu and instructions for training test
-  // set menu
-  useEffect(() => {
-    setMenu(EasyMenu);
-  }, []);
-
   // set instructions
   useEffect(() => {
     if (menu) {

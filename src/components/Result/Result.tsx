@@ -12,6 +12,7 @@ import {
   calculateTotalCalorieFromInstructions,
 } from '../../utils/scores';
 import ResultDetail from './ResultDetail';
+import ResultMain from './ResultMain';
 import ScoreDoughnutChart from './ScoreDoughnutChart';
 
 const Result = () => {
@@ -31,6 +32,8 @@ const Result = () => {
     // redirect to dashboard when scores are empty
     if (typeof scores[0] === 'undefined') {
       history.push('/');
+      // TODO: add finish sound and finish modal
+      return;
     }
     setScore(calculateResultScore(scores));
   }, []);
@@ -87,7 +90,7 @@ const Result = () => {
       <div className="h-screen">
         <div className="flex">
           {/* スコア */}
-          <div className="w-1/2 p-5">
+          <div className="w-4/12 p-5">
             <h2 className="text-3xl font-medium mb-2">トレーニング評価</h2>
             <div
               className="justify-center content-center flex flex-wrap"
@@ -100,30 +103,8 @@ const Result = () => {
               <h2 className="text-5xl font-bold text-center">{score}点</h2>
             </div>
           </div>
-          {/* 年齢 */}
-          <div
-            className="w-1/2 p-5 flex flex-wrap content-center"
-            style={{ height: doughnutChartRef.current?.style.height || 0 }}
-          >
-            <p className="text-2xl font-medium">あなたのボクシフル年齢は</p>
-            <h2 className="text-5xl font-bold text-center w-full mt-2 mb-10">
-              {calculateBoxfulAge(score)}歳です。
-            </h2>
-            <p className="text-xs ml-10ƒ">
-              ボクシフル年齢はあなたの瞬発力と体力を評価した年齢です。
-            </p>
-            <Link
-              className="inline-block bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1"
-              to="/"
-            >
-              ダッシュボードに戻る
-            </Link>
-            <div
-              className=" inline-block bg-gray-500 hover:bg-gray-700 text-white text-center py-2 px-3 rounded text-sm my-5 mx-1"
-              onClick={onAgainClick}
-            >
-              もう一度同じメニュー
-            </div>
+          <div>
+            <ResultMain score={score} doughnutChartRef={doughnutChartRef} />
           </div>
         </div>
         {/* パンチ・キック */}

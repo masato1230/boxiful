@@ -21,7 +21,7 @@ import greatSound from '../../sounds/great-punch.mp3';
 import missSound from '../../sounds/miss-punch.mp3';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { Redirect } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import {
   createInstructionsFromMenu,
   EasyMenu,
@@ -40,6 +40,8 @@ const Training = () => {
       scores: state.training.scores,
     };
   });
+
+  const history = useHistory();
 
   // useState
   const [poseLandmarks, setPoseLandmarks] = useState<NormalizedLandmarkList>();
@@ -94,6 +96,14 @@ const Training = () => {
 
   // reset instruction state
   useEffect(() => {
+    if (instructions.length === scores.length) {
+      setTimeout(() => {
+        history.push('/result');
+      }, 2000);
+      // return <Redirect to="/result" />;
+      return;
+    }
+
     if (isMoveEnded) {
       setIsMoveStarted(false);
       setIsMoveEnded(false);
@@ -101,9 +111,6 @@ const Training = () => {
   }, [isMoveEnded]);
 
   // When Training Finished
-  if (instructions.length === scores.length) {    
-    return <Redirect to="/result" />;
-  }
 
   return (
     <div className="mx-auto flex h-screen my-5 px-4">
