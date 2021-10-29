@@ -55,6 +55,13 @@ const Training = () => {
   const greatAudio = new Audio(greatSound);
   const missAudio = new Audio(missSound);
 
+  // redirect if scores are full
+  useEffect(() => {
+    if (scores.length === instructions.length) {
+      history.push('/result');
+    }
+  }, []);
+
   // manage instruction states
   useEffect(() => {
     if (poseLandmarks && instructions.length !== 0) {
