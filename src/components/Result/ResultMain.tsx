@@ -9,12 +9,7 @@ import {
   calculateTotalCalorieFromInstructions,
 } from '../../utils/scores';
 import PageTransitionButtons from './PageTransitionButtons';
-import {
-  TwitterIcon,
-  TwitterShareButton,
-  LineShareButton,
-  LineIcon,
-} from 'react-share';
+import SocialShareButtons from '../SocialShareButtons';
 
 interface ResultMainProps {
   score: number;
@@ -40,10 +35,9 @@ const ResultMain: React.FC<ResultMainProps> = ({ score, doughnutChartRef }) => {
           score
         )}歳 \n消費カロリー: ${calculateTotalCalorieFromInstructions(
           instructions
-        )}kcal \n`
+        )}kcal\n`
       );
     }
-    
   }, [score]);
 
   return (
@@ -59,33 +53,7 @@ const ResultMain: React.FC<ResultMainProps> = ({ score, doughnutChartRef }) => {
         ボクシフル年齢はあなたの瞬発力と体力を評価した年齢です。
       </p>
       <PageTransitionButtons />
-      {shareTitle && (
-        <React.Fragment>
-          <div className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded text-sm my-3 mx-1">
-            <TwitterShareButton
-              // TODO: Chagnge url
-              url={'http://localhost:3000'}
-              title={shareTitle}
-              hashtags={['boxiful']}
-              className="text-white w-full h-full"
-            >
-              <TwitterIcon className="inline-block mr-3" size={24} round />
-              Twitterで結果をシェア
-            </TwitterShareButton>
-          </div>
-          <div className="bg-green-600 hover:bg-green-800 text-white text-center py-1 px-3 rounded text-sm my-3 mx-1">
-            <LineShareButton
-              // TODO: Chagnge url
-              url={'http://localhost:3000'}
-              title={shareTitle}
-              className="text-white w-full h-full"
-            >
-              <LineIcon className="inline-block mr-3" size={24} round />
-              Lineで結果をシェア
-            </LineShareButton>
-          </div>
-        </React.Fragment>
-      )}
+      {shareTitle && <SocialShareButtons shareTitle={shareTitle} />}
     </div>
   );
 };
