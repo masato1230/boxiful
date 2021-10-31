@@ -7,8 +7,9 @@ import Header from './components/Header';
 import Status from './components/Status/Status';
 import Top from './components/Top';
 import Training from './components/Training/Training';
-import { store } from './state/store';
 import Result from './components/Result/Result';
+import Login from './components/Login';
+import { store } from './state/store';
 
 const App = () => {
   return (
@@ -28,6 +29,9 @@ const App = () => {
             </Route>
             <Route path="/result">
               <Result />
+            </Route>
+            <Route path="/login" >
+              <Login />
             </Route>
           </Switch>
         </BrowserRouter>
