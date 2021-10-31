@@ -12,6 +12,8 @@ import Login from './components/Login';
 import { store } from './state/store';
 
 const App = () => {
+  // 1. login check: if browser has jwt then check jwt is expired or not
+  // 2. Refresh JWT: access to refresh token endpoint and refresh cookie JWT
   return (
     <Provider store={store}>
       <div>
