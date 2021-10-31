@@ -57,7 +57,7 @@ const ScoreDoughnutChart: React.FC<ScoreDoughnutChartProps> = ({
           className="mx-2 rounded-xl absolute"
           ref={doughnutChartRef}
         ></canvas>
-        <h2 className="text-2xl font-bold text-center">{score}点</h2>
+        <h2 className="text-xl font-bold text-center">{score}点</h2>
       </div>
     </React.Fragment>
   );

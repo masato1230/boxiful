@@ -7,6 +7,7 @@ import goodSound from '../../sounds/good-punch.mp3';
 import greatSound from '../../sounds/great-punch.mp3';
 import missSound from '../../sounds/miss-punch.mp3';
 import finishSound from '../../sounds/finish.mp3';
+import bgmSound from '../../sounds/training-bgm-neffex-failure.mp3';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useHistory } from 'react-router';
@@ -36,17 +37,36 @@ const Training = () => {
   );
   const [isShowFinishModal, setIsShowFinishModal] = useState(false);
 
-  // good punch sound
+  // sounds
   const goodAudio = new Audio(goodSound);
   const greatAudio = new Audio(greatSound);
   const missAudio = new Audio(missSound);
   const finishAudio = new Audio(finishSound);
-
+  const bgmAudio = new Audio(bgmSound);
+  bgmAudio.volume = 0.1;
+  
   // redirect if scores are full
   useEffect(() => {
+    // redirect
     if (scores.length === instructions.length) {
       history.push('/result');
     }
+    // bgm management
+    if (typeof bgmAudio.loop == 'boolean') {
+      bgmAudio.loop = true;
+    } else {
+      bgmAudio.addEventListener(
+        'ended',
+        function () {
+          this.currentTime = 0;
+          this.play();
+        },
+        false
+      );
+    }
+    bgmAudio.play();
+
+    return () => bgmAudio.pause();
   }, []);
 
   // manage instruction states
@@ -102,6 +122,7 @@ const Training = () => {
       setTimeout(() => {
         // show finish modal
         setIsShowFinishModal(true);
+        bgmAudio.pause();
         finishAudio.play();
       }, 500);
       return;

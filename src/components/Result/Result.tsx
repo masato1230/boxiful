@@ -111,7 +111,7 @@ const Result = () => {
         <div className="h-screen">
           <div className="flex">
             {/* スコア */}
-            <div className="w-4/12 p-5">
+            <div className="w-5/12 p-5">
               <h2 className="text-3xl font-medium mb-2">トレーニング評価</h2>
               <div
                 className="justify-center content-center flex flex-wrap"
@@ -121,10 +121,10 @@ const Result = () => {
                   className="mx-2 rounded-xl absolute"
                   ref={doughnutChartRef}
                 ></canvas>
-                <h2 className="text-5xl font-bold text-center">{score}点</h2>
+                <h2 className="text-4xl font-bold text-center">{score}点</h2>
               </div>
             </div>
-            <div className="w-2/12"></div>
+            <div className="w-1/12"></div>
             <div className="w-6/12 mr-max">
               <ResultMain score={score} doughnutChartRef={doughnutChartRef} />
             </div>
