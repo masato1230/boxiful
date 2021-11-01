@@ -13,10 +13,10 @@ import Login from './components/Login';
 import API from './api';
 import { store } from './state/store';
 import { useCookies } from 'react-cookie';
-import ErrorHeader from './components/ErrorHeader';
+import LoginAgainHeader from './components/LoginAgainHeader';
 
 const App = () => {
-  const [error, setError] = useState<string | null>(null);
+  const [isTokenValid, setIsTokenValid] = useState(true);
 
   // 1. login check: if browser has jwt then refresh jwt
   const [cookies, setCookie, removeCookie] = useCookies();
@@ -32,10 +32,10 @@ const App = () => {
       removeCookie('accesstoken');
       removeCookie('refreshtoken');
       if (err.response.status === 401) {
-        setError('トレーニング記録を閲覧するには、再度ログインが必要です。');
+        setIsTokenValid(false);
         return;
       }
-      setError(err);
+      console.log(err);
     });
   };
 
@@ -52,7 +52,7 @@ const App = () => {
       <div>
         <BrowserRouter>
           <Header />
-          { error && <ErrorHeader errorMessage={error} /> }
+          { !isTokenValid && <LoginAgainHeader /> }
           <Switch>
             <Route exact path="/">
               <Status />
