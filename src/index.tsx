@@ -28,8 +28,11 @@ const App = () => {
       setCookie('accesstoken', response.data.access);
       setCookie('refreshtoken', response.data.refresh);
     }).catch (err => {
+      // remove crashed or expired tokens from cookie
+      removeCookie('accesstoken');
+      removeCookie('refreshtoken');
       if (err.response.status === 401) {
-        setError('トレーニング記録を閲覧するには、再度ログインが必要です。')
+        setError('トレーニング記録を閲覧するには、再度ログインが必要です。');
         return;
       }
       setError(err);
