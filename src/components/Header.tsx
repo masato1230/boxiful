@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 const Header = () => {
   // TODO: 下のログイン時にisAuthの値をちゃんと更新するようにする
-  const [isAuth, setIsAuth] = useState(true);
+  const [isAuth, setIsAuth] = useState(false);
 
   return (
     <nav className="bg-white shadow-lg">
@@ -33,25 +33,24 @@ const Header = () => {
                   <BsFillPeopleFill />
                 </div>
               </Link>
-              <Link to="/training">
+              <Link to="/logout">
                 <div className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-300 transition duration-300">
-                  Training
+                  ログアウト
                 </div>
               </Link>
             </div>
           ) : (
             <div className="hidden md:flex items-center space-x-3 ">
+              <Link to="/login"
+                className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-yellow-500 hover:text-white transition duration-300"
+              >
+                ログイン
+              </Link>
               <a
                 href=""
-                className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-green-500 hover:text-white transition duration-300"
+                className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-400 transition duration-300"
               >
-                Log In
-              </a>
-              <a
-                href=""
-                className="py-2 px-2 font-medium text-white bg-green-500 rounded hover:bg-green-400 transition duration-300"
-              >
-                Sign Up
+                アカウント作成
               </a>
             </div>
           )}
