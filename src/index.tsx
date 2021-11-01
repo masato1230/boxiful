@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
+import { useHistory } from 'react-router';
 import { Router, BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './index.css';
@@ -9,11 +10,39 @@ import Top from './components/Top';
 import Training from './components/Training/Training';
 import Result from './components/Result/Result';
 import Login from './components/Login';
+import API from './api';
 import { store } from './state/store';
+import { useCookies } from 'react-cookie';
 
 const App = () => {
-  // 1. login check: if browser has jwt then check jwt is expired or not
-  // 2. Refresh JWT: access to refresh token endpoint and refresh cookie JWT
+  const [error, setError] = useState<string | null>(null);
+
+  // 1. login check: if browser has jwt then refresh jwt
+  const [cookies, setCookie, removeCookie] = useCookies();
+  
+  const refreshJwt = () => {
+    API.post('users/token/refresh/', {
+      refresh: cookies.refreshtoken,
+    }).then((response) => {
+      setCookie('accesstoken', response.data.access);
+      setCookie('refreshtoken', response.data.refresh);
+    }).catch (err => {
+      if (err.response.status === 401) {
+        setError('再度ログインが必要です。')
+        return;
+      }
+      setError(err);
+    });
+  };
+
+  // set up
+  useEffect(() => {
+    // refresh JWT tokens if user has JWT tokens in cookie
+    if (cookies.accesstoken && cookies.refreshtoken) {
+      refreshJwt();
+    }
+  }, []);
+
   return (
     <Provider store={store}>
       <div>
@@ -32,7 +61,7 @@ const App = () => {
             <Route path="/result">
               <Result />
             </Route>
-            <Route path="/login" >
+            <Route path="/login">
               <Login />
             </Route>
           </Switch>
@@ -42,7 +71,4 @@ const App = () => {
   );
 };
 
-ReactDOM.render(
-  <App/>,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />, document.getElementById('root'));
