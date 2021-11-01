@@ -13,6 +13,7 @@ import Login from './components/Login';
 import API from './api';
 import { store } from './state/store';
 import { useCookies } from 'react-cookie';
+import ErrorHeader from './components/ErrorHeader';
 
 const App = () => {
   const [error, setError] = useState<string | null>(null);
@@ -28,7 +29,7 @@ const App = () => {
       setCookie('refreshtoken', response.data.refresh);
     }).catch (err => {
       if (err.response.status === 401) {
-        setError('再度ログインが必要です。')
+        setError('トレーニング記録を閲覧するには、再度ログインが必要です。')
         return;
       }
       setError(err);
@@ -48,6 +49,7 @@ const App = () => {
       <div>
         <BrowserRouter>
           <Header />
+          { error && <ErrorHeader errorMessage={error} /> }
           <Switch>
             <Route exact path="/">
               <Status />
