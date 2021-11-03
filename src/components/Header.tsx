@@ -5,10 +5,10 @@ import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
 
 const Header = () => {
   // hooks
-  const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
+  const [isLoggedIn, logout] = useIsLoggedIn();
 
   const onLogoutClick = () => {
-    setIsLoggedIn(false);
+    logout();
   };
 
   return (
