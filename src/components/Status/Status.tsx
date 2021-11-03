@@ -16,6 +16,9 @@ const Status = () => {
     };
   });
 
+  // Custom Hooks
+  const [trainingResults, postTrainingResult] = useTrainingResult();
+
   // set instructions
   useEffect(() => {
     if (menu) {

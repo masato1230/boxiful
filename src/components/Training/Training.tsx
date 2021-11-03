@@ -36,7 +36,7 @@ const Training = () => {
     null
   );
   const [isShowFinishModal, setIsShowFinishModal] = useState(false);
-
+  
   // sounds
   const goodAudio = new Audio(goodSound);
   const greatAudio = new Audio(greatSound);

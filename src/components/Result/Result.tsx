@@ -2,6 +2,7 @@ import { Chart, ChartDataset, registerables } from 'chart.js';
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
+import { useTrainingResult } from '../../hooks/useTrainingResults';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { createInstructionsFromMenu } from '../../state';
 import {
@@ -26,6 +27,8 @@ const Result = () => {
   const [score, setScore] = useState(0);
   const [doughnutChart, setDoughnutChart] = useState<Chart>();
   const [isBrowserBackModalShow, setIsBrowserBackModalShow] = useState(false);
+  // api
+  const [trainingResults, postTrainingResult] = useTrainingResult();
 
   const history = useHistory();
 
@@ -37,7 +40,6 @@ const Result = () => {
   };
 
   const setBrowserBackWarning = () => {
-    console.log('set');
     window.addEventListener('popstate', browserBackListener);
   };
 
@@ -54,6 +56,14 @@ const Result = () => {
     setBrowserBackWarning();
 
     setScore(calculateResultScore(scores));
+
+    // post result to api
+    postTrainingResult({
+      menu: menu.title,
+      calorie: calculateTotalCalorieFromInstructions(instructions),
+      point: Math.round(scores.reduce((acc, cur) => acc + cur, 0) / 10),
+      score: calculateResultScore(scores),
+    });
 
     // clear event listeners
     return () => {
