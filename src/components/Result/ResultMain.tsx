@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { useHistory } from 'react-router';
-import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { createInstructionsFromMenu } from '../../state';
 import {
   calculateBoxfulAge,
   calculateTotalCalorieFromInstructions,

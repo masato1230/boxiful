@@ -1,11 +1,10 @@
 import { Link } from 'react-router-dom';
 import { GiBoxingGlove } from 'react-icons/gi';
 import { BsFillPeopleFill } from 'react-icons/bs';
-import { useState } from 'react';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
 
 const Header = () => {
-  // TODO: 下のログイン時にisAuthの値をちゃんと更新するようにする
+  // hooks
   const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
 
   const onLogoutClick = () => {
@@ -56,7 +55,6 @@ const Header = () => {
                 ログイン
               </Link>
               <a
-                href=""
                 className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-400 transition duration-300"
               >
                 アカウント作成

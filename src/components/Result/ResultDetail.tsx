@@ -22,7 +22,7 @@ const getScoresDistribution = (scores: number[]) => {
 
 const ResultDetail = () => {
   // reducer
-  const { menu, instructions, scores } = useTypedSelector((state) => {
+  const { instructions, scores } = useTypedSelector((state) => {
     return state.training;
   });
 
