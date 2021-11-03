@@ -4,7 +4,7 @@ import { Redirect, useHistory } from "react-router";
 const TrainingResultBuffer = () => {
   console.log('buffer');
   const history = useHistory();
-  history.push('/result');
+  history.replace('/result');
   
   return <div></div>
 }

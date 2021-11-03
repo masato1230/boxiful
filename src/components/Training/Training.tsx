@@ -15,6 +15,7 @@ import { calculateNormalMenuMoveScore } from '../../utils/scores';
 import FinishModal from './FinishModal';
 import { useTrainingResult } from '../../hooks/useTrainingResults';
 import { calculateTotalCalorieFromInstructions, calculateResultScore } from '../../utils/scores';
+import { useIsLoggedIn } from '../../hooks/useIsLoggedIn';
 
 const Training = () => {
   // Redux - get actionCreators adn states
@@ -40,6 +41,7 @@ const Training = () => {
   const [isShowFinishModal, setIsShowFinishModal] = useState(false);
 
   // Hooks
+  const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
   const [trainingResults, postTrainingResult] = useTrainingResult();
 
   // sounds
@@ -130,14 +132,15 @@ const Training = () => {
         bgmAudio.pause();
         finishAudio.play();
       }, 500);
-      // TODO: post Result
-      // post result to api
-      postTrainingResult({
-        menu: menu.title,
-        calorie: calculateTotalCalorieFromInstructions(instructions),
-        point: Math.round(scores.reduce((acc, cur) => acc + cur, 0) / 10),
-        score: calculateResultScore(scores),
-      });
+      // post result to api if user is logged in
+      if (isLoggedIn) {
+        postTrainingResult({
+          menu: menu.title,
+          calorie: calculateTotalCalorieFromInstructions(instructions),
+          point: Math.round(scores.reduce((acc, cur) => acc + cur, 0) / 10),
+          score: calculateResultScore(scores),
+        });
+      }
       return;
     }
 

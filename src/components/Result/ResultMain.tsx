@@ -25,8 +25,6 @@ const ResultMain: React.FC<ResultMainProps> = ({ score, doughnutChartRef }) => {
   const [shareTitle, setShareTitle] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log(score, calculateBoxfulAge(score));
-
     if (typeof menu !== 'undefined') {
       setShareTitle(
         `Boxfulの${
