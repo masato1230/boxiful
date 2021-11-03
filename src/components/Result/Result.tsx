@@ -48,7 +48,6 @@ const Result = () => {
     // redirect to dashboard when scores are empty
     if (typeof scores[0] === 'undefined') {
       history.push('/');
-      // TODO: add finish sound and finish modal
       return;
     }
 
@@ -56,14 +55,6 @@ const Result = () => {
     setBrowserBackWarning();
 
     setScore(calculateResultScore(scores));
-
-    // post result to api
-    postTrainingResult({
-      menu: menu.title,
-      calorie: calculateTotalCalorieFromInstructions(instructions),
-      point: Math.round(scores.reduce((acc, cur) => acc + cur, 0) / 10),
-      score: calculateResultScore(scores),
-    });
 
     // clear event listeners
     return () => {

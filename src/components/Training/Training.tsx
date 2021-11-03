@@ -13,11 +13,13 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useHistory } from 'react-router';
 import { calculateNormalMenuMoveScore } from '../../utils/scores';
 import FinishModal from './FinishModal';
+import { useTrainingResult } from '../../hooks/useTrainingResults';
+import { calculateTotalCalorieFromInstructions, calculateResultScore } from '../../utils/scores';
 
 const Training = () => {
   // Redux - get actionCreators adn states
   const { pushScore } = useActions();
-  const { instructions, scores } = useTypedSelector((state) => {
+  const { menu, instructions, scores } = useTypedSelector((state) => {
     return {
       menu: state.training.menu,
       instructions: state.training.instructions,
@@ -36,7 +38,10 @@ const Training = () => {
     null
   );
   const [isShowFinishModal, setIsShowFinishModal] = useState(false);
-  
+
+  // Hooks
+  const [trainingResults, postTrainingResult] = useTrainingResult();
+
   // sounds
   const goodAudio = new Audio(goodSound);
   const greatAudio = new Audio(greatSound);
@@ -44,7 +49,7 @@ const Training = () => {
   const finishAudio = new Audio(finishSound);
   const bgmAudio = new Audio(bgmSound);
   bgmAudio.volume = 0.1;
-  
+
   // redirect if scores are full
   useEffect(() => {
     // redirect
@@ -116,7 +121,7 @@ const Training = () => {
     // when menu finished
     if (instructions.length === scores.length) {
       setTimeout(() => {
-        history.push('/result');
+        history.push('/training_to_result');
       }, 2000);
       // play finish sound
       setTimeout(() => {
@@ -125,6 +130,14 @@ const Training = () => {
         bgmAudio.pause();
         finishAudio.play();
       }, 500);
+      // TODO: post Result
+      // post result to api
+      postTrainingResult({
+        menu: menu.title,
+        calorie: calculateTotalCalorieFromInstructions(instructions),
+        point: Math.round(scores.reduce((acc, cur) => acc + cur, 0) / 10),
+        score: calculateResultScore(scores),
+      });
       return;
     }
 

@@ -15,6 +15,7 @@ import { store } from './state/store';
 import { useCookies } from 'react-cookie';
 import LoginAgainHeader from './components/LoginAgainHeader';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from './constants/cookieKeys';
+import TrainingResultBuffer from './components/Result/TrainingResultBuffer';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -69,6 +70,9 @@ const App = () => {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/training_to_result">
+              <TrainingResultBuffer />
             </Route>
           </Switch>
         </BrowserRouter>
