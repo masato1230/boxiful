@@ -2,7 +2,7 @@ import { EasyMenu } from '..';
 import { Instruction } from '../../components/Training/Instructions';
 import { ActionTypes } from '../action-types';
 import { Action } from '../actions';
-import Menu from '../menu';
+import Menu from '../../models/menu';
 
 interface TrainingState {
   menu: Menu;

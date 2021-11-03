@@ -1,6 +1,6 @@
 import { Instruction } from '../../components/Training/Instructions';
 import { ActionTypes } from '../action-types';
-import Menu from '../menu';
+import Menu from '../../models/menu';
 
 export interface SetMenuAction {
   type: ActionTypes.SET_MENU;
@@ -21,4 +21,9 @@ export interface ResetScoresAction {
   type: ActionTypes.RESET_SCORES;
 }
 
-export type Action = SetMenuAction | SetInstructionsAction | PushScoreAction | ResetScoresAction;
+export type Action =
+  | SetMenuAction
+  | SetInstructionsAction
+  | PushScoreAction
+  | ResetScoresAction;
+  

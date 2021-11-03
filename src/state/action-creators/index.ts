@@ -6,7 +6,7 @@ import {
   PushScoreAction,
   ResetScoresAction,
 } from '../actions';
-import Menu from '../menu';
+import Menu from '../../models/menu';
 
 export const setMenu = (menu: Menu): SetMenuAction => {
   return {

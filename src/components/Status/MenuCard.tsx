@@ -1,7 +1,7 @@
 import { FaFire } from 'react-icons/fa';
 import { RiTimerFill } from 'react-icons/ri';
 import { useActions } from '../../hooks/useActions';
-import Menu from '../../state/menu';
+import Menu from '../../models/menu';
 import { createInstructionsFromMenu } from '../../state';
 import { useHistory } from 'react-router';
 

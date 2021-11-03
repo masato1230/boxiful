@@ -2,16 +2,7 @@ import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import API from '../api';
 import { ACCESS_TOKEN } from '../constants/cookieKeys';
-
-interface TrainingResult {
-  id?: number;
-  menu: string;
-  calorie: number;
-  point: number;
-  score: number;
-  created_at?: string;
-  user?: number;
-}
+import { TrainingResult } from '../models/TrainingResult';
 
 export const useTrainingResult = (): [TrainingResult[], (trainingResult: TrainingResult) => Promise<void>] => {
   const [trainingResults, setTrainingResults] = useState<TrainingResult[]>([]);
