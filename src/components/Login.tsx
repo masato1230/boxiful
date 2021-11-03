@@ -26,7 +26,6 @@ const Login = () => {
         password,
       })
       .then((response) => {
-        console.log(response.data.access);
         setCookie(ACCESS_TOKEN, response.data.access);
         setCookie(REFRESH_TOKEN, response.data.refresh);
         setIsLoggedIn(true);

@@ -16,7 +16,7 @@ import FinishModal from './FinishModal';
 
 const Training = () => {
   // Redux - get actionCreators adn states
-  const { setInstructions, pushScore } = useActions();
+  const { pushScore } = useActions();
   const { instructions, scores } = useTypedSelector((state) => {
     return {
       menu: state.training.menu,
@@ -128,13 +128,12 @@ const Training = () => {
       return;
     }
 
+    // Reset the movement
     if (isMoveEnded) {
       setIsMoveStarted(false);
       setIsMoveEnded(false);
     }
   }, [isMoveEnded]);
-
-  // When Training Finished
 
   return (
     <React.Fragment>

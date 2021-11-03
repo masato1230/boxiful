@@ -29,7 +29,7 @@ const MenuCard: React.FC<MenuCardProps> = ({ menuThumbnail, menu }) => {
 
   return (
     <button onClick={onMenuClick} className="rounded overflow-hidden shadow-lg hover:bg-gray-200 hover:shadow-xl-5 focus:outline-none focus:ring-4 focus:ring-yellow-500 focus:ring-opacity-50">
-      <img className="w-full" src={menuThumbnail} alt="Mountain" />
+      <img className="h-48 md:h-auto lg:h-auto xl:h-auto 2xl:h-auto xl w-full object-contain" src={menuThumbnail} alt="Mountain" />
       <div className="px-6 py-4">
         <div className="font-bold text-xl mb-2">{menu.title}</div>
         <p className="text-gray-700 text-base">{menu.description}</p>

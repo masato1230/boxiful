@@ -11,7 +11,6 @@ const MenuCards = () => {
       <MenuCard menu={EasyMenu} menuThumbnail={easyMenuIcon} />
       {/* <!--Card 2--> */}
       <MenuCard menu={NormalMenu} menuThumbnail={normalMenuIcon} />
-
       {/* <!--Card 3--> */}
       <MenuCard menu={HardMenu} menuThumbnail={hardMenuIcon} />
     </div>

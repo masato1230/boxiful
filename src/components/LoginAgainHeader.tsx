@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 import { useHistory } from 'react-router';
+import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
 
 const LoginAgainHeader = () => {
   const [isShow, setIsShow] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
+
+  // If user already logged in, dismiss this header
+  useEffect(() => {
+    if (isLoggedIn) {
+      setIsShow(false);
+    }
+  }, [isLoggedIn]);
 
   const history = useHistory();
 

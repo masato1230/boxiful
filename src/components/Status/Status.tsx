@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useActions } from '../../hooks/useActions';
+import { useTrainingResult } from '../../hooks/useTrainingResults';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { createInstructionsFromMenu, EasyMenu, HardMenu, NormalMenu } from '../../state';
 import MenuCards from './MenuCards';
