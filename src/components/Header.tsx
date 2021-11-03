@@ -2,10 +2,15 @@ import { Link } from 'react-router-dom';
 import { GiBoxingGlove } from 'react-icons/gi';
 import { BsFillPeopleFill } from 'react-icons/bs';
 import { useState } from 'react';
+import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
 
 const Header = () => {
   // TODO: 下のログイン時にisAuthの値をちゃんと更新するようにする
-  const [isAuth, setIsAuth] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
+
+  const onLogoutClick = () => {
+    setIsLoggedIn(false);
+  };
 
   return (
     <nav className="bg-white shadow-lg">
@@ -26,22 +31,26 @@ const Header = () => {
             </div>
           </div>
           {/* <!-- Secondary Navbar items --> */}
-          {isAuth ? (
-            <div className="hidden md:flex items-center space-x-3">
+          {isLoggedIn ? (
+            <div className="flex items-center space-x-3">
               <Link to="/">
                 <div className="rounded text-gray-500 text-2xl mr-4">
                   <BsFillPeopleFill />
                 </div>
               </Link>
-              <Link to="/logout">
-                <div className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-300 transition duration-300">
+              <Link to="/">
+                <div
+                  className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-300 transition duration-300"
+                  onClick={onLogoutClick}
+                >
                   ログアウト
                 </div>
               </Link>
             </div>
           ) : (
-            <div className="hidden md:flex items-center space-x-3 ">
-              <Link to="/login"
+            <div className="flex items-center content-center space-x-3 ">
+              <Link
+                to="/login"
                 className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-yellow-500 hover:text-white transition duration-300"
               >
                 ログイン

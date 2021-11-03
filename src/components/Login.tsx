@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import axios from 'axios';
 import { GiBoxingGlove } from 'react-icons/gi';
 import hardMenuIcon from '../images/hardMenuIcon.svg';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants/cookieKeys';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -26,8 +27,8 @@ const Login = () => {
       })
       .then((response) => {
         console.log(response.data.access);
-        setCookie('accesstoken', response.data.access);
-        setCookie('refreshtoken', response.data.refresh);
+        setCookie(ACCESS_TOKEN, response.data.access);
+        setCookie(REFRESH_TOKEN, response.data.refresh);
         setIsLoggedIn(true);
       })
       .catch((err: any) => {
@@ -105,7 +106,7 @@ const Login = () => {
           </div>
         </div>
         <img
-          className="hidden md:block md:w-1/2 rounded-r-lg"
+          className="hidden md:block md:w-1/2 rounded-r-lg object-contain"
           src={hardMenuIcon}
         />
       </div>

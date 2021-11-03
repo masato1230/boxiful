@@ -14,6 +14,7 @@ import API from './api';
 import { store } from './state/store';
 import { useCookies } from 'react-cookie';
 import LoginAgainHeader from './components/LoginAgainHeader';
+import { ACCESS_TOKEN, REFRESH_TOKEN } from './constants/cookieKeys';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -25,12 +26,12 @@ const App = () => {
     API.post('users/token/refresh/', {
       refresh: cookies.refreshtoken,
     }).then((response) => {
-      setCookie('accesstoken', response.data.access);
-      setCookie('refreshtoken', response.data.refresh);
+      setCookie(ACCESS_TOKEN, response.data.access);
+      setCookie(REFRESH_TOKEN, response.data.refresh);
     }).catch (err => {
       // remove crashed or expired tokens from cookie
-      removeCookie('accesstoken');
-      removeCookie('refreshtoken');
+      removeCookie(ACCESS_TOKEN);
+      removeCookie(REFRESH_TOKEN);
       if (err.response.status === 401) {
         setIsTokenValid(false);
         return;
