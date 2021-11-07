@@ -40,7 +40,7 @@ export const useTrainingResult = (): [TrainingResult[], (trainingResult: Trainin
     if (isLoggedIn) {
       fetchTrainingResults();
     }
-  }, []);
+  }, [isLoggedIn]);
 
   return [trainingResults, postTrainingResult];
 };

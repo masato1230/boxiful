@@ -2,8 +2,15 @@ import { useEffect } from 'react';
 import { useActions } from '../../hooks/useActions';
 import { useTrainingResult } from '../../hooks/useTrainingResults';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { createInstructionsFromMenu, EasyMenu, HardMenu, NormalMenu } from '../../state';
+import {
+  createInstructionsFromMenu,
+  EasyMenu,
+  HardMenu,
+  NormalMenu,
+} from '../../state';
 import MenuCards from './MenuCards';
+import CalendarHeatmapContainer from './CalendarHeatmapContainer';
+import { useIsLoggedIn } from '../../hooks/useIsLoggedIn';
 
 const Status = () => {
   // Redux - get actionCreators adn states
@@ -17,7 +24,7 @@ const Status = () => {
   });
 
   // Custom Hooks
-  const [trainingResults, postTrainingResult] = useTrainingResult();
+  const [isLoggedIn, logout] = useIsLoggedIn();
 
   // set instructions
   useEffect(() => {
@@ -28,6 +35,7 @@ const Status = () => {
 
   return (
     <div className="container mx-auto px-3">
+      {isLoggedIn && <CalendarHeatmapContainer />}
       <MenuCards />
     </div>
   );
