@@ -54,11 +54,12 @@ const Header = () => {
               >
                 ログイン
               </Link>
-              <a
+              <Link
+                to="/register"
                 className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-400 transition duration-300"
               >
                 アカウント作成
-              </a>
+              </Link>
             </div>
           )}
         </div>

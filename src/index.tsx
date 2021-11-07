@@ -10,6 +10,7 @@ import Top from './components/Top';
 import Training from './components/Training/Training';
 import Result from './components/Result/Result';
 import Login from './components/Login';
+import Register from './components/Register';
 import API from './api';
 import { store } from './state/store';
 import { useCookies } from 'react-cookie';
@@ -70,6 +71,9 @@ const App = () => {
             </Route>
             <Route path="/login">
               <Login />
+            </Route>
+            <Route path="/register">
+              <Register />
             </Route>
             <Route path="/training_to_result">
               <TrainingResultBuffer />
