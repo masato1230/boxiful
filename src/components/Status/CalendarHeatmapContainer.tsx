@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useTrainingResult } from '../../hooks/useTrainingResults';
 import { TrainingResult } from '../../models/TrainingResult';
 import CalendarHeatmap from 'react-calendar-heatmap';
+import ReactTooltip from 'react-tooltip';
 import 'react-calendar-heatmap/dist/styles.css';
 import './CalendarHeatmapContainer.css';
 
@@ -45,7 +46,29 @@ const CalendarHeatmapContainer = () => {
     if (sumOfPoints > 2000) {
       sumOfPoints = 2000;
     }
-    return `color-${Math.round(sumOfPoints / 200)}`
+    return `color-${Math.round(sumOfPoints / 200)}`;
+  };
+
+  // set tooltips
+  const setTooltipDataAttrs = (value: CalendarHeatmapValue) => {
+    if (!value || !value.date) return { 'data-tip': '' };
+
+    let sumOfCalorie = 0;
+    let sumOfPoints = 0;
+
+    if (value.trainingResults) {
+      for (const trainingResult of value.trainingResults) {
+        sumOfCalorie += trainingResult.calorie;
+        sumOfPoints += trainingResult.point;
+      }
+    }
+    return {
+      'data-tip': `
+      消費カロリーは${sumOfCalorie}kcal、
+      ポイントは${sumOfPoints}ポイント、
+      ${value.date.toISOString().slice(0, 10)}
+      `,
+    };
   };
 
   useEffect(() => {
@@ -83,9 +106,11 @@ const CalendarHeatmapContainer = () => {
         endDate={new Date()}
         values={values}
         classForValue={valueToColorClass}
+        tooltipDataAttrs={setTooltipDataAttrs}
         showMonthLabels={true}
         showWeekdayLabels={true}
       />
+      <ReactTooltip />
     </div>
   );
 };
