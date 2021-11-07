@@ -100,7 +100,7 @@ const CalendarHeatmapContainer = () => {
   }, [trainingResults]);
 
   return (
-    <div className="pt-5 pl-10 pr-10 -mb-10">
+    <div className="pt-5 pl-20 pr-20 -mb-10">
       <CalendarHeatmap
         startDate={calculateStartDate()}
         endDate={new Date()}

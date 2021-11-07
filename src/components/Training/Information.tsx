@@ -114,7 +114,7 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
     );
   }, []);
 
-  // update chart
+  // update chart and judge
   useEffect(() => {
     if (chart?.data.datasets[0].data.length !== scores.length) {
       // update chart
@@ -129,12 +129,14 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
         judgeRef.current.style.backgroundColor = 'blue';
       } else if (moveJudge === 'Great') {
         judgeRef.current.style.backgroundColor = 'red';
+      } else {
+        judgeRef.current.style.backgroundColor = 'gray';
       }
       judgeRef.current.textContent = moveJudge;
       const timer = setTimeout(() => {
         if (!judgeRef.current) return;
         judgeRef.current.style.display = 'none';
-      }, 700);
+      }, 500);
     }
   });
 
