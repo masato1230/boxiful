@@ -5,6 +5,7 @@ import axios from 'axios';
 import { GiBoxingGlove } from 'react-icons/gi';
 import hardMenuIcon from '../images/hardMenuIcon.svg';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants/cookieKeys';
+import API from '../api';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,8 +21,8 @@ const Login = () => {
   };
 
   const getJwt = async () => {
-    await axios
-      .post('http://127.0.0.1:8000/users/token/', {
+    await API
+      .post('users/token/', {
         email,
         password,
       })

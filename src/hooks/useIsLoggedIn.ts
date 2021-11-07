@@ -7,7 +7,7 @@ export const useIsLoggedIn = (): [boolean, () => void] => {
   const [cookies, setCookie, removeCookie] = useCookies();
   
   // Check if user is logged in
-  useEffect(() => {    
+  useEffect(() => {
     if (cookies[ACCESS_TOKEN], cookies[REFRESH_TOKEN]) {
       setIsLoggedIn(true);
     } else {
