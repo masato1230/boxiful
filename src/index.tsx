@@ -14,6 +14,7 @@ import Register from './components/Register';
 import API from './api';
 import { store } from './state/store';
 import { useCookies } from 'react-cookie';
+import ReactTooltip from 'react-tooltip';
 import LoginAgainHeader from './components/LoginAgainHeader';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from './constants/cookieKeys';
 import TrainingResultBuffer from './components/Result/TrainingResultBuffer';
@@ -81,6 +82,7 @@ const App = () => {
           </Switch>
         </BrowserRouter>
       </div>
+      <ReactTooltip />
     </Provider>
   );
 };

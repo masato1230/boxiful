@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useTrainingResult } from '../../hooks/useTrainingResults';
 import { TrainingResult } from '../../models/TrainingResult';
 import CalendarHeatmap from 'react-calendar-heatmap';
-import ReactTooltip from 'react-tooltip';
 import { BsFillCalendar2CheckFill } from 'react-icons/bs';
 import { SiWebmoney } from 'react-icons/si';
 import 'react-calendar-heatmap/dist/styles.css';
@@ -133,7 +132,6 @@ const CalendarHeatmapContainer = () => {
           showMonthLabels={true}
           showWeekdayLabels={true}
         />
-        <ReactTooltip />
       </div>
     </div>
   );
