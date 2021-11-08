@@ -82,7 +82,6 @@ const App = () => {
           </Switch>
         </BrowserRouter>
       </div>
-      <ReactTooltip />
     </Provider>
   );
 };

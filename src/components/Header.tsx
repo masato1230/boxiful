@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { GiBoxingGlove } from 'react-icons/gi';
 import { BsFillPeopleFill } from 'react-icons/bs';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
+import ReactTooltip from 'react-tooltip';
 
 const Header = () => {
   // hooks
@@ -39,6 +40,7 @@ const Header = () => {
                       color="rgb(245, 158, 11)"
                       data-tip={'ダッシュボードを表示'}
                     />
+                    <ReactTooltip />
                   </Link>
                 </div>
               </Link>
