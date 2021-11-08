@@ -3,6 +3,8 @@ import { useTrainingResult } from '../../hooks/useTrainingResults';
 import { TrainingResult } from '../../models/TrainingResult';
 import CalendarHeatmap from 'react-calendar-heatmap';
 import ReactTooltip from 'react-tooltip';
+import { BsFillCalendar2CheckFill } from 'react-icons/bs';
+import { SiWebmoney } from 'react-icons/si';
 import 'react-calendar-heatmap/dist/styles.css';
 import './CalendarHeatmapContainer.css';
 
@@ -15,10 +17,10 @@ const CalendarHeatmapContainer = () => {
   const [values, setValues] = useState<CalendarHeatmapValue[]>([]);
   const [trainingResults, postTrainingResult] = useTrainingResult();
 
-  // Return 90 days before
+  // Return 365 days before
   const calculateStartDate = () => {
     const startDate = new Date();
-    startDate.setDate(startDate.getDay() - 180);
+    startDate.setDate(startDate.getDay() - 365);
     return startDate;
   };
 
@@ -100,17 +102,39 @@ const CalendarHeatmapContainer = () => {
   }, [trainingResults]);
 
   return (
-    <div className="pt-5 pl-20 pr-20 -mb-10">
-      <CalendarHeatmap
-        startDate={calculateStartDate()}
-        endDate={new Date()}
-        values={values}
-        classForValue={valueToColorClass}
-        tooltipDataAttrs={setTooltipDataAttrs}
-        showMonthLabels={true}
-        showWeekdayLabels={true}
-      />
-      <ReactTooltip />
+    <div className="px-10">
+      <div className="mt-5 pt-4 pl-10 pr-10 shadow-lg rounded">
+        <div className="my-3">
+          <div>
+            <BsFillCalendar2CheckFill className="inline-block h-6 align-middle text-green-500" />
+            <p className="ml-3 inline-block h-6 align-middle">
+              これまでのトレーニング回数 {trainingResults.length} 回
+            </p>
+          </div>
+          <div>
+            <SiWebmoney className="inline-block h-6 align-middle text-yellow-500" />
+            <p className="ml-3 inline-block h-6 align-middle">
+              トータルポイント　
+              {trainingResults &&
+                trainingResults.length > 0 &&
+                trainingResults
+                  .map((trainingResult) => trainingResult.point)
+                  .reduce((acc, current) => acc + current)}
+              ポイント
+            </p>
+          </div>
+        </div>
+        <CalendarHeatmap
+          startDate={calculateStartDate()}
+          endDate={new Date()}
+          values={values}
+          classForValue={valueToColorClass}
+          tooltipDataAttrs={setTooltipDataAttrs}
+          showMonthLabels={true}
+          showWeekdayLabels={true}
+        />
+        <ReactTooltip />
+      </div>
     </div>
   );
 };
