@@ -18,6 +18,7 @@ import ReactTooltip from 'react-tooltip';
 import LoginAgainHeader from './components/LoginAgainHeader';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from './constants/cookieKeys';
 import TrainingResultBuffer from './components/Result/TrainingResultBuffer';
+import Footer from './components/Footer';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -80,6 +81,7 @@ const App = () => {
               <TrainingResultBuffer />
             </Route>
           </Switch>
+          <Footer />
         </BrowserRouter>
       </div>
     </Provider>

@@ -105,7 +105,7 @@ const CalendarHeatmapContainer = () => {
       <div className="mt-5 pt-4 pl-10 pr-10 shadow-lg rounded">
         <div className="my-3">
           <div>
-            <BsFillCalendar2CheckFill className="inline-block h-6 align-middle text-green-500" />
+            <BsFillCalendar2CheckFill className="inline-block h-6 align-middle text-green-600" />
             <p className="ml-3 inline-block h-6 align-middle">
               これまでのトレーニング回数 {trainingResults.length} 回
             </p>
@@ -113,7 +113,7 @@ const CalendarHeatmapContainer = () => {
           <div>
             <SiWebmoney className="inline-block h-6 align-middle text-yellow-500" />
             <p className="ml-3 inline-block h-6 align-middle">
-              トータルポイント　
+              累計ボクシフルポイント　
               {trainingResults &&
                 trainingResults.length > 0 &&
                 trainingResults
