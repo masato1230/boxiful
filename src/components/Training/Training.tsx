@@ -14,8 +14,12 @@ import { useHistory } from 'react-router';
 import { calculateNormalMenuMoveScore } from '../../utils/scores';
 import FinishModal from './FinishModal';
 import { useTrainingResult } from '../../hooks/useTrainingResults';
-import { calculateTotalCalorieFromInstructions, calculateResultScore } from '../../utils/scores';
+import {
+  calculateTotalCalorieFromInstructions,
+  calculateResultScore,
+} from '../../utils/scores';
 import { useIsLoggedIn } from '../../hooks/useIsLoggedIn';
+import WarningModal from './WarningModal';
 
 const Training = () => {
   // Redux - get actionCreators adn states
@@ -39,6 +43,9 @@ const Training = () => {
     null
   );
   const [isShowFinishModal, setIsShowFinishModal] = useState(false);
+  // device check result modal
+  const [isShowNotWorkOsModal, setIsShowNotWorkOsModal] = useState(false);
+  const [isShowTooSmallModal, setIsShowTooSmallModal] = useState(false);
 
   // Hooks
   const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
@@ -52,12 +59,25 @@ const Training = () => {
   const bgmAudio = new Audio(bgmSound);
   bgmAudio.volume = 0.1;
 
-  // redirect if scores are full
+  // set up
   useEffect(() => {
-    // redirect
+    // redirect if scores are full
     if (scores.length === instructions.length) {
       history.push('/result');
     }
+    // device check
+    const userAgent = navigator.userAgent;
+    if (userAgent.includes('iPhone')) {
+      setIsShowNotWorkOsModal(true);
+    } else if (userAgent.includes('iPad')) {
+      setIsShowNotWorkOsModal(true);
+    }
+    console.log(window.innerWidth);
+    
+    if (window.innerWidth < 500) {
+      setIsShowTooSmallModal(true);
+    }
+
     // bgm management
     if (typeof bgmAudio.loop == 'boolean') {
       bgmAudio.loop = true;
@@ -154,6 +174,20 @@ const Training = () => {
   return (
     <React.Fragment>
       {isShowFinishModal && <FinishModal />}
+      {isShowNotWorkOsModal && (
+        <WarningModal
+          setIsShowWarningModal={setIsShowNotWorkOsModal}
+          message="申し訳ありません。ご利用の端末(ios)にAIが対応していないのでうまく動作しない可能性があります。PCでのご利用をお勧めします。"
+          colorClass="red-500"
+        />
+      )}
+      {isShowTooSmallModal && (
+        <WarningModal
+          setIsShowWarningModal={setIsShowTooSmallModal}
+          message="申し訳ありません。ご利用の端末の画面幅だと表示が崩れる可能性があります。PCでのご利用をおすすめします。"
+          colorClass="yellow-500"
+        />
+      )}
       <div className="mx-auto flex h-screen my-5 px-4">
         <div className="bg-white w-1/2 mx-2 h-5/6">
           {instructions[scores.length] !== undefined && (

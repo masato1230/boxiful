@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { useHistory } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 import { Router, BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './index.css';
@@ -14,7 +14,6 @@ import Register from './components/Register';
 import API from './api';
 import { store } from './state/store';
 import { useCookies } from 'react-cookie';
-import ReactTooltip from 'react-tooltip';
 import LoginAgainHeader from './components/LoginAgainHeader';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from './constants/cookieKeys';
 import TrainingResultBuffer from './components/Result/TrainingResultBuffer';
@@ -79,6 +78,9 @@ const App = () => {
             </Route>
             <Route path="/training_to_result">
               <TrainingResultBuffer />
+            </Route>
+            <Route path="*">
+              <Redirect to="/" />
             </Route>
           </Switch>
           <Footer />

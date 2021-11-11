@@ -94,14 +94,14 @@ const Login = () => {
                   </button>
                 </div>
               </form>
-              <div className="text-center mt-4">
+              {/* <div className="text-center mt-4">
                 <a
                   className="no-underline hover:underline text-blue-dark text-xs"
                   href="{{ route('password.request') }}"
                 >
                   パスワードを忘れた場合はこちら
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

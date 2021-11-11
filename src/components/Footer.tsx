@@ -22,7 +22,7 @@ const Footer = () => {
               target="_blank"
               className="ml-1 invisible md:visible align-middle"
             >
-              twitter
+              製作者twitter
             </a>
             <BiNote className="ml-3 inline-block text-green-400" size={20} />
             <a

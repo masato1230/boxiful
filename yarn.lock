@@ -10064,6 +10064,11 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
+react-ogp@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-ogp/-/react-ogp-0.0.3.tgz#f3d49ff49e593576778f6a11824a4ccb2d8b427d"
+  integrity sha512-+m5my7G6dxzN79e1e/M5VV2MmM2sXrTqs+hfL8sFHsjWn4PMv3P8eD/aMSHPibvp6BYsiFCeWMMSzcqUCIQr9w==
+
 react-redux@^7.2.5:
   version "7.2.5"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.2.5.tgz#213c1b05aa1187d9c940ddfc0b29450957f6a3b8"
