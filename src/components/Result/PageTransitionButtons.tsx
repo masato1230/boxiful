@@ -3,6 +3,7 @@ import { useActions } from "../../hooks/useActions";
 import { useHistory } from "react-router";
 import { createInstructionsFromMenu } from "../../state";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
+import { useReload } from "../../hooks/useReload";
 
 const PageTransitionButtons = () => {
   // reducer
@@ -11,6 +12,7 @@ const PageTransitionButtons = () => {
     return state.training;
   });
   const { setInstructions, resetScores } = useActions();
+  const backToDashboard = useReload();
 
   const history = useHistory();
 
@@ -24,18 +26,18 @@ const PageTransitionButtons = () => {
 
   return (
     <div className="flex">
-      <Link
-        className="w-1/2 bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-3 rounded text-sm mt-5 mx-1"
-        to="/"
+      <button
+        className="block w-1/2 bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-3 rounded text-sm mt-5 mx-1"
+        onClick={backToDashboard}
       >
         ダッシュボードに戻る
-      </Link>
-      <div
-        className="w-1/2 bg-gray-500 hover:bg-gray-700 text-white text-center py-2 px-3 rounded text-sm mt-5 mx-1"
+      </button>
+      <button
+        className="block w-1/2 bg-gray-500 hover:bg-gray-700 text-white text-center py-2 px-3 rounded text-sm mt-5 mx-1"
         onClick={onAgainClick}
       >
         もう一度同じメニュー
-      </div>
+      </button>
     </div>
   );
 };

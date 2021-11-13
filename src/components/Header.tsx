@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom';
 import { GiBoxingGlove } from 'react-icons/gi';
 import { BsFillPeopleFill } from 'react-icons/bs';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
+import { useReload } from '../hooks/useReload';
 import ReactTooltip from 'react-tooltip';
 
 const Header = () => {
   // hooks
   const [isLoggedIn, logout] = useIsLoggedIn();
+  const backToDashboard = useReload();
 
   const onLogoutClick = () => {
     logout();
@@ -19,7 +21,7 @@ const Header = () => {
           <div className="flex space-x-7">
             <div>
               {/* <!-- Website Logo --> */}
-              <Link to="/" className="flex items-center py-4 px-2">
+              <button className="flex block items-center py-4 px-2" onClick={backToDashboard}>
                 {/* <img src="logo.png" alt="Logo" className="h-8 w-8 mr-2" /> */}
                 <div className="text-yellow-500 pr-2">
                   <GiBoxingGlove />
@@ -27,7 +29,7 @@ const Header = () => {
                 <span className="font-semibold text-gray-500 text-lg">
                   Boxi<span className="text-yellow-500">ful</span>
                 </span>
-              </Link>
+              </button>
             </div>
           </div>
           {/* <!-- Secondary Navbar items --> */}

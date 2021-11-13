@@ -14,6 +14,7 @@ import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 import { raisePoseEstimationPositionWarnings } from '../../utils/warnings';
 import './PoseEstimation.css';
+import { useReload } from '../../hooks/useReload';
 
 interface PoseEstimationProps {
   setPoseLandmarks: React.Dispatch<
@@ -26,6 +27,7 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
 }) => {
   const [isMediaPipeLoading, setIsMediaPipeLoading] = useState(true);
   const [warning, setWarning] = useState<string | null>(null);
+  const backToDashboard = useReload();
   const videoRef = useRef<any>();
   const canvasRef = useRef<any>();
 
@@ -127,11 +129,20 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
       height: 720,
     });
     camera.start();
+
+    // refresh when browserback
+    window.addEventListener('popstate', backToDashboard);
+
+    // clean up
+    return () => {
+      pose.close();
+      window.removeEventListener('popstate', backToDashboard);
+    }
   }, []);
 
   return (
     <div className="bg-gray-500 rounded-xl h-full border-yellow-500 border-4">
-      <video ref={videoRef} className="hidden"></video>
+      <video id="video" ref={videoRef} className="hidden"></video>
       {isMediaPipeLoading ? (
         <React.Fragment>
           <div className="h-full flex">
