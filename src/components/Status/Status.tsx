@@ -9,8 +9,8 @@ import { useIsLoggedIn } from '../../hooks/useIsLoggedIn';
 
 const Status = () => {
   // Redux - get actionCreators adn states
-  const { setMenu, setInstructions, pushScore } = useActions();
-  const { menu, instructions, scores } = useTypedSelector((state) => {
+  const { setInstructions } = useActions();
+  const { menu } = useTypedSelector((state) => {
     return {
       menu: state.training.menu,
       instructions: state.training.instructions,

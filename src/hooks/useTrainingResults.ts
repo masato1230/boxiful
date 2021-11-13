@@ -7,8 +7,8 @@ import { useIsLoggedIn } from './useIsLoggedIn';
 
 export const useTrainingResult = () => {
   const [trainingResults, setTrainingResults] = useState<TrainingResult[]>([]);
-  const [cookies, setCookie, removeCookie] = useCookies();
-  const { isLoggedIn, logout } = useIsLoggedIn();
+  const [cookies] = useCookies();
+  const { isLoggedIn } = useIsLoggedIn();
 
   // Fetch trainingResults from API
   const fetchTrainingResults = async () => {
@@ -24,7 +24,7 @@ export const useTrainingResult = () => {
     if (!isLoggedIn) {
       return;
     }
-    const response = await API.post('/training_results', trainingResult, {
+    await API.post('/training_results', trainingResult, {
       headers: {
         Authorization: `JWT ${cookies[ACCESS_TOKEN]}`,
       },

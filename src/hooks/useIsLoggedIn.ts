@@ -4,7 +4,8 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants/cookieKeys';
 
 export const useIsLoggedIn = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const cookies = useCookies()[0];
+  const removeCookie = useCookies()[2];
 
   // Check if user is logged in
   useEffect(() => {

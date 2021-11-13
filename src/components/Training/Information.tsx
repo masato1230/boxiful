@@ -133,7 +133,7 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
         judgeRef.current.style.backgroundColor = 'gray';
       }
       judgeRef.current.textContent = moveJudge;
-      const timer = setTimeout(() => {
+      setTimeout(() => {
         if (!judgeRef.current) return;
         judgeRef.current.style.display = 'none';
       }, 500);

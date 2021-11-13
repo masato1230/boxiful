@@ -13,7 +13,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const [cookies, setCookie] = useCookies();
   const history = useHistory();
   const { isLoggedIn } = useIsLoggedIn();
 
@@ -40,7 +40,6 @@ const Register = () => {
         // login user and redirect to status
         getJwt();
         history.replace('/');
-        console.log(response);
       })
       .catch((error) => {
         console.error(error.response.data);
