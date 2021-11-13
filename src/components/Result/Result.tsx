@@ -52,7 +52,7 @@ const Result = () => {
     return () => {
       window.removeEventListener('popstate', browserBackListener);
     };
-  }, [browserBackListener, history, scores, setBrowserBackWarning]);
+  }, []);
 
   // refs
   const doughnutChartRef = useRef<HTMLCanvasElement>(null);
