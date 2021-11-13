@@ -5,10 +5,7 @@ import { ACCESS_TOKEN } from '../constants/cookieKeys';
 import { TrainingResult } from '../models/TrainingResult';
 import { useIsLoggedIn } from './useIsLoggedIn';
 
-export const useTrainingResult = (): [
-  TrainingResult[],
-  (trainingResult: TrainingResult) => Promise<void>
-] => {
+export const useTrainingResult = () => {
   const [trainingResults, setTrainingResults] = useState<TrainingResult[]>([]);
   const [cookies, setCookie, removeCookie] = useCookies();
   const { isLoggedIn, logout } = useIsLoggedIn();
@@ -43,5 +40,8 @@ export const useTrainingResult = (): [
     }
   }, [isLoggedIn]);
 
-  return [trainingResults, postTrainingResult];
+  return {
+    trainingResults,
+    postTrainingResult,
+  }
 };

@@ -14,7 +14,7 @@ interface CalendarHeatmapValue {
 
 const CalendarHeatmapContainer = () => {
   const [values, setValues] = useState<CalendarHeatmapValue[]>([]);
-  const [trainingResults, postTrainingResult] = useTrainingResult();
+  const { trainingResults } = useTrainingResult();
 
   // Return 365 days before
   const calculateStartDate = () => {

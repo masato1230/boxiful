@@ -49,7 +49,7 @@ const Training = () => {
 
   // Hooks
   const { isLoggedIn } = useIsLoggedIn();
-  const [trainingResults, postTrainingResult] = useTrainingResult();
+  const { postTrainingResult } = useTrainingResult();
 
   // sounds
   const goodAudio = new Audio(goodSound);
