@@ -4,7 +4,7 @@ import { Tabs } from '@mui/material';
 import { Tab } from '@mui/material';
 import { Typography } from '@mui/material';
 import DescriptionPage from './DescriptionPage';
-import { descriptionPages } from '../../../models/descriptionPage';
+import { descriptionPages } from '../../models/descriptionPage';
 
 const DescriptionTabs = () => {
   const [value, setValue] = React.useState(0);

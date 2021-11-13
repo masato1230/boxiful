@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-import descriptionPage from "../../../models/descriptionPage";
+import descriptionPage from "../../models/descriptionPage";
 
 interface DescriptionPageProps {
   index: number;

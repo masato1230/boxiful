@@ -10,7 +10,7 @@ import {
   NormalMenu,
 } from '../../state';
 import MenuCards from './MenuCards';
-import Descriptions from './Descriptions/Descriptions';
+import Descriptions from '../Descriptions/Descriptions';
 import CalendarHeatmapContainer from './CalendarHeatmapContainer';
 import { useIsLoggedIn } from '../../hooks/useIsLoggedIn';
 
@@ -27,17 +27,6 @@ const Status = () => {
 
   // Custom Hooks
   const [isLoggedIn, logout] = useIsLoggedIn();
-  // States
-  const [isShowDescriptions, setIsShowDescriptions] = useState(false);
-
-  // Show description modal if use is not logged in
-  useEffect(() => {
-    if (!isLoggedIn) {
-      setIsShowDescriptions(true);
-    } else {
-      setIsShowDescriptions(false);
-    }
-  }, [isLoggedIn]);
 
   // set instructions
   useEffect(() => {
@@ -52,9 +41,6 @@ const Status = () => {
         {isLoggedIn && <CalendarHeatmapContainer />}
         <MenuCards />
       </div>
-      { isShowDescriptions && (
-        <Descriptions setIsShowDescriptions={setIsShowDescriptions} />
-      )}
     </React.Fragment>
   );
 };
