@@ -8,7 +8,7 @@ import API from '../api';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [cookies, setCookie, removeCookie] = useCookies();
+  const setCookie = useCookies()[1];
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -31,7 +31,6 @@ const Login = () => {
         setIsLoggedIn(true);
       })
       .catch((err: any) => {
-        // TODO: change
         alert('メールアドレスかパスワードが違います。');
       });
   };
@@ -41,7 +40,7 @@ const Login = () => {
     if (isLoggedIn) {
       history.push('/');
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, history]);
 
   return (
     <div className="flex flex-col items-center flex-1 px-4 sm:px-0 bg-yellow-500 h-screen pt-36">
