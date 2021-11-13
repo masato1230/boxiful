@@ -53,7 +53,7 @@ export const cameraPage: descriptionPage = {
     'カメラより取得している動画はあなたのデバイスの外部に出ることは一切ございません。トレーニング中の姿勢認識速度が遅いと感じた時は、できるだけ体以外のモノがカメラに映らないようにしてください。',
 };
 
-export const descriptionPages = [
+export const aboutDescriptionPages = [
   overallDescriptionPage,
   usageOneSelectMenuPage,
   usageTwoTrainingPage,

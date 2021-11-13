@@ -1,9 +1,11 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { IoClose } from 'react-icons/io5';
+import descriptionPage, { aboutDescriptionPages } from '../../models/descriptionPage';
 import DescriptionTabs from './DescriptionTabs';
 
 interface DescriptionsProps {
   setIsShowDescriptions: Dispatch<SetStateAction<boolean>>;
+  descriptionPages: descriptionPage[];
 }
 
 const Descriptions: React.FC<DescriptionsProps> = ({ setIsShowDescriptions }) => {
@@ -20,7 +22,7 @@ const Descriptions: React.FC<DescriptionsProps> = ({ setIsShowDescriptions }) =>
           size="30"
           onClick={() => setIsShowDescriptions(false)}
         />
-        <DescriptionTabs setIsShowDescriptions={setIsShowDescriptions} />
+        <DescriptionTabs descriptionPages={aboutDescriptionPages} setIsShowDescriptions={setIsShowDescriptions} />
       </div>
     </div>
   );

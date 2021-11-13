@@ -3,13 +3,14 @@ import { Box } from '@mui/system';
 import { Tabs } from '@mui/material';
 import { Tab } from '@mui/material';
 import DescriptionPage from './DescriptionPage';
-import { descriptionPages } from '../../models/descriptionPage';
+import descriptionPage from '../../models/descriptionPage';
 
 interface DescriptionTabsProps {
   setIsShowDescriptions: Dispatch<SetStateAction<boolean>>;
+  descriptionPages: descriptionPage[];
 }
 
-const DescriptionTabs: React.FC<DescriptionTabsProps> = ({ setIsShowDescriptions }) => {
+const DescriptionTabs: React.FC<DescriptionTabsProps> = ({ setIsShowDescriptions, descriptionPages }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
