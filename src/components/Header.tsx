@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { GiBoxingGlove } from 'react-icons/gi';
-import { BsFillPeopleFill } from 'react-icons/bs';
+import { BsGrid1X2Fill } from 'react-icons/bs';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
 import { useReload } from '../hooks/useReload';
 import ReactTooltip from 'react-tooltip';
@@ -64,7 +64,7 @@ const Header = () => {
                   <button onClick={backToDashboard}>
                     <div className="flex rounded text-gray-500 text-2xl mr-4">
                       <button>
-                        <BsFillPeopleFill
+                        <BsGrid1X2Fill
                           color="rgb(245, 158, 11)"
                           data-tip={'ダッシュボードを表示'}
                         />
