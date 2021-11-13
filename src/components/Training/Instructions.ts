@@ -10,10 +10,6 @@ import { calculateAngleXY } from '../../utils/angles/angle';
 import { Vector } from '../../utils/angles/Vector';
 import { calculateLandmarkAngleXY_YZ_ZX } from '../../utils/angles/landmarkAngle';
 
-interface detectStateParams {
-  arm?: number;
-}
-
 export interface Instruction {
   title: string;
   icon: IconType;

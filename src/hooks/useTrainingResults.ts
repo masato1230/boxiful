@@ -17,13 +17,11 @@ export const useTrainingResult = (): [TrainingResult[], (trainingResult: Trainin
         Authorization: `JWT ${cookies[ACCESS_TOKEN]}`,
       },
     });
-    console.log(response.data);
     setTrainingResults(response.data);
   };
 
   const postTrainingResult = async (trainingResult: TrainingResult) => {
     if (!isLoggedIn) {
-      console.error('User is not logged in');
       return;
     };
     const response = await API.post('/training_results', trainingResult, {

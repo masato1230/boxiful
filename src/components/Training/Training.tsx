@@ -1,4 +1,4 @@
-import { NormalizedLandmarkList, POSE_LANDMARKS } from '@mediapipe/pose';
+import { NormalizedLandmarkList } from '@mediapipe/pose';
 import React, { useEffect, useState } from 'react';
 import { judgeFromScore } from '../../utils/scores';
 import Information from './Information';

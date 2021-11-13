@@ -1,5 +1,4 @@
-import React from "react";
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
 
 const TrainingResultBuffer = () => {
   console.log('buffer');

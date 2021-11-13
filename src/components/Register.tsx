@@ -129,6 +129,7 @@ const Register = () => {
         <img
           className="hidden md:block md:w-1/2 rounded-r-lg object-contain"
           src={hardMenuIcon}
+          alt="hard menu"
         />
       </div>
     </div>

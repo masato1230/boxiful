@@ -1,16 +1,11 @@
-import { Chart, ChartDataset, registerables } from 'chart.js';
+import { Chart, registerables } from 'chart.js';
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { useActions } from '../../hooks/useActions';
-import { useTrainingResult } from '../../hooks/useTrainingResults';
+import { useHistory } from 'react-router-dom';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import { createInstructionsFromMenu } from '../../state';
 import {
-  calculateBoxfulAge,
   calculateKickScore,
   calculatePunchScore,
   calculateResultScore,
-  calculateTotalCalorieFromInstructions,
 } from '../../utils/scores';
 import BrowserBackModal from './BrowserBackModal';
 import ResultDetail from './ResultDetail';
@@ -19,17 +14,14 @@ import ScoreDoughnutChart from './ScoreDoughnutChart';
 
 const Result = () => {
   // reducer
-  const { menu, instructions, scores } = useTypedSelector((state) => {
+  const { instructions, scores } = useTypedSelector((state) => {
     return state.training;
   });
-  const { setInstructions, resetScores } = useActions();
   // states
   const [score, setScore] = useState(0);
   const [doughnutChart, setDoughnutChart] = useState<Chart>();
   const [isBrowserBackModalShow, setIsBrowserBackModalShow] = useState(false);
-  // api
-  const [trainingResults, postTrainingResult] = useTrainingResult();
-
+  // hooks
   const history = useHistory();
 
   // manage browser back

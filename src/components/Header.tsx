@@ -56,7 +56,7 @@ const Header = () => {
             </div>
             {/* <!-- Secondary Navbar items --> */}
             <div className="flex items-center space-x-3">
-              <button className="text-gray-500 hover:text-black px-2 py-2 font-medium" onClick={onAboutClick} >
+              <button className="text-gray-500 hover:text-black duration-300 px-2 py-2 font-medium" onClick={onAboutClick} >
                 About
               </button>
               {isLoggedIn ? (

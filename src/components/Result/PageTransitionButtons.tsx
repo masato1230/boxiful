@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useActions } from "../../hooks/useActions";
 import { useHistory } from "react-router";
 import { createInstructionsFromMenu } from "../../state";

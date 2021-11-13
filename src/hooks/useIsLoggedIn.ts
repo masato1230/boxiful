@@ -1,4 +1,4 @@
-import { Dispatch, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants/cookieKeys";
 
@@ -8,7 +8,7 @@ export const useIsLoggedIn = (): [boolean, () => void] => {
   
   // Check if user is logged in
   useEffect(() => {
-    if (cookies[ACCESS_TOKEN], cookies[REFRESH_TOKEN]) {
+    if (cookies[ACCESS_TOKEN] && cookies[REFRESH_TOKEN]) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);

@@ -20,6 +20,7 @@ const Footer = () => {
             <a
               href="https://twitter.com/xFzdiHLW63ogLYr"
               target="_blank"
+              rel="noreferrer"
               className="ml-1 invisible md:visible align-middle"
             >
               製作者twitter
@@ -28,6 +29,7 @@ const Footer = () => {
             <a
               href="https://note.com/masato1230"
               target="_blank"
+              rel="noreferrer"
               className="ml-1 invisible md:visible align-middle"
             >
               note

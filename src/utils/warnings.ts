@@ -1,5 +1,4 @@
-import { NormalizedLandmarkList, POSE_LANDMARKS, POSE_LANDMARKS_LEFT, POSE_LANDMARKS_NEUTRAL, POSE_LANDMARKS_RIGHT } from "@mediapipe/pose";
-import { LeftHandRightPunch } from "../components/Training/Instructions";
+import { NormalizedLandmarkList, POSE_LANDMARKS_LEFT, POSE_LANDMARKS_NEUTRAL, POSE_LANDMARKS_RIGHT } from "@mediapipe/pose";
 
 const essentialLandmarkIndexes: number[] = [
   POSE_LANDMARKS_NEUTRAL.NOSE,

@@ -1,16 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import React from 'react';
 import { useActions } from '../../hooks/useActions';
-import { useTrainingResult } from '../../hooks/useTrainingResults';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
-import {
-  createInstructionsFromMenu,
-  EasyMenu,
-  HardMenu,
-  NormalMenu,
-} from '../../state';
+import { createInstructionsFromMenu } from '../../state';
 import MenuCards from './MenuCards';
-import Descriptions from '../Descriptions/Descriptions';
 import CalendarHeatmapContainer from './CalendarHeatmapContainer';
 import { useIsLoggedIn } from '../../hooks/useIsLoggedIn';
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { useHistory } from 'react-router';
-import axios from 'axios';
 import { GiBoxingGlove } from 'react-icons/gi';
 import hardMenuIcon from '../images/hardMenuIcon.svg';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants/cookieKeys';
@@ -108,6 +107,7 @@ const Login = () => {
         <img
           className="hidden md:block md:w-1/2 rounded-r-lg object-contain"
           src={hardMenuIcon}
+          alt="hard menu"
         />
       </div>
     </div>

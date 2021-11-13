@@ -32,13 +32,14 @@ const DescriptionTabs: React.FC<DescriptionTabsProps> = ({ setIsShowDescriptions
           onChange={handleChange}
         >
           {descriptionPages.map((descriptionPage) => {
-            return <Tab label={descriptionPage.tabTitle} />;
+            return <Tab key={descriptionPage.tabTitle} label={descriptionPage.tabTitle} />;
           })}
         </Tabs>
       </Box>
       {descriptionPages.map((descriptionPage, index) => {
         return (
           <DescriptionPage
+            key={descriptionPage.tabTitle}
             value={value}
             index={index}
             descriptionPage={descriptionPage}
