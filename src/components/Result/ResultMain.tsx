@@ -32,7 +32,7 @@ const ResultMain: React.FC<ResultMainProps> = ({ score, doughnutChartRef }) => {
         )}kcal\n`
       );
     }
-  }, [score]);
+  }, [score, menu, instructions]);
 
   return (
     <div

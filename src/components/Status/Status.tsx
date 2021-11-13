@@ -26,7 +26,7 @@ const Status = () => {
     if (menu) {
       setInstructions(createInstructionsFromMenu(menu));
     }
-  }, [menu]);
+  }, [menu, setInstructions]);
 
   return (
     <React.Fragment>

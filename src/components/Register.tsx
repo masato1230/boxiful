@@ -13,7 +13,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
 
-  const [cookies, setCookie] = useCookies();
+  const setCookie = useCookies()[1];
   const history = useHistory();
   const { isLoggedIn } = useIsLoggedIn();
 
@@ -66,7 +66,7 @@ const Register = () => {
     if (isLoggedIn) {
       history.push('/');
     }
-  }, [cookies]);
+  }, [history, isLoggedIn]);
 
   return (
     <div className="flex flex-col items-center flex-1 px-4 sm:px-0 bg-yellow-500 h-screen pt-36">
