@@ -20,6 +20,8 @@ const DescriptionTabs = () => {
           textColor="inherit"
           indicatorColor="primary"
           value={value}
+          variant="scrollable"
+          scrollButtons="auto"
           onChange={handleChange}
         >
           {descriptionPages.map((descriptionPage) => {

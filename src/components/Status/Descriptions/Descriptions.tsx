@@ -12,8 +12,8 @@ const Descriptions: React.FC<DescriptionsProps> = ({ setIsShowDescriptions }) =>
       className="fixed z-50 top-0 w-screen h-screen bg-black bg-opacity-40 text-white"
     >
       <div
-        className="bg-black w-1/2 rounded-xl pt-10 pl-10 pr-10 pb-5 m-auto relative bg-opacity-90"
-        style={{ marginTop: '10%' }}
+        className="bg-black w-5/6 md:w-2/3 rounded-xl pt-10 pl-10 pr-10 pb-5 m-auto relative bg-opacity-90"
+        style={{ marginTop: '5%' }}
       >
         <IoClose
           className="absolute top-5 left-5 hover:bg-gray-300 rounded-full"

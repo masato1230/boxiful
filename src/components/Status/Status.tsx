@@ -34,6 +34,8 @@ const Status = () => {
   useEffect(() => {
     if (!isLoggedIn) {
       setIsShowDescriptions(true);
+    } else {
+      setIsShowDescriptions(false);
     }
   }, [isLoggedIn]);
 
@@ -50,7 +52,7 @@ const Status = () => {
         {isLoggedIn && <CalendarHeatmapContainer />}
         <MenuCards />
       </div>
-      {isShowDescriptions && (
+      { isShowDescriptions && (
         <Descriptions setIsShowDescriptions={setIsShowDescriptions} />
       )}
     </React.Fragment>
