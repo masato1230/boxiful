@@ -12,7 +12,7 @@ const Descriptions: React.FC<DescriptionsProps> = ({ setIsShowDescriptions }) =>
       className="fixed z-50 top-0 w-screen h-screen bg-black bg-opacity-40 text-white"
     >
       <div
-        className="bg-black w-1/2 rounded-xl p-10 m-auto relative bg-opacity-90"
+        className="bg-black w-1/2 rounded-xl pt-10 pl-10 pr-10 pb-5 m-auto relative bg-opacity-90"
         style={{ marginTop: '10%' }}
       >
         <IoClose
@@ -21,9 +21,11 @@ const Descriptions: React.FC<DescriptionsProps> = ({ setIsShowDescriptions }) =>
           onClick={() => setIsShowDescriptions(false)}
         />
         <DescriptionTabs />
-        <h2 className="text-3xl font-bold text-center my-5">
-          トレーニング画面には戻れません。
-        </h2>
+        <div className="flex flex-row-reverse">
+          <button className="font-bold text-sm text-center mt-5 px-2 py-1 rounded-xl hover:bg-gray-400">
+            次へ
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -1,11 +1,13 @@
 import { Box } from "@mui/system";
+import descriptionPage from "../../../models/descriptionPage";
 
 interface DescriptionPageProps {
   index: number;
   value: number;
+  descriptionPage: descriptionPage;
 }
 
-const DescriptionPage: React.FC<DescriptionPageProps> = ({ index, value }) =>  {
+const DescriptionPage: React.FC<DescriptionPageProps> = ({ index, value, descriptionPage }) =>  {
 
   return (
     <div
@@ -13,11 +15,10 @@ const DescriptionPage: React.FC<DescriptionPageProps> = ({ index, value }) =>  {
       role="tabpanel"
       hidden={value !== index}
     >
-      {value === index && (
         <Box sx={{ p: 3 }}>
-          gffggfgfgfgff{index}
+          <img src={descriptionPage.imageSrc} className="mx-auto" />
+          <p>{descriptionPage.description}</p>
         </Box>
-      )}
     </div>
   );
 }

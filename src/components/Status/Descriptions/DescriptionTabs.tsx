@@ -4,13 +4,7 @@ import { Tabs } from '@mui/material';
 import { Tab } from '@mui/material';
 import { Typography } from '@mui/material';
 import DescriptionPage from './DescriptionPage';
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  };
-}
+import { descriptionPages } from '../../../models/descriptionPage';
 
 const DescriptionTabs = () => {
   const [value, setValue] = React.useState(0);
@@ -28,14 +22,20 @@ const DescriptionTabs = () => {
           value={value}
           onChange={handleChange}
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
+          {descriptionPages.map((descriptionPage) => {
+            return <Tab label={descriptionPage.tabTitle} />
+          })}
         </Tabs>
       </Box>
-      <DescriptionPage value={value} index={0}/>
-      <DescriptionPage value={value} index={1}/>
-      <DescriptionPage value={value} index={2}/>
+      {descriptionPages.map((descriptionPage, index) => {
+        return (
+          <DescriptionPage
+            value={value}
+            index={index}
+            descriptionPage={descriptionPage}
+          />
+        )
+      })}
     </Box>
   );
 };

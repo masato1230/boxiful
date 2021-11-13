@@ -148,7 +148,7 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
       <div className="align-middle mx-auto w-min h-2/6 pt-5">
         <instruction.icon
           color={determineInstructionColor(instruction)}
-          size="150"
+          size="250"
         />
       </div>
       <div className="h-1/6 px-5">
