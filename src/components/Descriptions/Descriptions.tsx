@@ -20,12 +20,7 @@ const Descriptions: React.FC<DescriptionsProps> = ({ setIsShowDescriptions }) =>
           size="30"
           onClick={() => setIsShowDescriptions(false)}
         />
-        <DescriptionTabs />
-        <div className="flex flex-row-reverse">
-          <button className="font-bold text-sm text-center mt-5 px-2 py-1 rounded-xl hover:bg-gray-400">
-            次へ
-          </button>
-        </div>
+        <DescriptionTabs setIsShowDescriptions={setIsShowDescriptions} />
       </div>
     </div>
   );

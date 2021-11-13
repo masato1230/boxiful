@@ -1,16 +1,23 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { Box } from '@mui/system';
 import { Tabs } from '@mui/material';
 import { Tab } from '@mui/material';
-import { Typography } from '@mui/material';
 import DescriptionPage from './DescriptionPage';
 import { descriptionPages } from '../../models/descriptionPage';
 
-const DescriptionTabs = () => {
+interface DescriptionTabsProps {
+  setIsShowDescriptions: Dispatch<SetStateAction<boolean>>;
+}
+
+const DescriptionTabs: React.FC<DescriptionTabsProps> = ({ setIsShowDescriptions }) => {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
+  };
+
+  const onNextClick = () => {
+    setValue(value + 1);
   };
 
   return (
@@ -25,7 +32,7 @@ const DescriptionTabs = () => {
           onChange={handleChange}
         >
           {descriptionPages.map((descriptionPage) => {
-            return <Tab label={descriptionPage.tabTitle} />
+            return <Tab label={descriptionPage.tabTitle} />;
           })}
         </Tabs>
       </Box>
@@ -36,8 +43,25 @@ const DescriptionTabs = () => {
             index={index}
             descriptionPage={descriptionPage}
           />
-        )
+        );
       })}
+      <div className="flex flex-row-reverse">
+        {value !== descriptionPages.length - 1 ? (
+          <button
+            className="font-bold text-sm text-center mt-5 px-2 py-1 rounded-xl hover:bg-gray-400"
+            onClick={onNextClick}
+          >
+            次へ
+          </button>
+        ) :(
+          <button
+            className="font-bold text-sm text-center mt-5 px-2 py-1 rounded-xl hover:bg-gray-400"
+            onClick={() => setIsShowDescriptions(false)}
+          >
+            閉じる
+          </button>
+        )}
+      </div>
     </Box>
   );
 };
