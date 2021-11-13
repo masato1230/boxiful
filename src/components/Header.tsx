@@ -35,25 +35,25 @@ const Header = () => {
           {/* <!-- Secondary Navbar items --> */}
           {isLoggedIn ? (
             <div className="flex items-center space-x-3">
-              <Link to="/">
+              <button  onClick={backToDashboard}>
                 <div className="flex rounded text-gray-500 text-2xl mr-4">
-                  <Link to="/">
+                  <button>
                     <BsFillPeopleFill
                       color="rgb(245, 158, 11)"
                       data-tip={'ダッシュボードを表示'}
                     />
                     <ReactTooltip />
-                  </Link>
+                  </button>
                 </div>
-              </Link>
-              <Link to="/">
+              </button>
+              <button>
                 <div
                   className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-300 transition duration-300"
                   onClick={onLogoutClick}
                 >
                   ログアウト
                 </div>
-              </Link>
+              </button>
             </div>
           ) : (
             <div className="flex items-center content-center space-x-3 ">
