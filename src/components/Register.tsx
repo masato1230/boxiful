@@ -15,12 +15,11 @@ const Register = () => {
 
   const [cookies, setCookie, removeCookie] = useCookies();
   const history = useHistory();
-  const [isLoggedIn, logout] = useIsLoggedIn();
+  const { isLoggedIn } = useIsLoggedIn();
 
-  // TODO:
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: form check
+    // form check
     if (email === '') {
       setEmailError('メールアドレスを入力してください。');
       return;
@@ -37,29 +36,30 @@ const Register = () => {
       email,
       password,
     })
-    .then((response) => {
-      // login user and redirect to status
-      getJwt();
-      history.replace('/');
-      console.log(response);
-    })
-    .catch((error) => {
-      console.error(error.response.data);
-      if (error.response.data.email) {
-        setEmailError('このメールアドレスは既に登録されています。ログインし直してください。')
-      }
-    })
+      .then((response) => {
+        // login user and redirect to status
+        getJwt();
+        history.replace('/');
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error.response.data);
+        if (error.response.data.email) {
+          setEmailError(
+            'このメールアドレスは既に登録されています。ログインし直してください。'
+          );
+        }
+      });
   };
 
   const getJwt = async () => {
-    await API
-      .post('users/token/', {
-        email,
-        password,
-      }).then((response) => {
-        setCookie(ACCESS_TOKEN, response.data.access);
-        setCookie(REFRESH_TOKEN, response.data.refresh);
-      })
+    await API.post('users/token/', {
+      email,
+      password,
+    }).then((response) => {
+      setCookie(ACCESS_TOKEN, response.data.access);
+      setCookie(REFRESH_TOKEN, response.data.refresh);
+    });
   };
 
   // check user is logged in and if logged in redirect to '/'
@@ -91,7 +91,9 @@ const Register = () => {
                 onSubmit={handleSubmit}
               >
                 <div className="flex flex-col mt-4">
-                  <label htmlFor="email" className="py-1">メールアドレス</label>
+                  <label htmlFor="email" className="py-1">
+                    メールアドレス
+                  </label>
                   <input
                     id="email"
                     type="email"
@@ -105,7 +107,9 @@ const Register = () => {
                   <p className="text-red-500">{emailError}</p>
                 </div>
                 <div className="flex flex-col mt-4">
-                  <label htmlFor="password" className="py-1">パスワード</label>
+                  <label htmlFor="password" className="py-1">
+                    パスワード
+                  </label>
                   <input
                     id="password"
                     type="password"

@@ -8,7 +8,6 @@ import {
   POSE_LANDMARKS_LEFT,
   POSE_LANDMARKS_RIGHT,
   POSE_LANDMARKS_NEUTRAL,
-  POSE_LANDMARKS,
 } from '@mediapipe/pose';
 import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';

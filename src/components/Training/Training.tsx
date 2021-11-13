@@ -48,7 +48,7 @@ const Training = () => {
   const [isShowTooSmallModal, setIsShowTooSmallModal] = useState(false);
 
   // Hooks
-  const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
+  const { isLoggedIn } = useIsLoggedIn();
   const [trainingResults, postTrainingResult] = useTrainingResult();
 
   // sounds
@@ -73,7 +73,7 @@ const Training = () => {
       setIsShowNotWorkOsModal(true);
     }
     console.log(window.innerWidth);
-    
+
     if (window.innerWidth < 500) {
       setIsShowTooSmallModal(true);
     }

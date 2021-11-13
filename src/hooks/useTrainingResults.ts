@@ -5,10 +5,13 @@ import { ACCESS_TOKEN } from '../constants/cookieKeys';
 import { TrainingResult } from '../models/TrainingResult';
 import { useIsLoggedIn } from './useIsLoggedIn';
 
-export const useTrainingResult = (): [TrainingResult[], (trainingResult: TrainingResult) => Promise<void>] => {
+export const useTrainingResult = (): [
+  TrainingResult[],
+  (trainingResult: TrainingResult) => Promise<void>
+] => {
   const [trainingResults, setTrainingResults] = useState<TrainingResult[]>([]);
   const [cookies, setCookie, removeCookie] = useCookies();
-  const [isLoggedIn, setIsLoggedIn] = useIsLoggedIn();
+  const { isLoggedIn, logout } = useIsLoggedIn();
 
   // Fetch trainingResults from API
   const fetchTrainingResults = async () => {
@@ -23,7 +26,7 @@ export const useTrainingResult = (): [TrainingResult[], (trainingResult: Trainin
   const postTrainingResult = async (trainingResult: TrainingResult) => {
     if (!isLoggedIn) {
       return;
-    };
+    }
     const response = await API.post('/training_results', trainingResult, {
       headers: {
         Authorization: `JWT ${cookies[ACCESS_TOKEN]}`,

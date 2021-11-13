@@ -19,7 +19,7 @@ const Status = () => {
   });
 
   // Custom Hooks
-  const [isLoggedIn, logout] = useIsLoggedIn();
+  const { isLoggedIn } = useIsLoggedIn();
 
   // set instructions
   useEffect(() => {
