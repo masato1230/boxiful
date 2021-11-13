@@ -38,7 +38,7 @@ export const useTrainingResult = () => {
     if (isLoggedIn) {
       fetchTrainingResults();
     }
-  }, [isLoggedIn]);
+  }, [isLoggedIn, fetchTrainingResults]);
 
   return {
     trainingResults,
