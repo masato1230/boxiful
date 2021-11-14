@@ -62,13 +62,13 @@ const Header = () => {
             {/* <!-- Secondary Navbar items --> */}
             <div className="flex items-center space-x-3">
               <button
-                className="text-gray-500 hover:text-black duration-300 px-2 py-2 font-medium"
+                className="text-xs md:text-base text-gray-500 hover:text-black duration-300 px-2 py-2 font-medium"
                 onClick={onAboutClick}
               >
                 About
               </button>
               <button
-                className="text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-medium"
+                className="text-xs md:text-base text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-medium"
                 onClick={onJudgeClick}
               >
                 パンチ/キックの判定
@@ -86,7 +86,7 @@ const Header = () => {
                   </button>
                   <button>
                     <div
-                      className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-300 transition duration-300"
+                      className="text-xs md:text-base py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-300 transition duration-300"
                       onClick={onLogoutClick}
                     >
                       ログアウト
@@ -97,13 +97,13 @@ const Header = () => {
                 <React.Fragment>
                   <Link
                     to="/login"
-                    className="py-2 px-2 font-medium text-gray-500 rounded hover:bg-yellow-500 hover:text-white transition duration-300"
+                    className="text-xs md:text-base py-2 px-2 font-medium text-gray-500 rounded hover:bg-yellow-500 hover:text-white transition duration-300"
                   >
                     ログイン
                   </Link>
                   <Link
                     to="/register"
-                    className="py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-400 transition duration-300"
+                    className="text-xs md:text-base py-2 px-2 font-medium text-white bg-yellow-500 rounded hover:bg-yellow-400 transition duration-300"
                   >
                     アカウント作成
                   </Link>
