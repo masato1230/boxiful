@@ -13,26 +13,28 @@ const Footer = () => {
             </p>
           </div>
           <div className="w-1/3 py-6">
-            <AiFillTwitterCircle
-              className="inline-block text-blue-400"
-              size={20}
-            />
             <a
               href="https://twitter.com/xFzdiHLW63ogLYr"
               target="_blank"
               rel="noreferrer"
-              className="ml-1 hidden md:inline-block align-middle"
             >
-              製作者twitter
+              <AiFillTwitterCircle
+                className="inline-block text-blue-400"
+                size={20}
+              />
+              <span className="hidden md:inline-block ml-1 align-middle">
+                製作者twitter
+              </span>
             </a>
-            <BiNote className="ml-3 inline-block text-green-400" size={20} />
             <a
               href="https://note.com/masato1230"
               target="_blank"
               rel="noreferrer"
-              className="ml-1 hidden md:inline-block align-middle"
             >
-              note
+              <BiNote className="ml-3 inline-block text-green-400" size={20} />
+              <span className="ml-1 hidden md:inline-block align-middle">
+                note
+              </span>
             </a>
           </div>
         </div>

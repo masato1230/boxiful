@@ -72,7 +72,6 @@ const Training = () => {
     } else if (userAgent.includes('iPad')) {
       setIsShowNotWorkOsModal(true);
     }
-    console.log(window.innerWidth);
 
     if (window.innerWidth < 500) {
       setIsShowTooSmallModal(true);

@@ -25,6 +25,8 @@ const MenuCard: React.FC<MenuCardProps> = ({ menuThumbnail, menu }) => {
     resetScores();
     // redirect to training
     history.push('/training');
+    // scroll to top
+    window.scroll({ top: 0, behavior: 'smooth' });
   };
 
   return (
