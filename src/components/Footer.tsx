@@ -1,12 +1,30 @@
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { BiNote } from 'react-icons/bi';
+import { useHistory } from 'react-router';
+import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
 
 const Footer = () => {
+  const history = useHistory();
+  const { isLoggedIn } = useIsLoggedIn();
+
+  const onDeleteAccountClick = () => {
+    history.push('/delete_account');
+  };
+
   return (
     <footer className="footer">
       <div className="container mx-auto px-6">
         <div className="mt-1 border-t-2 border-gray-300 flex">
-          <div className="w-1/3"></div>
+          <div className="w-1/3 text-center py-6">
+            {isLoggedIn && (
+              <button
+                className="text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+                onClick={onDeleteAccountClick}
+              >
+                アカウント削除
+              </button>
+            )}
+          </div>
           <div className="w-1/3 text-center py-6">
             <p className="text-sm text-gray-500 font-bold mb-2">
               © 2021 by Masato
