@@ -6,7 +6,11 @@ import { useReload } from '../hooks/useReload';
 import ReactTooltip from 'react-tooltip';
 import React, { useEffect, useState } from 'react';
 import Descriptions from './Descriptions/Descriptions';
-import { aboutDescriptionPages, judgeDescriptionPages } from '../models/descriptionPage';
+import {
+  aboutDescriptionPages,
+  judgeDescriptionPages,
+  accountManagementDescriptionPages,
+} from '../models/descriptionPage';
 
 const Header = () => {
   // hooks
@@ -16,6 +20,7 @@ const Header = () => {
   // States
   const [isShowDescriptions, setIsShowDescriptions] = useState(false);
   const [isShowJudgeDesc, setIsShowJudgeDesc] = useState(false);
+  const [isShowAccountManageDesc, setIsShowAccountManageDesc] = useState(false);
 
   // Click listeners
   const onLogoutClick = () => {
@@ -26,6 +31,9 @@ const Header = () => {
   };
   const onJudgeClick = () => {
     setIsShowJudgeDesc(true);
+  };
+  const onAccountManagementClick = () => {
+    setIsShowAccountManageDesc(true);
   };
 
   // Show description modal if use is not logged in
@@ -73,6 +81,12 @@ const Header = () => {
               >
                 パンチ/キックの判定
               </button>
+              <button
+                className="text-xs md:text-base text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-medium"
+                onClick={onAccountManagementClick}
+              >
+                アカウントについて
+              </button>
               {isLoggedIn ? (
                 <React.Fragment>
                   <button onClick={backToDashboard} className="px-2 py-2">
@@ -114,10 +128,22 @@ const Header = () => {
         </div>
       </nav>
       {isShowDescriptions && (
-        <Descriptions descriptionPages={aboutDescriptionPages} setIsShowDescriptions={setIsShowDescriptions} />
+        <Descriptions
+          descriptionPages={aboutDescriptionPages}
+          setIsShowDescriptions={setIsShowDescriptions}
+        />
       )}
       {isShowJudgeDesc && (
-        <Descriptions descriptionPages={judgeDescriptionPages} setIsShowDescriptions={setIsShowJudgeDesc} />
+        <Descriptions
+          descriptionPages={judgeDescriptionPages}
+          setIsShowDescriptions={setIsShowJudgeDesc}
+        />
+      )}
+      {isShowAccountManageDesc && (
+        <Descriptions
+          descriptionPages={accountManagementDescriptionPages}
+          setIsShowDescriptions={setIsShowAccountManageDesc}
+        />
       )}
     </React.Fragment>
   );

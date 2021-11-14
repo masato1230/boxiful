@@ -30,7 +30,7 @@ const Footer = () => {
               © 2021 by Masato
             </p>
           </div>
-          <div className="w-1/3 py-6">
+          <div className="w-1/3 py-6 text-center">
             <a
               href="https://twitter.com/xFzdiHLW63ogLYr"
               target="_blank"
@@ -40,7 +40,7 @@ const Footer = () => {
                 className="inline-block text-blue-400"
                 size={20}
               />
-              <span className="hidden md:inline-block ml-1 align-middle">
+              <span className="hidden md:inline-block ml-1 align-middle text-gray-500 font-bold">
                 製作者twitter
               </span>
             </a>
@@ -50,7 +50,7 @@ const Footer = () => {
               rel="noreferrer"
             >
               <BiNote className="ml-3 inline-block text-green-400" size={20} />
-              <span className="ml-1 hidden md:inline-block align-middle">
+              <span className="ml-1 hidden md:inline-block align-middle text-gray-500 font-bold">
                 note
               </span>
             </a>

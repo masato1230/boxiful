@@ -8,6 +8,8 @@ import punchThumbnail from '../images/punchDescriptionThumbnail.svg';
 import kickThumbnail from '../images/kickDescriptionThumbnail.svg';
 import longLoadingThumbnail from '../images/longLoadingDescriptionThumbnail.svg';
 import questionThumbnail from '../images/questionThumbnail.svg';
+import accountCreateMeritThumbnail from '../images/accountCreateMeritDescriptionThumbnail.png';
+import deleteAccountThumbnail from '../images/deleteAccountDescriptionThumbnail.svg';
 
 export default interface descriptionPage {
   tabTitle: string;
@@ -87,6 +89,19 @@ const stillDoesNotJudgePage: descriptionPage = {
     'トレーニング中は画像処理を行うためPCのリソースを大量に利用しています。カメラ映像がカクつく時は、開いている他のサイトやアプリを閉じてみてください。カメラに映るモノを減らすことでもカクつきを軽減できます。',
 };
 
+// for account management description pages
+const accountCreateMeritPage: descriptionPage = {
+  tabTitle: 'アカウントを作るとできること',
+  imageSrc: accountCreateMeritThumbnail,
+  description: '　アカウントを作成するとトレーニング記録が保存されるようになり、一年間のトレーニング記録をダッシュボードで確認できるようになります。トレーニング記録を見ることでモチベーションをあげることができます。'
+};
+
+const accountDeletePage: descriptionPage = {
+  tabTitle: 'アカウントの削除方法',
+  imageSrc: deleteAccountThumbnail,
+  description: 'ログインした状態でページの一番右下にある、「アカウント削除」ボタンを押すとアカウントを削除するための画面に移動するので、そこからアカウントを削除してください。トレーニング記録も削除されます。'
+}
+
 export const aboutDescriptionPages = [
   overallDescriptionPage,
   usageOneSelectMenuPage,
@@ -101,4 +116,9 @@ export const judgeDescriptionPages = [
   kickJudgePage,
   longLoadingPage,
   stillDoesNotJudgePage,
+];
+
+export const accountManagementDescriptionPages = [
+  accountCreateMeritPage,
+  accountDeletePage,
 ];
