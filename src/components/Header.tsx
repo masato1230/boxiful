@@ -6,7 +6,7 @@ import { useReload } from '../hooks/useReload';
 import ReactTooltip from 'react-tooltip';
 import React, { useEffect, useState } from 'react';
 import Descriptions from './Descriptions/Descriptions';
-import { aboutDescriptionPages } from '../models/descriptionPage';
+import { aboutDescriptionPages, judgeDescriptionPages } from '../models/descriptionPage';
 
 const Header = () => {
   // hooks
@@ -75,7 +75,7 @@ const Header = () => {
               </button>
               {isLoggedIn ? (
                 <React.Fragment>
-                  <button onClick={backToDashboard}>
+                  <button onClick={backToDashboard} className="px-2 py-2">
                     <div className="flex rounded text-gray-500 text-2xl mr-4">
                       <BsGrid1X2Fill
                         color="rgb(245, 158, 11)"
@@ -117,7 +117,7 @@ const Header = () => {
         <Descriptions descriptionPages={aboutDescriptionPages} setIsShowDescriptions={setIsShowDescriptions} />
       )}
       {isShowJudgeDesc && (
-        <Descriptions descriptionPages={aboutDescriptionPages} setIsShowDescriptions={setIsShowJudgeDesc} />
+        <Descriptions descriptionPages={judgeDescriptionPages} setIsShowDescriptions={setIsShowJudgeDesc} />
       )}
     </React.Fragment>
   );
