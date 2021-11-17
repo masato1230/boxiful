@@ -24,7 +24,7 @@ const WarningModal: React.FC<WarningModalProps> = ({
       onClick={onCloseClick}
     >
       <div
-        className="bg-white w-1/2 rounded-xl p-10 m-auto relative"
+        className="bg-white w-5/6 md:w-1/2 rounded-xl p-10 m-auto relative"
         style={{ marginTop: '10%' }}
       >
         <IoClose
@@ -37,7 +37,7 @@ const WarningModal: React.FC<WarningModalProps> = ({
           spacing={100}
           size="50%"
         />
-        <h2 className="text-xl font-bold text-center my-5">
+        <h2 className="text-base md:text-xl font-bold text-center my-5">
           {message}
         </h2>
         <Link
