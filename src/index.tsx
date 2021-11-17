@@ -19,6 +19,7 @@ import LoginAgainHeader from './components/LoginAgainHeader';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from './constants/cookieKeys';
 import TrainingResultBuffer from './components/Result/TrainingResultBuffer';
 import Footer from './components/Footer';
+import GoogleAnalytics from './components/GoogleAnalytics';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -56,6 +57,7 @@ const App = () => {
     <Provider store={store}>
       <div>
         <BrowserRouter>
+          <GoogleAnalytics />
           <Header />
           { !isTokenValid && <LoginAgainHeader /> }
           <Switch>
