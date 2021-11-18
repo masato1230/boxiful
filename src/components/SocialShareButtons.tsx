@@ -17,8 +17,7 @@ const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
     <React.Fragment>
       <div className="bg-blue-500 hover:bg-blue-700 text-white py-1 px-3 rounded text-sm my-3 mx-1">
         <TwitterShareButton
-          // TODO: Chagnge url
-          url={'https://www.jp-funda.com/en'}
+          url={'https://boxiful.jp'}
           title={shareTitle}
           hashtags={['boxiful']}
           className="text-white w-full h-full"
@@ -29,8 +28,7 @@ const SocialShareButtons: React.FC<SocialShareButtonsProps> = ({
       </div>
       <div className="bg-green-600 hover:bg-green-800 text-white text-center py-1 px-3 rounded text-sm my-3 mx-1">
         <LineShareButton
-          // TODO: Chagnge url
-          url={'http://localhost:3000'}
+          url={'https://boxiful.jp'}
           title={shareTitle}
           className="text-white w-full h-full"
         >
