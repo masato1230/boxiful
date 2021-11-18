@@ -2,6 +2,7 @@ import React from 'react';
 import { IoClose } from 'react-icons/io5';
 import { IoMdWarning } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+import { useReload } from '../../hooks/useReload';
 
 interface WarningModalProps {
   setIsShowWarningModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -14,6 +15,7 @@ const WarningModal: React.FC<WarningModalProps> = ({
   message,
   colorClass,
 }) => {
+  const backToDashBoard = useReload();
   const onCloseClick = () => {
     setIsShowWarningModal(false);
   };
@@ -24,7 +26,7 @@ const WarningModal: React.FC<WarningModalProps> = ({
       onClick={onCloseClick}
     >
       <div
-        className="bg-white w-1/2 rounded-xl p-10 m-auto relative"
+        className="bg-white w-5/6 md:w-1/2 rounded-xl p-10 m-auto relative"
         style={{ marginTop: '10%' }}
       >
         <IoClose
@@ -37,15 +39,15 @@ const WarningModal: React.FC<WarningModalProps> = ({
           spacing={100}
           size="50%"
         />
-        <h2 className="text-xl font-bold text-center my-5">
+        <h2 className="text-base md:text-xl font-bold text-center my-5">
           {message}
         </h2>
-        <Link
+        <button
           className="block bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-3 rounded text-sm mt-5 mx-auto"
-          to="/"
+          onClick={backToDashBoard}
         >
           ダッシュボードに戻る
-        </Link>
+        </button>
       </div>
     </div>
   );
