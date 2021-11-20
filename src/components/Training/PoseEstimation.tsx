@@ -161,13 +161,13 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
         <React.Fragment>
           <div className="h-full w-full relative">
             <canvas
-              className="pose-estimation-canvas rounded-xl h-full w-full"
+              className="pose-estimation-canvas object-cover rounded-xl h-full w-full"
               ref={canvasRef}
               width="1280px"
               height="720px"
             >
             </canvas>
-          {warning && <div className="absolute bottom-0  bg-black bg-opacity-70 rounded-b-xl w-full text-5xl text-white p-10">{warning}</div>}
+          {warning && <div className="absolute bottom-0  bg-black bg-opacity-70 rounded-b-xl w-full text-2xl md:text-5xl text-white p-10">{warning}</div>}
           </div>
         </React.Fragment>
       )}

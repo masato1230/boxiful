@@ -22,10 +22,10 @@ const determineInstructionColor = (instruction: Instruction) => {
   switch (instruction) {
     case LeftHandLeftPunch:
     case LeftHandRightPunch:
-      return 'rgba(5, 150, 105, 0.3)';
+      return 'rgba(59, 130, 246, 1)';
     case RightHandLeftPunch:
     case RightHandRightPunch:
-      return 'rgba(109, 40, 217, 0.3)';
+      return 'rgba(239, 68, 68, 1)';
     case LeftLegLeftKick:
     case LeftLegRightKick:
       return 'rgba(5, 150, 105, 1)';
@@ -62,6 +62,11 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
   
   // chart set up
   useEffect(() => {
+    // if users device widht is sm then don't create chart
+    if (window.innerWidth < 768 && chartRef.current) {
+      chartRef.current.style.display = 'none';
+      return;
+    }
     Chart.register(...registerables);
     // clear canvas
     if (chart) {
@@ -142,22 +147,24 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
 
   return (
     <div className="h-full">
-      <h2 className="pt-5 text-5xl text-black text-center font-bold px-5 h-1/6">
+      <h2 className="pt-5 text-3xl md:text-5xl text-white md:text-black text-center font-bold px-5 h-1/6">
         {instruction.title}
       </h2>
+      <div className="h-1/6 md:hidden"></div>
       <div className="align-middle mx-auto w-min h-2/6 pt-5">
         <instruction.icon
           color={determineInstructionColor(instruction)}
           size="250"
+          className="w-40 h-40 md:w-auto md:w-auto bg-white rounded-full"
         />
       </div>
       <div className="h-1/6 px-5">
         <div className="">
           <p
             ref={judgeRef}
-            className="inline-block text-white rounded-full text-5xl p-8 hidden"
+            className="inline-block text-white rounded-full text-3xl md:text-5xl p-3 md:p-8 hidden"
           ></p>
-          <p className="float-right inline-block text-right text-5xl">
+          <p className="float-right inline-block text-right text-3xl md:text-5xl">
             {`${scores.length} / ${instructions.length}`}
           </p>
         </div>
