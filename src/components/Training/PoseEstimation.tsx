@@ -124,8 +124,8 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
       onFrame: async () => {
         await pose.send({ image: videoRef.current });
       },
-      width: 1280,
-      height: 720,
+      width: window.innerWidth,
+      height: window.innerHeight,
     });
     camera.start();
 
@@ -161,10 +161,10 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
         <React.Fragment>
           <div className="h-full w-full relative">
             <canvas
-              className="pose-estimation-canvas object-contain md:object-cover rounded-xl h-full w-full"
+              className="pose-estimation-canvas object-cover rounded-xl h-full w-full"
               ref={canvasRef}
-              width="1280px"
-              height="720px"
+              width={`${window.innerWidth}px`}
+              height={`${window.innerHeight}px`}
             >
             </canvas>
           {warning && <div className="absolute bottom-0  bg-black bg-opacity-70 rounded-b-xl w-full text-2xl md:text-5xl text-white p-10">{warning}</div>}
