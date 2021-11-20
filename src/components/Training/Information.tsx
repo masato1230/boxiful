@@ -138,10 +138,6 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
         judgeRef.current.style.backgroundColor = 'gray';
       }
       judgeRef.current.textContent = moveJudge;
-      setTimeout(() => {
-        if (!judgeRef.current) return;
-        judgeRef.current.style.display = 'none';
-      }, 500);
     }
   });
 
@@ -162,7 +158,7 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
         <div className="">
           <p
             ref={judgeRef}
-            className="inline-block text-white rounded-full text-3xl md:text-5xl p-3 md:p-8 hidden"
+            className="inline-block text-white rounded-full text-3xl md:text-5xl p-3 md:p-8"
           ></p>
           <p className="float-right inline-block text-right text-3xl md:text-5xl">
             {`${scores.length} / ${instructions.length}`}
