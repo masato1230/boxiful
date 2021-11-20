@@ -20,7 +20,7 @@ const BrowserBackModal: React.FC<BrowserBackModalProps> = ({
       onClick={onCloseClick}
     >
       <div
-        className="bg-white w-1/2 rounded-xl p-10 m-auto relative"
+        className="bg-white w-5/6 md:w-2/3 rounded-xl p-10 m-auto relative"
         style={{ marginTop: '10%' }}
       >
         <IoClose
