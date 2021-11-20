@@ -187,8 +187,8 @@ const Training = () => {
           colorClass="yellow-500"
         />
       )}
-      <div className="mx-auto flex h-screen my-5 px-4">
-        <div className="bg-white w-1/2 mx-2 h-5/6">
+      <div className="mx-auto flex h-screen my-5 px-4 relative">
+        <div className="bg-white inset-0 md:w-1/2 mx-2 h-5/6 absolute md:relative z-10 bg-transparent bg-opacity-0 text-white md:text-black">
           {instructions[scores.length] !== undefined && (
             <Information
               moveJudge={moveJudge}
@@ -197,7 +197,7 @@ const Training = () => {
             />
           )}
         </div>
-        <div className="w-1/2 mx-2 rounded-xl h-5/6">
+        <div className="w-full md:w-1/2 mx-2 rounded-xl h-5/6">
           <PoseEstimation setPoseLandmarks={setPoseLandmarks} />
         </div>
       </div>
