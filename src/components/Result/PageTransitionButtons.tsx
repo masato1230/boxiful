@@ -25,18 +25,18 @@ const PageTransitionButtons = () => {
 
   return (
     <div className="md:flex">
-      <button
-        className="block w-full md:w-1/2 bg-yellow-500 hover:bg-yellow-700 text-white text-center py-2 px-3 rounded text-sm mt-5 mx-1"
+      <div
+        className="block md:w-1/2 bg-yellow-500 hover:bg-yellow-700 text-white text-center py-1 md:py-2 rounded text-xs md:text-sm mt-3 md:mt-5 mx-1"
         onClick={backToDashboard}
       >
         ダッシュボードに戻る
-      </button>
-      <button
-        className="block w-full md:w-1/2 bg-gray-500 hover:bg-gray-700 text-white text-center py-2 px-3 rounded text-sm mt-5 mx-1"
+      </div>
+      <div
+        className="block md:w-1/2 bg-gray-500 hover:bg-gray-700 text-white text-center py-1 md:py-2 rounded text-xs md:text-sm mt-3 md:mt-5 mx-1"
         onClick={onAgainClick}
       >
         もう一度同じメニュー
-      </button>
+      </div>
     </div>
   );
 };

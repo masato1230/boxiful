@@ -33,7 +33,7 @@ const BrowserBackModal: React.FC<BrowserBackModalProps> = ({
           spacing={100}
           size="50%"
         />
-        <h2 className="text-3xl font-bold text-center my-5">
+        <h2 className="text-xl md:text-3xl font-bold text-center my-5">
           トレーニング画面には戻れません。
         </h2>
         <p>

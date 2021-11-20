@@ -31,7 +31,7 @@ const ResultDetail = () => {
   return (
     <div>
       <div className="bg-white rounded-lg shadow-lg p-5">
-        <h1 className="text-xl font-bold">結果詳細</h1>
+        <h1 className="text-base md:text-xl font-bold">結果詳細</h1>
         <div className="mt-4 mb-2">
           <div className="w-full h-3 rounded-lg bg-gray-500 mt-2 overflow-hidden relative">
             <div
@@ -78,15 +78,15 @@ const ResultDetail = () => {
         </h3>
         <div className="border-1 border my-2"></div>
         <div>
-          <FaFire className="text-red-500 inline-block h-12 mx-2" />
-          <div className="font-semibold inline-block text-lg">消費カロリー</div>
+          <FaFire className="text-red-500 inline-block h-8 md:h-12 mx-2" />
+          <div className="font-semibold inline-block text-base md:text-lg">消費カロリー</div>
           <div className="inline-block float-right pt-2">
             {calculateTotalCalorieFromInstructions(instructions)} kcal
           </div>
         </div>
         <div>
-          <SiWebmoney className="text-yellow-500 inline-block h-12 mx-2" />
-          <div className="font-semibold inline-block text-lg">ポイント</div>
+          <SiWebmoney className="text-yellow-500 inline-block h-8 md:h-12 mx-2" />
+          <div className="font-semibold inline-block text-base md:text-lg">ポイント</div>
           <div className="inline-block float-right pt-2">
             {Math.round(scores.reduce((acc, cur) => acc + cur, 0) / 10)} ポイント
           </div>

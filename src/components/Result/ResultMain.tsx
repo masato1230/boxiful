@@ -36,14 +36,14 @@ const ResultMain: React.FC<ResultMainProps> = ({ score, doughnutChartRef }) => {
 
   return (
     <div
-      className="py-5"
+      className="md:py-5"
       style={{ minHeight: doughnutChartRef.current?.style.height || 0 }}
     >
-      <p className="text-2xl font-medium">あなたのボクシフル年齢は</p>
-      <h2 className="text-5xl font-bold text-center w-full mt-2 py-10">
+      <p className="text-lg md:text-2xl font-medium">あなたのボクシフル年齢は</p>
+      <h2 className="text-5xl font-bold text-center w-full md:mt-2 pt-2 pb-5 md:py-10">
         {calculateBoxfulAge(score)}歳です。
       </h2>
-      <p className="text-xs ml-10 w-full">
+      <p className="text-xs md:ml-10 w-full">
         ボクシフル年齢はあなたの瞬発力と体力を評価した年齢です。
       </p>
       <PageTransitionButtons />
