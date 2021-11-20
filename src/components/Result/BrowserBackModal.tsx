@@ -20,7 +20,7 @@ const BrowserBackModal: React.FC<BrowserBackModalProps> = ({
       onClick={onCloseClick}
     >
       <div
-        className="bg-white w-1/2 rounded-xl p-10 m-auto relative"
+        className="bg-white w-5/6 md:w-2/3 rounded-xl p-10 m-auto relative"
         style={{ marginTop: '10%' }}
       >
         <IoClose
@@ -33,7 +33,7 @@ const BrowserBackModal: React.FC<BrowserBackModalProps> = ({
           spacing={100}
           size="50%"
         />
-        <h2 className="text-3xl font-bold text-center my-5">
+        <h2 className="text-xl md:text-3xl font-bold text-center my-5">
           トレーニング画面には戻れません。
         </h2>
         <p>
