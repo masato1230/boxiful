@@ -161,7 +161,7 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
         <React.Fragment>
           <div className="h-full w-full relative">
             <canvas
-              className="pose-estimation-canvas object-cover rounded-xl h-full w-full"
+              className="pose-estimation-canvas object-contain md:object-cover rounded-xl h-full w-full"
               ref={canvasRef}
               width="1280px"
               height="720px"
