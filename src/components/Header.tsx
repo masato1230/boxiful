@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { GiBoxingGlove } from 'react-icons/gi';
 import { BsGrid1X2Fill } from 'react-icons/bs';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
@@ -16,6 +16,7 @@ const Header = () => {
   // hooks
   const { isLoggedIn, logout } = useIsLoggedIn();
   const backToDashboard = useReload();
+  const history = useHistory();
 
   // States
   const [isShowDescriptions, setIsShowDescriptions] = useState(false);
@@ -38,7 +39,8 @@ const Header = () => {
 
   // Show description modal if use is not logged in
   useEffect(() => {
-    if (!isLoggedIn) {
+    console.log(history.location);
+    if (!isLoggedIn && history.location.pathname !== '/privacy') {
       setIsShowDescriptions(true);
     } else {
       setIsShowDescriptions(false);
