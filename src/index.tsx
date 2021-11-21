@@ -20,6 +20,7 @@ import { ACCESS_TOKEN, REFRESH_TOKEN } from './constants/cookieKeys';
 import TrainingResultBuffer from './components/Result/TrainingResultBuffer';
 import Footer from './components/Footer';
 import GoogleAnalytics from './components/GoogleAnalytics';
+import Privacy from './components/Privacy/Privacy';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -85,6 +86,10 @@ const App = () => {
             <Route path="/training_to_result">
               <TrainingResultBuffer />
             </Route>
+            <Route path="/privacy">
+              <Privacy />
+            </Route>
+            {/* 404 */}
             <Route path="*">
               <Redirect to="/" />
             </Route>
