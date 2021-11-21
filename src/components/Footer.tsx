@@ -14,7 +14,7 @@ const Footer = () => {
 
   return (
     <footer className="footer">
-      <div className="container mx-auto px-6">
+      <div className="px-6">
         <div className="mt-1 border-t-2 border-gray-300 flex">
           <div className="w-1/3 text-center py-6">
             {isLoggedIn && (
