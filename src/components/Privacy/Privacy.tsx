@@ -3,7 +3,7 @@ import { privaciesData } from '../../models/privacies';
 
 const Privacy = () => {
   return (
-    <main className="container p-8">
+    <main className="container mx-auto p-8">
       <h1 className="text-3xl font-bold">プライバシーポリシー</h1>
       <hr className="border-4 border-yellow-500 my-3" />
       {privaciesData.map((privacySet, index) => {
