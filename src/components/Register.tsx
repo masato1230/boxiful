@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 import { GiBoxingGlove } from 'react-icons/gi';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
 import API from '../api';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants/cookieKeys';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
@@ -125,6 +126,12 @@ const Register = () => {
                     アカウント作成
                   </button>
                 </div>
+                <Link target="_blank" className="block mt-3 text-center text-xs" to="/privacy">
+                  プライバシーポリシーは
+                  <span className="rounded text-blue-500 hover:text-white hover:bg-blue-500 duration-300">
+                    こちら
+                  </span>
+                </Link>
               </form>
             </div>
           </div>
