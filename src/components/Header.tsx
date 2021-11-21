@@ -39,7 +39,6 @@ const Header = () => {
 
   // Show description modal if use is not logged in
   useEffect(() => {
-    console.log(history.location);
     if (!isLoggedIn && history.location.pathname !== '/privacy') {
       setIsShowDescriptions(true);
     } else {
