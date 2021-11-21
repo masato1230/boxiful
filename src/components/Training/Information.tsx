@@ -151,7 +151,8 @@ const Information: React.FC<InformationProps> = ({ moveJudge }) => {
         <instruction.icon
           color={determineInstructionColor(instruction)}
           size="250"
-          className="w-40 h-40 md:w-auto md:w-auto bg-white rounded-full"
+          key={scores.length}
+          className="instruction-icon w-40 h-40 md:w-auto md:w-auto bg-white rounded-full"
         />
       </div>
       <div className="h-1/6 px-5">
