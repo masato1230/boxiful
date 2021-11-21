@@ -30,7 +30,7 @@ const Status = () => {
 
   return (
     <React.Fragment>
-      <div className="container mx-auto px-3">
+      <div className="container mx-auto px-5 md:px-10">
         {isLoggedIn && <CalendarHeatmapContainer />}
         <MenuCards />
       </div>

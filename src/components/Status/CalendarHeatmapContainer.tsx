@@ -16,10 +16,11 @@ const CalendarHeatmapContainer = () => {
   const [values, setValues] = useState<CalendarHeatmapValue[]>([]);
   const { trainingResults } = useTrainingResult();
 
-  // Return 365 days before
+  // Return 365 days before if user uses pc or tablet, else return 90days
   const calculateStartDate = () => {
     const startDate = new Date();
-    startDate.setDate(startDate.getDay() - 365);
+    const dateLength = window.innerWidth > 768 ? 365 : 90;
+    startDate.setDate(startDate.getDay() - dateLength);
     return startDate;
   };
 
@@ -101,38 +102,41 @@ const CalendarHeatmapContainer = () => {
   }, [trainingResults]);
 
   return (
-    <div className="px-10">
-      <div className="mt-5 pt-4 pl-10 pr-10 shadow-lg rounded">
-        <div className="my-3">
-          <div>
-            <BsFillCalendar2CheckFill className="text-xs md:text-base inline-block h-6 align-middle text-green-600" />
-            <p className="text-xs md:text-base ml-3 inline-block h-6 align-middle">
-              これまでのトレーニング回数 {trainingResults.length} 回
-            </p>
-          </div>
-          <div>
-            <SiWebmoney className="text-xs md:text-base inline-block h-6 align-middle text-yellow-500" />
-            <p className="text-xs md:text-base ml-3 inline-block h-6 align-middle">
-              累計ボクシフルポイント　
+    <div className="mt-5 pt-4 px-5 md:px-10 shadow-lg rounded">
+      <div className="my-3">
+        <div>
+          <p className="text-xs md:text-base inline-block h-6 align-middle font-bold mb-2">
+            <BsFillCalendar2CheckFill className="text-xl mr-3 inline-block h-6 align-middle text-green-600" />
+            <span className="hidden md:inline-block">これまでの</span>
+            トレーニング回数
+            <span className="ml-5">{trainingResults.length} 回</span>
+          </p>
+        </div>
+        <div>
+          <p className="text-xs md:text-base inline-block h-6 align-middle font-bold">
+            <SiWebmoney className="text-xl mr-3 inline-block h-6 align-middle text-yellow-500" />
+            累計<span className="hidden md:inline-block">ボクシフル</span>
+            ポイント　
+            <span className="ml-5">
               {trainingResults &&
                 trainingResults.length > 0 &&
                 trainingResults
                   .map((trainingResult) => trainingResult.point)
-                  .reduce((acc, current) => acc + current)}
+                  .reduce((acc, current) => acc + current)}{' '}
               ポイント
-            </p>
-          </div>
+            </span>
+          </p>
         </div>
-        <CalendarHeatmap
-          startDate={calculateStartDate()}
-          endDate={new Date()}
-          values={values}
-          classForValue={valueToColorClass}
-          tooltipDataAttrs={setTooltipDataAttrs}
-          showMonthLabels={true}
-          showWeekdayLabels={true}
-        />
       </div>
+      <CalendarHeatmap
+        startDate={calculateStartDate()}
+        endDate={new Date()}
+        values={values}
+        classForValue={valueToColorClass}
+        tooltipDataAttrs={setTooltipDataAttrs}
+        showMonthLabels={true}
+        showWeekdayLabels={true}
+      />
     </div>
   );
 };
