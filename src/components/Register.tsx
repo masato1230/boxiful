@@ -126,12 +126,12 @@ const Register = () => {
                     アカウント作成
                   </button>
                 </div>
-                <Link target="_blank" className="block mt-3 text-center text-xs" to="/privacy">
+                <p className="block mt-3 text-center text-xs">
                   プライバシーポリシーは
-                  <span className="rounded text-blue-500 hover:text-white hover:bg-blue-500 duration-300">
+                  <Link target="_blank"  to="/privacy" className="rounded text-blue-500 hover:text-white hover:bg-blue-500 duration-300 cursor-pointer">
                     こちら
-                  </span>
-                </Link>
+                  </Link>
+                </p>
               </form>
             </div>
           </div>

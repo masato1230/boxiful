@@ -92,14 +92,14 @@ const Login = () => {
                   </button>
                 </div>
               </form>
-              {/* <div className="text-center mt-4">
-                <a
-                  className="no-underline hover:underline text-blue-dark text-xs"
-                  href="{{ route('password.request') }}"
-                >
-                  パスワードを忘れた場合はこちら
-                </a>
-              </div> */}
+              <div className="text-center mt-4">
+                <p className="block mt-3 text-center text-xs">
+                  パスワードを忘れた場合は
+                  <a target="_blank" href="https://masato.pythonanywhere.com/users/password_reset" className="rounded text-blue-500 hover:text-white hover:bg-blue-500 duration-300 cursor-pointer">
+                    こちら
+                  </a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
