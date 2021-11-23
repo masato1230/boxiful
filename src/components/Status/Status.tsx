@@ -6,7 +6,7 @@ import { createInstructionsFromMenu } from '../../state';
 import MenuCards from './MenuCards';
 import CalendarHeatmapContainer from './CalendarHeatmapContainer';
 import { useIsLoggedIn } from '../../hooks/useIsLoggedIn';
-import './Status.css';
+import SlideBackground from '../backgrounds/SlideBackground';
 
 const Status = () => {
   // Redux - get actionCreators adn states
@@ -38,11 +38,7 @@ const Status = () => {
         {isLoggedIn && <CalendarHeatmapContainer />}
         <MenuCards />
       </div>
-      <div className="bg-wrapper h-full w-full">
-        <div className="bg"></div>
-        <div className="bg bg2"></div>
-        <div className="bg bg3"></div>
-      </div>
+      <SlideBackground />
     </React.Fragment>
   );
 };
