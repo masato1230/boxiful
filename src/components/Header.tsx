@@ -39,7 +39,7 @@ const Header = () => {
 
   // Show description modal if use is not logged in
   useEffect(() => {
-    if (!isLoggedIn && history.location.pathname !== '/privacy') {
+    if (!isLoggedIn && history.location.pathname === '/') {
       setIsShowDescriptions(true);
     } else {
       setIsShowDescriptions(false);
@@ -77,13 +77,13 @@ const Header = () => {
                 About
               </button>
               <button
-                className="text-xs md:text-base text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-medium"
+                className="md:text-sm text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-semibold"
                 onClick={onJudgeClick}
               >
                 パンチ/キックの判定
               </button>
               <button
-                className="text-xs md:text-base text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-medium"
+                className="md:text-sm text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-semibold"
                 onClick={onAccountManagementClick}
               >
                 アカウントについて
