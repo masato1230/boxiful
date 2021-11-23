@@ -19,7 +19,8 @@ const CalendarHeatmapContainer = () => {
   // Return 365 days before if user uses pc or tablet, else return 90days
   const calculateStartDate = () => {
     const startDate = new Date();
-    const dateLength = window.innerWidth > 768 ? 180 : 90;
+    const dateLength =
+      window.innerWidth < 768 ? 90 : window.innerWidth < 1024 ? 180 : 365;
     startDate.setDate(startDate.getDay() - dateLength);
     return startDate;
   };
