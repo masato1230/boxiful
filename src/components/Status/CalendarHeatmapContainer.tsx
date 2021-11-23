@@ -105,7 +105,7 @@ const CalendarHeatmapContainer = () => {
   return (
     <Fragment>
       <h2 className="text-xl pt-3 mb-3 font-bold">トレーニング記録</h2>
-      <div className="px-5 md:px-10 shadow-lg rounded">
+      <div className="px-5 md:px-10 shadow-lg rounded-xl pt-5 bg-white">
         <div className="my-3">
           <div>
             <p className="text-xs md:text-base inline-block h-6 align-middle mb-2">
