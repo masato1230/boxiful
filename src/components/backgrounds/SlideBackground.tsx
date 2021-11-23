@@ -1,4 +1,4 @@
-import './SlideBackground'
+import './SlideBackground.css'
 
 const SlideBackground = () => {
   return (
