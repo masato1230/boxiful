@@ -134,6 +134,7 @@ const CalendarHeatmapContainer = () => {
           startDate={calculateStartDate()}
           endDate={new Date()}
           values={values}
+          gutterSize={3}
           classForValue={valueToColorClass}
           tooltipDataAttrs={setTooltipDataAttrs}
           showMonthLabels={true}
