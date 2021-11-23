@@ -33,7 +33,7 @@ const MenuCard: React.FC<MenuCardProps> = ({ menuThumbnail, menu }) => {
     <button
       onClick={onMenuClick}
       data-tip="トレーニング開始! 音楽が流れます"
-      className="rounded overflow-hidden shadow-lg bg-white hover:bg-gray-200 hover:shadow-xl-5 focus:outline-none focus:ring-4 focus:ring-yellow-500 focus:ring-opacity-50"
+      className="rounded-lg overflow-hidden shadow-lg bg-white hover:bg-gray-200 hover:shadow-xl-5 focus:outline-none focus:ring-4 focus:ring-yellow-500 focus:ring-opacity-50"
     >
       <img
         className="h-48 md:h-auto lg:h-auto xl:h-auto 2xl:h-auto xl w-full object-contain"
