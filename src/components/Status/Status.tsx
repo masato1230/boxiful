@@ -5,6 +5,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { createInstructionsFromMenu } from '../../state';
 import MenuCards from './MenuCards';
 import CalendarHeatmapContainer from './CalendarHeatmapContainer';
+import GetStarted from './GetStarted';
 import { useIsLoggedIn } from '../../hooks/useIsLoggedIn';
 import SlideBackground from '../backgrounds/SlideBackground';
 
@@ -35,7 +36,7 @@ const Status = () => {
         <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-500">
           {isLoggedIn ? 'Dash Board' : 'メニュー選択'}
         </h1>
-        {isLoggedIn && <CalendarHeatmapContainer />}
+        {isLoggedIn ? <CalendarHeatmapContainer /> : <GetStarted />}
         <MenuCards />
       </div>
       <SlideBackground />
