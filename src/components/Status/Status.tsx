@@ -5,7 +5,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { createInstructionsFromMenu } from '../../state';
 import MenuCards from './MenuCards';
 import CalendarHeatmapContainer from './CalendarHeatmapContainer';
-import GetStarted from './GetStarted';
+import GetStarted from './GetStarted/GetStarted';
 import { useIsLoggedIn } from '../../hooks/useIsLoggedIn';
 import SlideBackground from '../backgrounds/SlideBackground';
 

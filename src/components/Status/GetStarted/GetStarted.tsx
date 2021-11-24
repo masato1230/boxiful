@@ -1,10 +1,8 @@
 import { Tabs, Tab } from '@mui/material';
 import { Box } from '@mui/system';
 import { Fragment, useState } from 'react';
-import kickImg from '../../images/overallDescriptionThumbnail.svg';
-import { aboutDescriptionPages } from '../../models/descriptionPage';
-import DescriptionPage from '../Descriptions/DescriptionPage';
-import DescriptionTabs from '../Descriptions/DescriptionTabs';
+import { aboutDescriptionPages } from '../../../models/descriptionPage';
+import GetStartedPage from './GetStartedPage';
 
 const GetStarted = () => {
   const [value, setValue] = useState(0);
@@ -15,6 +13,10 @@ const GetStarted = () => {
 
   const onNextClick = () => {
     setValue(value + 1);
+  };
+
+  const onPreviousClick = () => {
+    setValue(value - 1);
   };
 
   return (
@@ -43,7 +45,7 @@ const GetStarted = () => {
           </Box>
           {aboutDescriptionPages.map((descriptionPage, index) => {
             return (
-              <DescriptionPage
+              <GetStartedPage
                 key={descriptionPage.tabTitle}
                 value={value}
                 index={index}
@@ -51,21 +53,27 @@ const GetStarted = () => {
               />
             );
           })}
-          <div className="flex flex-row-reverse">
-            {value !== aboutDescriptionPages.length - 1 ? (
-              <button
-                className="font-bold text-sm text-center mt-5 px-2 py-1 rounded-xl hover:bg-gray-400"
-                onClick={onNextClick}
-              >
-                次へ
-              </button>
-            ) : (
-              <button
-                className="font-bold text-sm text-center mt-5 px-2 py-1 rounded-xl hover:bg-gray-400"
-              >
-                閉じる
-              </button>
-            )}
+          <div
+            className={`${
+              value === 0 && 'flex-row-reverse'
+            } flex justify-between`}
+          >
+            <button
+              className={`${
+                value === 0 && 'hidden'
+              } font-bold text-sm text-center mt-5 px-2 py-1 rounded-xl hover:bg-gray-400`}
+              onClick={onPreviousClick}
+            >
+              前へ
+            </button>
+            <button
+              className={`${
+                value === aboutDescriptionPages.length - 1 && 'hidden'
+              } font-bold text-sm text-center mt-5 px-2 py-1 rounded-xl hover:bg-gray-400`}
+              onClick={onNextClick}
+            >
+              次へ
+            </button>
           </div>
         </Box>
       </div>
