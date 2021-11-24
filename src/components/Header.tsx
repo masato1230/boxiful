@@ -37,14 +37,14 @@ const Header = () => {
     setIsShowAccountManageDesc(true);
   };
 
-  // Show description modal if use is not logged in
-  useEffect(() => {
-    if (!isLoggedIn && history.location.pathname === '/') {
-      setIsShowDescriptions(true);
-    } else {
-      setIsShowDescriptions(false);
-    }
-  }, [isLoggedIn]);
+  // // Show description modal if use is not logged in
+  // useEffect(() => {
+  //   if (!isLoggedIn && history.location.pathname === '/') {
+  //     setIsShowDescriptions(true);
+  //   } else {
+  //     setIsShowDescriptions(false);
+  //   }
+  // }, [isLoggedIn]);
 
   return (
     <React.Fragment>
