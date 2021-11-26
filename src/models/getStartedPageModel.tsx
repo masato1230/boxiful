@@ -3,6 +3,7 @@ import overallDescriptionThumbnail from '../images/overallDescriptionThumbnail.s
 import selectTrainingThumbnail from '../images/selectTrainingDescriptionThumbnail.png';
 import askCameraAccessImage from '../images/askCameraAccess.png';
 import trainingScreenThumbnail from '../images/TrainingScreenDescriptionThumbnail.png';
+import resultThumbnail from '../images/resultDescriptionThumbnail.png';
 
 export default interface getStartedPageModel {
   tabTitle: string;
@@ -60,7 +61,7 @@ const secondAllowCameraAccess: getStartedPageModel = {
           alt="カメラの使用を許可"
         />
         <p>
-          トレーニング中はPCのカメラを利用して体の動きを判定します。カメラの利用を許可するか拒否するかのダイアログが表示されるので、カメラの利用を許可してください。
+          トレーニング中はPCのカメラを利用して体の動きを判定します。トレーニング画面に移動すると、カメラの利用を許可するか拒否するかのダイアログが表示されるので、カメラの利用を許可してください。
         </p>
       </div>
       <p className="text-xs">
@@ -74,10 +75,35 @@ const thirdStartTraining: getStartedPageModel = {
   tabTitle: '3. トレーニング開始',
   content: (
     <Fragment>
-      <p>カメラの使用を許可したら、いよいよトレーニング開始です。画面から2mくらい離れて、体の膝から上がカメラに映るようにしましょう。</p>
-      <img className="h-56 mx-auto" src={trainingScreenThumbnail} alt="トレーニング画面" />
-      <p className="mb-5">画面の左側にキックやパンチの指示が表示され、右側にはカメラの映像が表示されます。</p>
+      <p>
+        カメラの使用を許可したら、いよいよトレーニング開始です。画面から2mくらい離れて、体の膝から上がカメラに映るようにしましょう。
+      </p>
+      <img
+        className="h-56 mx-auto"
+        src={trainingScreenThumbnail}
+        alt="トレーニング画面"
+      />
+      <p className="mb-5">
+        画面の左側にキックやパンチの指示が表示され、右側にはカメラの映像が表示されます。
+      </p>
       <p className="text-xs">* 画面の読み込みには通常5秒ほどかかります。</p>
+    </Fragment>
+  ),
+};
+
+const forthCheckResult: getStartedPageModel = {
+  tabTitle: '4. 結果の確認',
+  content: (
+    <Fragment>
+      <img
+        className="h-56 mx-auto"
+        src={resultThumbnail}
+        alt="トレーニング画面"
+      />
+      <p>トレーニングを最後まで実施すると、結果が表示されます。</p>
+      <p>
+        消費カロリーやボクシフル年齢を確認しましょう。また、結果はTwitterやLineで共有することができます。
+      </p>
     </Fragment>
   ),
 };
@@ -87,4 +113,5 @@ export const getStartedPageModels = [
   firstSelectMenu,
   secondAllowCameraAccess,
   thirdStartTraining,
+  forthCheckResult,
 ];
