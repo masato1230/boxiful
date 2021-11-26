@@ -2,6 +2,7 @@ import { Tabs, Tab } from '@mui/material';
 import { Box } from '@mui/system';
 import { Fragment, useState } from 'react';
 import { aboutDescriptionPages } from '../../../models/descriptionPage';
+import { getStartedPageModels } from '../../../models/getStartedPageModel';
 import GetStartedPage from './GetStartedPage';
 
 const GetStarted = () => {
@@ -33,23 +34,23 @@ const GetStarted = () => {
               scrollButtons="auto"
               onChange={handleChange}
             >
-              {aboutDescriptionPages.map((descriptionPage) => {
+              {getStartedPageModels.map((getStartedPageModel) => {
                 return (
                   <Tab
-                    key={descriptionPage.tabTitle}
-                    label={descriptionPage.tabTitle}
+                    key={getStartedPageModel.tabTitle}
+                    label={getStartedPageModel.tabTitle}
                   />
                 );
               })}
             </Tabs>
           </Box>
-          {aboutDescriptionPages.map((descriptionPage, index) => {
+          {getStartedPageModels.map((getStartedPageModel, index) => {
             return (
               <GetStartedPage
-                key={descriptionPage.tabTitle}
+                key={getStartedPageModel.tabTitle}
                 value={value}
                 index={index}
-                descriptionPage={descriptionPage}
+                getStartedPageModel={getStartedPageModel}
               />
             );
           })}
@@ -68,7 +69,7 @@ const GetStarted = () => {
             </button>
             <button
               className={`${
-                value === aboutDescriptionPages.length - 1 && 'hidden'
+                value === getStartedPageModels.length - 1 && 'hidden'
               } font-bold text-sm text-center mt-5 px-2 py-1 rounded-xl hover:bg-gray-400`}
               onClick={onNextClick}
             >
