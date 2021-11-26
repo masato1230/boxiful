@@ -22,7 +22,7 @@ const GetStartedPage: React.FC<GetStartedPageProps> = ({
       hidden={value !== index}
     >
       <Box sx={{ p: 3 }}>
-        <h2 className="font-bold text-xl mb-5">{getStartedPageModel.tabTitle}</h2>
+        <h2 className="font-bold md:text-xl mb-5">{getStartedPageModel.tabTitle}</h2>
         {getStartedPageModel.content}
       </Box>
     </div>
