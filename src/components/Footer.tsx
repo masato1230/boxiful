@@ -34,7 +34,7 @@ const Footer = () => {
         </div>
         <div className="w-1/3 text-center py-6">
           <p className="text-sm text-gray-500 font-bold mb-2">
-            © 2021 by Masato
+            © 2021 by Makkori
           </p>
         </div>
         <div className="w-1/3 py-6 text-center">
