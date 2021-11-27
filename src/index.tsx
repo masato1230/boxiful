@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Redirect, useHistory } from 'react-router';
-import { Router, BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Redirect } from 'react-router';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import Header from './components/Header';
@@ -21,7 +21,8 @@ import TrainingResultBuffer from './components/Result/TrainingResultBuffer';
 import Footer from './components/Footer';
 import GoogleAnalytics from './components/GoogleAnalytics';
 import Privacy from './components/Privacy/Privacy';
-import About from './components/About/About'; 
+import About from './components/About/About';
+import ContactForm from './components/ContactForm';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -92,6 +93,9 @@ const App = () => {
             </Route>
             <Route path="/privacy">
               <Privacy />
+            </Route>
+            <Route path="/contact-form">
+              <ContactForm />
             </Route>
             {/* 404 */}
             <Route path="*">
