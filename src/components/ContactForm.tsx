@@ -9,6 +9,22 @@ const ContactForm = () => {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
 
+  const onChangeLastName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setLastName(e.target.value);
+  };
+
+  const onChangeFirstName = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFirstName(e.target.value);
+  };
+
+  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  };
+
+  const onChangeMessage = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(e.target.value);
+  };
+
   return (
     <Fragment>
       <div className="container mx-auto px-5 md:px-10 min-h-screen">
@@ -27,13 +43,17 @@ const ContactForm = () => {
                       苗字
                     </label>
                     <input
-                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+                      className="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
                       type="text"
                       placeholder="山田"
+                      value={lastName}
+                      onChange={onChangeLastName}
                     />
-                    <p className="text-red-500 text-xs italic">
-                      苗字を入力してください。
-                    </p>
+                    {lastName === '' && (
+                      <p className="text-red-500 text-xs italic">
+                        苗字を入力してください。
+                      </p>
+                    )}
                   </div>
                   <div className="w-full md:w-1/2 px-3">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -43,7 +63,14 @@ const ContactForm = () => {
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       type="text"
                       placeholder="太郎"
+                      value={firstName}
+                      onChange={onChangeFirstName}
                     />
+                    {firstName === '' && (
+                      <p className="text-red-500 text-xs italic">
+                        名前を入力してください。
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
@@ -55,7 +82,14 @@ const ContactForm = () => {
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       type="email"
                       placeholder="example@yahoo.co.jp"
+                      value={email}
+                      onChange={onChangeEmail}
                     />
+                    {email === '' && (
+                      <p className="text-red-500 text-xs italic">
+                        メールアドレスを入力してください。
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-wrap -mx-3 mb-6">
@@ -64,8 +98,15 @@ const ContactForm = () => {
                       お問い合わせ内容
                     </label>
                     <textarea
+                      value={message}
+                      onChange={onChangeMessage}
                       className=" no-resize appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 h-48 resize-none"
                     ></textarea>
+                    {message === '' && (
+                      <p className="text-red-500 text-xs italic">
+                        お問合せ内容を入力してください。
+                      </p>
+                    )}
                   </div>
                 </div>
                 <div className="md:flex md:items-center">
