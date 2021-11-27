@@ -5,6 +5,7 @@ import askCameraAccessImage from '../images/askCameraAccess.png';
 import trainingScreenThumbnail from '../images/TrainingScreenDescriptionThumbnail.png';
 import resultThumbnail from '../images/resultDescriptionThumbnail.png';
 import trainingRecordsImage from '../images/trainingRecords.png';
+import playingImage from '../images/playing.png';
 
 export default interface getStartedPageModel {
   tabTitle: string;
@@ -79,7 +80,7 @@ const thirdStartTraining: getStartedPageModel = {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
         <img
           className="max-h-48 mx-auto object-contain"
-          src={trainingScreenThumbnail}
+          src={playingImage}
           alt="トレーニング画面"
         />
         <div className="text-sm md:text-base">
