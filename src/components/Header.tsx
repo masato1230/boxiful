@@ -16,10 +16,8 @@ const Header = () => {
   // hooks
   const { isLoggedIn, logout } = useIsLoggedIn();
   const backToDashboard = useReload();
-  const history = useHistory();
 
   // States
-  const [isShowDescriptions, setIsShowDescriptions] = useState(false);
   const [isShowJudgeDesc, setIsShowJudgeDesc] = useState(false);
   const [isShowAccountManageDesc, setIsShowAccountManageDesc] = useState(false);
 
@@ -27,24 +25,12 @@ const Header = () => {
   const onLogoutClick = () => {
     logout();
   };
-  const onAboutClick = () => {
-    setIsShowDescriptions(true);
-  };
   const onJudgeClick = () => {
     setIsShowJudgeDesc(true);
   };
   const onAccountManagementClick = () => {
     setIsShowAccountManageDesc(true);
   };
-
-  // // Show description modal if use is not logged in
-  // useEffect(() => {
-  //   if (!isLoggedIn && history.location.pathname === '/') {
-  //     setIsShowDescriptions(true);
-  //   } else {
-  //     setIsShowDescriptions(false);
-  //   }
-  // }, [isLoggedIn]);
 
   return (
     <React.Fragment>
@@ -70,12 +56,12 @@ const Header = () => {
             </div>
             {/* <!-- Secondary Navbar items --> */}
             <div className="flex items-center space-x-3">
-              <button
+              <Link
                 className="text-xs md:text-base text-gray-500 hover:text-black duration-300 px-2 py-2 font-medium"
-                onClick={onAboutClick}
+                to="/about"
               >
                 About
-              </button>
+              </Link>
               <button
                 className="md:text-sm text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-semibold"
                 onClick={onJudgeClick}
@@ -128,12 +114,6 @@ const Header = () => {
           </div>
         </div>
       </nav>
-      {isShowDescriptions && (
-        <Descriptions
-          descriptionPages={aboutDescriptionPages}
-          setIsShowDescriptions={setIsShowDescriptions}
-        />
-      )}
       {isShowJudgeDesc && (
         <Descriptions
           descriptionPages={judgeDescriptionPages}
