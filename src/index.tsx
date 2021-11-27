@@ -21,6 +21,7 @@ import TrainingResultBuffer from './components/Result/TrainingResultBuffer';
 import Footer from './components/Footer';
 import GoogleAnalytics from './components/GoogleAnalytics';
 import Privacy from './components/Privacy/Privacy';
+import About from './components/About/About'; 
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -64,6 +65,9 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <Status />
+            </Route>
+            <Route path="/about">
+              <About />
             </Route>
             <Route path="/training">
               <Training />
