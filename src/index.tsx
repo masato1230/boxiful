@@ -23,6 +23,7 @@ import GoogleAnalytics from './components/GoogleAnalytics';
 import Privacy from './components/Privacy/Privacy';
 import About from './components/About/About';
 import ContactForm from './components/ContactForm';
+import AboutJudge from './components/AboutJudge';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -69,6 +70,9 @@ const App = () => {
             </Route>
             <Route path="/about">
               <About />
+            </Route>
+            <Route path="/about_judge">
+              <AboutJudge />
             </Route>
             <Route path="/training">
               <Training />
