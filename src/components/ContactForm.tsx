@@ -1,6 +1,7 @@
 import { Fragment, useState } from 'react';
 import SlideBackground from './backgrounds/SlideBackground';
 import questionImage from '../images/question.svg';
+import API from '../api';
 
 const ContactForm = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -25,6 +26,32 @@ const ContactForm = () => {
     setMessage(e.target.value);
   };
 
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (lastName !== '' &&
+    firstName !== '' &&
+    email !== '' &&
+    message !== ''
+    ) {
+      //TODO: バックエンドに送信
+      API.post('/contact_form/handle_contact_form/', {
+        'last_name': lastName,
+        'first_name': firstName,
+        email,
+        message
+      }).then(() => {
+        setIsSubmitted(true);
+        // reset forms
+        setLastName(' ');
+        setFirstName(' ');
+        setEmail(' ');
+        setMessage(' ');
+      }).catch((error) => {
+        console.log(error);
+      })
+    }
+  };
+
   return (
     <Fragment>
       <div className="container mx-auto px-5 md:px-10 min-h-screen">
@@ -34,9 +61,9 @@ const ContactForm = () => {
         <section className="mb-10">
           <h2 className="text-xl pt-3 mb-3 font-bold">お問合わせ</h2>
           <div className="rounded-lg shadow-xl bg-white p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5">
-              <img src={questionImage} alt="質問" />
-              <form className="w-full max-w-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 p-5 items-center">
+              <img className="hidden md:block" src={questionImage} alt="質問" />
+              <form className="w-full max-w-lg" onSubmit={handleSubmit}>
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                     <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -109,16 +136,21 @@ const ContactForm = () => {
                     )}
                   </div>
                 </div>
-                <div className="md:flex md:items-center">
+                <div className="md:flex md:items-center mb-5">
                   <div className="md:w-1/3">
                     <button
                       className="shadow bg-yellow-500 hover:bg-yellow-300 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
-                      type="button"
+                      type="submit"
                     >
                       送信
                     </button>
                   </div>
                 </div>
+                  {isSubmitted && (
+                    <p className="text-green-400 text-lg text-bold">
+                      ありがとうございます。お問合せ内容を受け付けました。
+                    </p>
+                  )}
               </form>
             </div>
           </div>
