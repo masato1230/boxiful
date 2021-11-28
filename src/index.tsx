@@ -24,6 +24,7 @@ import Privacy from './components/Privacy/Privacy';
 import About from './components/About/About';
 import ContactForm from './components/ContactForm';
 import AboutJudge from './components/AboutJudge';
+import AboutAccount from './components/AboutAccount';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -73,6 +74,9 @@ const App = () => {
             </Route>
             <Route path="/about_judge">
               <AboutJudge />
+            </Route>
+            <Route path="/about_account">
+              <AboutAccount />
             </Route>
             <Route path="/training">
               <Training />
