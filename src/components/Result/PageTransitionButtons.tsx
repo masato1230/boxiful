@@ -2,7 +2,7 @@ import { useActions } from "../../hooks/useActions";
 import { useHistory } from "react-router";
 import { createInstructionsFromMenu } from "../../state";
 import { useTypedSelector } from "../../hooks/useTypedSelector";
-import { useReload } from "../../hooks/useReload";
+import { useCameraResetReload } from "../../hooks/useCameraResetReload";
 
 const PageTransitionButtons = () => {
   // reducer
@@ -11,7 +11,7 @@ const PageTransitionButtons = () => {
     return state.training;
   });
   const { setInstructions, resetScores } = useActions();
-  const backToDashboard = useReload();
+  const backToDashboard = useCameraResetReload();
 
   const history = useHistory();
 

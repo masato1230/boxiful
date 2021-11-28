@@ -13,7 +13,7 @@ import { Camera } from '@mediapipe/camera_utils';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 import { raisePoseEstimationPositionWarnings } from '../../utils/warnings';
 import './PoseEstimation.css';
-import { useReload } from '../../hooks/useReload';
+import { useCameraResetReload } from '../../hooks/useCameraResetReload';
 
 interface PoseEstimationProps {
   setPoseLandmarks: React.Dispatch<
@@ -26,7 +26,7 @@ const PoseEstimation: React.FC<PoseEstimationProps> = ({
 }) => {
   const [isMediaPipeLoading, setIsMediaPipeLoading] = useState(true);
   const [warning, setWarning] = useState<string | null>(null);
-  const backToDashboard = useReload();
+  const backToDashboard = useCameraResetReload();
   const videoRef = useRef<any>();
   const canvasRef = useRef<any>();
 

@@ -2,7 +2,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { GiBoxingGlove } from 'react-icons/gi';
 import { BsGrid1X2Fill } from 'react-icons/bs';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
-import { useReload } from '../hooks/useReload';
 import ReactTooltip from 'react-tooltip';
 import React, { useEffect, useState } from 'react';
 import Descriptions from './Descriptions/Descriptions';
