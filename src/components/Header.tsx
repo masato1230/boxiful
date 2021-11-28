@@ -68,12 +68,12 @@ const Header = () => {
               >
                 パンチ/キックの判定
               </Link>
-              <button
+              <Link
                 className="md:text-sm text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-semibold"
-                onClick={onAccountManagementClick}
+                to="/about_account"
               >
                 アカウントについて
-              </button>
+              </Link>
               {isLoggedIn ? (
                 <React.Fragment>
                   <button onClick={backToDashboard} className="px-2 py-2">
