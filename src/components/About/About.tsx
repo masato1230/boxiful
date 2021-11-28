@@ -4,6 +4,8 @@ import { GiBoxingGlove } from 'react-icons/gi';
 import './About.css';
 import playingImage from '../../images/playing.png';
 import overallThumbnail from '../../images/overallDescriptionThumbnail.svg';
+import askCameraAccessImage from '../../images/askCameraAccess.png';
+import selectTrainingThumbnail from '../../images/selectTrainingDescriptionThumbnail.png';
 import managerIcon from '../../images/managerIcon.jpg';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { BiNote } from 'react-icons/bi';
@@ -29,17 +31,21 @@ const About = () => {
                     Boxi<span className="text-yellow-500">ful</span>
                   </span>
                 </h1>
-                <img className="mt-3 h-20 md:h-48" src={overallThumbnail} alt="女性がキックしてる" />
+                <img
+                  className="mt-3 h-20 md:h-48"
+                  src={overallThumbnail}
+                  alt="女性がキックしてる"
+                />
               </div>
               <div>
                 <p>
-                  　Boxifulはユーザーが自宅で手軽に楽しく運動できることを目的としたWEBベースのキックボクシングゲームです。
+                  　Boxifulはユーザーが自宅で手軽に楽しく運動できることを目的としたWEBベースの実際に体を動かすキックボクシングゲームです。画面の前でパンチやキックを繰り出して遊びます。パンチやキックを画面の前で行うと、AIが体の動きを判定してフィードバックを返します。
                 </p>
                 <p>
-                  デバイスのフロントカメラから取得した映像を姿勢推定AIで解析することでキックやパンチの判定を行なっています。
+                  デバイスのフロントカメラから取得した映像を姿勢推定AIで解析することでキックやパンチの判定を行ないます。
                 </p>
                 <p>
-                  また、アカウントを作成するとトレーニングの実施状況を記録することができ、トレーニングの実施回数や消費カロリーを振り返れます。
+                  アカウントを作成するとトレーニングの実施状況を記録することができ、トレーニングの実施回数や消費カロリーを振り返れます。
                 </p>
                 <p>
                   　現在はイージーメニュー・ノーマルメニュー・ハードメニューしかありませんが、今後新しいトレーニングメニューを開発していく予定です。
@@ -56,7 +62,10 @@ const About = () => {
             <div className="items-center flex flex-wrap-reverse">
               <div className="md:w-1/2 px-1">
                 <p>
-                  　ホーム(ダッシュボード)画面でメニューを選択すると、トレーニング画面に移動します。
+                  　ホーム(ダッシュボード)でやってみたいメニューを選択すると遊べます。
+                </p>
+                <p>
+                  　まずは、ホーム(ダッシュボード)画面にいきメニューを選択しましょう。メニューを選択すると、トレーニング画面に移動します。
                 </p>
                 <p>
                   　トレーニング画面に初めていくとカメラへのアクセスを許可するかどうかをダイアログにて聞かれるので、許可してください。
@@ -70,12 +79,30 @@ const About = () => {
                 <p>
                   体がちゃんと写せていたら、トレーニング開始です！画面右側の指示に従って、パンチとキックを繰り出しましょう！
                 </p>
+                <p>　メニューの最後まで完了すると結果が表示されます。トレーニング中の瞬発力や体力を評価したボクシフル年齢や、トレーニングで消費したカロリーが確認できます。結果はLineやTwitterで共有できます。</p>
               </div>
-              <img
-                className="md:mt-5 object-contain md:w-1/2 px-1"
-                src={playingImage}
-                alt="プレイ画像"
-              />
+              <div className="md:w-1/2 px-1">
+                <div className="hidden md:block">
+                  <p className="font-bold text-sm ml-10">メニューを選択</p>
+                  <img
+                    className="md:mt-5 object-contain mx-auto max-h-36"
+                    src={selectTrainingThumbnail}
+                    alt="メニュー選択画面"
+                  />
+                  <p className="font-bold text-sm ml-10 mt-5">カメラへのアクセスを許可</p>
+                  <img
+                    className="md:mt-5 object-contain mx-auto max-h-36"
+                    src={askCameraAccessImage}
+                    alt="カメラアクセス許可ダイアログ"
+                  />
+                  <p className="font-bold text-sm ml-10 mt-5">トレーニング開始！</p>
+                </div>
+                <img
+                  className="md:mt-5 object-contain max-h-56 mx-auto"
+                  src={playingImage}
+                  alt="プレイ画像"
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -93,14 +120,14 @@ const About = () => {
               <div>
                 <h3 className="text-lg text-center font-bold mb-3">Makkori</h3>
                 <p>
-                  　愛知県出身のシステムエンジニア、サッカー鑑賞が趣味でよくプレミアリーグを見ている。
+                  　愛知県出身のシステムエンジニア、サッカー鑑賞が趣味でよくプレミアリーグを見ている。ウイニングイレブンが好きだが、ウイイレのオンラインマッチが原因でスマホを破壊したことがあるので、オンラインマッチは封印中。
                 </p>
-                <p>プログラミングはReactとAndroid開発が比較的わかる。</p>
+                <p>プログラミングはReactとAndroid開発が比較的わかる。このサイト自体は、React(Typescript)とDjangoで作成。</p>
                 <p>
                   　ボクシフルを作ったのは、仕事で姿勢推定を利用していたのと、学生時代にキックボクシングジムに一瞬通っていたのがきっかけ。
                 </p>
                 <p>
-                  twitterとnoteやってるので気軽に連絡ください。noteでは技術系のブログを中心に書いています。
+                  コメント：twitterとnoteやってるので気軽に連絡ください。noteでは技術系のブログを中心に書いています。
                 </p>
                 <a
                   href="https://twitter.com/xFzdiHLW63ogLYr"
