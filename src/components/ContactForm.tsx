@@ -33,7 +33,7 @@ const ContactForm = () => {
     email !== '' &&
     message !== ''
     ) {
-      //TODO: バックエンドに送信
+      // Send post request to backend
       API.post('/contact_form/handle_contact_form/', {
         'last_name': lastName,
         'first_name': firstName,
