@@ -26,18 +26,24 @@ const Footer = () => {
             </Link>
           )}
           <Link
-            className="text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
             to="/privacy"
           >
             プライバシー
           </Link>
+          <Link
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            to="/contact_form"
+          >
+            お問合わせ
+          </Link>
         </div>
-        <div className="w-1/3 text-center py-6">
+        <div className="w-1/3 text-center py-6 flex items-center justify-center">
           <p className="text-sm text-gray-500 font-bold mb-2">
             © 2021 by Makkori
           </p>
         </div>
-        <div className="w-1/3 py-6 text-center">
+        <div className="w-1/3 py-6 text-center flex items-center justify-center">
           <a
             href="https://twitter.com/xFzdiHLW63ogLYr"
             target="_blank"
