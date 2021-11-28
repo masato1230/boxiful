@@ -10,7 +10,7 @@ const Footer = () => {
 
   return (
     <footer className="footer bg-white">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-1 border-t-2 border-gray-300 py-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 border-t-2 border-gray-300 py-6">
         {/* Site name anc copyright */}
         <div className="text-center col-span-2 md:col-span-1">
           <button onClick={backToDashBoard}>
