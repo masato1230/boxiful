@@ -19,7 +19,7 @@ const AboutAccount = () => {
             <img
               src={accountCreateMeritThumbnail}
               alt="ヒットマップ"
-              className="h-36 md:h-56 object-contain"
+              className="h-36 md:h-56 object-contain mx-auto"
             />
             <div>
               <p>
