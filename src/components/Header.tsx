@@ -2,7 +2,6 @@ import { Link, useHistory } from 'react-router-dom';
 import { GiBoxingGlove } from 'react-icons/gi';
 import { BsGrid1X2Fill } from 'react-icons/bs';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
-import { useReload } from '../hooks/useReload';
 import ReactTooltip from 'react-tooltip';
 import React, { useEffect, useState } from 'react';
 import Descriptions from './Descriptions/Descriptions';
@@ -11,11 +10,12 @@ import {
   judgeDescriptionPages,
   accountManagementDescriptionPages,
 } from '../models/descriptionPage';
+import { useCameraResetReload } from '../hooks/useCameraResetReload';
 
 const Header = () => {
   // hooks
   const { isLoggedIn, logout } = useIsLoggedIn();
-  const backToDashboard = useReload();
+  const backToDashboard = useCameraResetReload();
 
   // States
   const [isShowJudgeDesc, setIsShowJudgeDesc] = useState(false);
@@ -24,12 +24,6 @@ const Header = () => {
   // Click listeners
   const onLogoutClick = () => {
     logout();
-  };
-  const onJudgeClick = () => {
-    setIsShowJudgeDesc(true);
-  };
-  const onAccountManagementClick = () => {
-    setIsShowAccountManageDesc(true);
   };
 
   return (

@@ -1,30 +1,26 @@
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { BiNote } from 'react-icons/bi';
-import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
+import { useCameraResetReload } from '../hooks/useCameraResetReload';
 
 const Footer = () => {
-  const history = useHistory();
+  const backToDashBoard = useCameraResetReload();
   const { isLoggedIn } = useIsLoggedIn();
-
-  const onDeleteAccountClick = () => {
-    history.push('/delete_account');
-  };
 
   return (
     <footer className="footer bg-white">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-1 border-t-2 border-gray-300 py-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 border-t-2 border-gray-300 py-6">
         {/* Site name anc copyright */}
         <div className="text-center col-span-2 md:col-span-1">
-          <Link to="/">
+          <button onClick={backToDashBoard}>
             <h4 className="text-center flex justify-center items-center text-4xl font-semibold text-gray-500 md:mb-10">
               Boxi<span className="text-yellow-500">ful</span>
             </h4>
             <p className="text-sm text-gray-500 font-bold mb-2">
               © 2021 by Makkori
             </p>
-          </Link>
+          </button>
         </div>
         {/* Guide & Help */}
         <div className="text-center">

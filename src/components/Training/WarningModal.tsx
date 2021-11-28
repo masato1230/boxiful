@@ -2,7 +2,7 @@ import React from 'react';
 import { IoClose } from 'react-icons/io5';
 import { IoMdWarning } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import { useReload } from '../../hooks/useReload';
+import { useCameraResetReload } from '../../hooks/useCameraResetReload';
 
 interface WarningModalProps {
   setIsShowWarningModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,7 +15,7 @@ const WarningModal: React.FC<WarningModalProps> = ({
   message,
   colorClass,
 }) => {
-  const backToDashBoard = useReload();
+  const backToDashBoard = useCameraResetReload();
   const onCloseClick = () => {
     setIsShowWarningModal(false);
   };
