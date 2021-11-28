@@ -62,12 +62,12 @@ const Header = () => {
               >
                 About
               </Link>
-              <button
+              <Link
                 className="md:text-sm text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-semibold"
-                onClick={onJudgeClick}
+                to="/about_judge"
               >
                 パンチ/キックの判定
-              </button>
+              </Link>
               <button
                 className="md:text-sm text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-semibold"
                 onClick={onAccountManagementClick}
