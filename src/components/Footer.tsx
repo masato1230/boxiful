@@ -90,7 +90,7 @@ const Footer = () => {
               className="inline-block text-blue-400"
               size={20}
             />
-            <span className="ml-1 text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium">
+            <span className="ml-1 text-gray-500 hover:text-black duration-300 font-medium mb-2">
               製作者twitter
             </span>
           </a>
@@ -101,7 +101,7 @@ const Footer = () => {
             className="block"
           >
             <BiNote className="ml-3 inline-block text-green-400" size={20} />
-            <span className="ml-1 text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium">
+            <span className="ml-1 text-gray-500 hover:text-black duration-300 font-medium">
               note
             </span>
           </a>
