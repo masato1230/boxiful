@@ -20,11 +20,10 @@ const Login = () => {
   };
 
   const getJwt = async () => {
-    await API
-      .post('users/token/', {
-        email,
-        password,
-      })
+    await API.post('users/token/', {
+      email,
+      password,
+    })
       .then((response) => {
         setCookie(ACCESS_TOKEN, response.data.access);
         setCookie(REFRESH_TOKEN, response.data.refresh);
@@ -44,20 +43,23 @@ const Login = () => {
 
   return (
     <div className="flex flex-col items-center flex-1 px-4 sm:px-0 bg-yellow-500 h-screen pt-36">
+      <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-300 text-right">
+        Login
+      </h1>
       <div
         className="flex rounded-lg shadow-lg w-full sm:w-3/4 lg:w-1/2 bg-white sm:mx-0"
         style={{ height: 500 }}
       >
         <div className="flex flex-col w-full md:w-1/2 p-4">
           <div className="flex flex-col flex-1 justify-center mb-8">
-            <h1 className="text-center flex justify-center items-center text-4xl">
+            <h2 className="text-center flex justify-center items-center text-4xl">
               <div className="text-yellow-500 pr-2">
                 <GiBoxingGlove />
               </div>
               <span className="font-semibold text-gray-500">
                 Boxi<span className="text-yellow-500">ful</span>
               </span>
-            </h1>
+            </h2>
             <div className="w-full mt-4">
               <form
                 className="form-horizontal w-3/4 mx-auto"
@@ -95,7 +97,11 @@ const Login = () => {
               <div className="text-center mt-4">
                 <p className="block mt-3 text-center text-xs">
                   パスワードを忘れた場合は
-                  <a target="_blank" href="https://masato.pythonanywhere.com/users/password_reset" className="rounded text-blue-500 hover:text-white hover:bg-blue-500 duration-300 cursor-pointer">
+                  <a
+                    target="_blank"
+                    href="https://masato.pythonanywhere.com/users/password_reset"
+                    className="rounded text-blue-500 hover:text-white hover:bg-blue-500 duration-300 cursor-pointer"
+                  >
                     こちら
                   </a>
                 </p>
