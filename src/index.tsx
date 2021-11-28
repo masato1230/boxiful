@@ -94,7 +94,7 @@ const App = () => {
             <Route path="/privacy">
               <Privacy />
             </Route>
-            <Route path="/contact-form">
+            <Route path="/contact_form">
               <ContactForm />
             </Route>
             {/* 404 */}

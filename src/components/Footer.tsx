@@ -26,10 +26,16 @@ const Footer = () => {
             </Link>
           )}
           <Link
-            className="text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
             to="/privacy"
           >
             プライバシー
+          </Link>
+          <Link
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            to="/contact_form"
+          >
+            お問合わせ
           </Link>
         </div>
         <div className="w-1/3 text-center py-6">
