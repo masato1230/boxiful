@@ -34,7 +34,7 @@ const Status = () => {
     <React.Fragment>
       <div className="container mx-auto px-5 md:px-10 min-h-screen">
         <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-500">
-          {isLoggedIn ? 'Dash Board' : 'メニュー選択'}
+          {isLoggedIn ? 'Dash Board' : 'Home'}
         </h1>
         {isLoggedIn ? <CalendarHeatmapContainer /> : <GetStarted />}
         <MenuCards />
