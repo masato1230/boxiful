@@ -49,6 +49,18 @@ const Footer = () => {
           >
             お問合わせ
           </Link>
+          <Link
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            to="/register"
+          >
+            アカウント作成
+          </Link>
+          <Link
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            to="/login"
+          >
+            ログイン
+          </Link>
         </div>
         {/* Contents */}
         <div className="text-center">
