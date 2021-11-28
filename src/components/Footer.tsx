@@ -14,12 +14,22 @@ const Footer = () => {
 
   return (
     <footer className="footer bg-white">
-      <div className="mt-1 border-t-2 border-gray-300 flex">
-        <div className="w-1/3 text-center py-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-1 border-t-2 border-gray-300 py-6">
+        {/* Site name anc copyright */}
+        <div className="text-center col-span-2 md:col-span-1">
+          <h4 className="text-center flex justify-center items-center text-4xl font-semibold text-gray-500 md:mb-10">
+            Boxi<span className="text-yellow-500">ful</span>
+          </h4>
+          <p className="text-sm text-gray-500 font-bold mb-2">
+            © 2021 by Makkori
+          </p>
+        </div>
+        {/* Guide & Help */}
+        <div className="text-center">
+          <h6 className="font-bold mb-4">Guide & Help</h6>
           {isLoggedIn && (
             <Link
               className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
-              // onClick={onDeleteAccountClick}
               to="/delete_account"
             >
               アカウント削除
@@ -38,22 +48,47 @@ const Footer = () => {
             お問合わせ
           </Link>
         </div>
-        <div className="w-1/3 text-center py-6 flex items-center justify-center">
-          <p className="text-sm text-gray-500 font-bold mb-2">
-            © 2021 by Makkori
-          </p>
+        {/* Contents */}
+        <div className="text-center">
+          <h6 className="font-bold mb-4">Contents</h6>
+          <Link
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            to="/"
+          >
+            ホーム/ダッシュボード
+          </Link>
+          <Link
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            to="/about"
+          >
+            サイト・管理者について
+          </Link>
+          <Link
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            to="/about_judge"
+          >
+            パンチ/キックの判定
+          </Link>
+          <Link
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            to="/about_account"
+          >
+            アカウントについて
+          </Link>
         </div>
-        <div className="w-1/3 py-6 text-center flex items-center justify-center">
+        <div className="text-center">
+          <h6 className="font-bold mb-4">SNS</h6>
           <a
             href="https://twitter.com/xFzdiHLW63ogLYr"
             target="_blank"
             rel="noreferrer"
+            className="block"
           >
             <AiFillTwitterCircle
               className="inline-block text-blue-400"
               size={20}
             />
-            <span className="hidden md:inline-block ml-1 align-middle text-gray-500 font-bold">
+            <span className="ml-1 text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium">
               製作者twitter
             </span>
           </a>
@@ -61,9 +96,10 @@ const Footer = () => {
             href="https://note.com/masato1230"
             target="_blank"
             rel="noreferrer"
+            className="block"
           >
             <BiNote className="ml-3 inline-block text-green-400" size={20} />
-            <span className="ml-1 hidden md:inline-block align-middle text-gray-500 font-bold">
+            <span className="ml-1 text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium">
               note
             </span>
           </a>
