@@ -3,6 +3,7 @@ import SlideBackground from '../backgrounds/SlideBackground';
 import { GiBoxingGlove } from 'react-icons/gi';
 import './About.css';
 import playingImage from '../../images/playing.png';
+import overallThumbnail from '../../images/overallDescriptionThumbnail.svg';
 import managerIcon from '../../images/managerIcon.jpg';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { BiNote } from 'react-icons/bi';
@@ -19,14 +20,17 @@ const About = () => {
           <h2 className="text-xl pt-3 mb-3 font-bold">Boxifulについて</h2>
           <div className="rounded-lg shadow-xl bg-white p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <h1 className="text-center flex justify-center items-center text-4xl mx-auto">
-                <div className="text-yellow-500 pr-2">
-                  <GiBoxingGlove />
-                </div>
-                <span className="font-semibold text-gray-500">
-                  Boxi<span className="text-yellow-500">ful</span>
-                </span>
-              </h1>
+              <div className="flex justify-center items-center flex-wrap">
+                <h1 className="text-center flex justify-center items-center text-4xl w-full">
+                  <div className="text-yellow-500 pr-2">
+                    <GiBoxingGlove />
+                  </div>
+                  <span className="font-semibold text-gray-500">
+                    Boxi<span className="text-yellow-500">ful</span>
+                  </span>
+                </h1>
+                <img className="mt-3 h-20 md:h-48" src={overallThumbnail} alt="女性がキックしてる" />
+              </div>
               <div>
                 <p>
                   　Boxifulはユーザーが自宅で手軽に楽しく運動できることを目的としたWEBベースのキックボクシングゲームです。
@@ -49,8 +53,8 @@ const About = () => {
         <section className="mb-10">
           <h2 className="text-xl pt-3 mb-3 font-bold">基本的なプレイ方法</h2>
           <div className="rounded-lg shadow-xl bg-white p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-              <div>
+            <div className="items-center flex flex-wrap-reverse">
+              <div className="md:w-1/2 px-1">
                 <p>
                   　ホーム(ダッシュボード)画面でメニューを選択すると、トレーニング画面に移動します。
                 </p>
@@ -63,10 +67,12 @@ const About = () => {
                 <p>
                   画面右側にカメラからの映像に姿勢推定結果を乗せた映像が映し出されるので、体がちゃんとカメラに収まっているか確認してください。
                 </p>
-                <p>体がちゃんと写せていたら、トレーニング開始です！画面右側の指示に従って、パンチとキックを繰り出しましょう！</p>
+                <p>
+                  体がちゃんと写せていたら、トレーニング開始です！画面右側の指示に従って、パンチとキックを繰り出しましょう！
+                </p>
               </div>
               <img
-                className="md:mt-5 object-contain"
+                className="md:mt-5 object-contain md:w-1/2 px-1"
                 src={playingImage}
                 alt="プレイ画像"
               />
@@ -93,7 +99,9 @@ const About = () => {
                 <p>
                   　ボクシフルを作ったのは、仕事で姿勢推定を利用していたのと、学生時代にキックボクシングジムに一瞬通っていたのがきっかけ。
                 </p>
-                <p>twitterとnoteやってるので気軽に連絡ください。noteでは技術系のブログを中心に書いています。</p>
+                <p>
+                  twitterとnoteやってるので気軽に連絡ください。noteでは技術系のブログを中心に書いています。
+                </p>
                 <a
                   href="https://twitter.com/xFzdiHLW63ogLYr"
                   target="_blank"
