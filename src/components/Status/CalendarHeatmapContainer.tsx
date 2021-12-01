@@ -69,7 +69,7 @@ const CalendarHeatmapContainer = () => {
       'data-tip': `
       消費カロリーは${sumOfCalorie}kcal、
       ポイントは${sumOfPoints}ポイント、
-      ${value.date.toISOString().slice(0, 10)}
+      ${value.date.getFullYear()}年${value.date.getMonth()+1}月${value.date.getDate()}日
       `,
     };
   };

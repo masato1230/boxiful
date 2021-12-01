@@ -25,29 +25,32 @@ import About from './components/Pages/About/About';
 import ContactForm from './components/ContactForm';
 import AboutJudge from './components/Pages/AboutJudge';
 import AboutAccount from './components/Pages/AboutAccount';
+import AboutResult from './components/Pages/AboutResult';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
 
   // 1. login check: if browser has jwt then refresh jwt
   const [cookies, setCookie, removeCookie] = useCookies();
-  
+
   const refreshJwt = () => {
     API.post('users/token/refresh/', {
       refresh: cookies.refreshtoken,
-    }).then((response) => {
-      setCookie(ACCESS_TOKEN, response.data.access);
-      setCookie(REFRESH_TOKEN, response.data.refresh);
-    }).catch (err => {
-      // remove crashed or expired tokens from cookie
-      removeCookie(ACCESS_TOKEN);
-      removeCookie(REFRESH_TOKEN);
-      if (err.response.status === 401) {
-        setIsTokenValid(false);
-        return;
-      }
-      console.log(err);
-    });
+    })
+      .then((response) => {
+        setCookie(ACCESS_TOKEN, response.data.access);
+        setCookie(REFRESH_TOKEN, response.data.refresh);
+      })
+      .catch((err) => {
+        // remove crashed or expired tokens from cookie
+        removeCookie(ACCESS_TOKEN);
+        removeCookie(REFRESH_TOKEN);
+        if (err.response.status === 401) {
+          setIsTokenValid(false);
+          return;
+        }
+        console.log(err);
+      });
   };
 
   // set up
@@ -64,7 +67,7 @@ const App = () => {
         <BrowserRouter>
           <GoogleAnalytics />
           <Header />
-          { !isTokenValid && <LoginAgainHeader /> }
+          {!isTokenValid && <LoginAgainHeader />}
           <Switch>
             <Route exact path="/">
               <Status />
@@ -77,6 +80,9 @@ const App = () => {
             </Route>
             <Route path="/about_account">
               <AboutAccount />
+            </Route>
+            <Route path="/about_result">
+              <AboutResult />
             </Route>
             <Route path="/training">
               <Training />
