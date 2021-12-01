@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
-import SlideBackground from './backgrounds/SlideBackground';
-import punchThumbnail from '../images/punchDescriptionThumbnail.svg';
-import kickThumbnail from '../images/kickDescriptionThumbnail.svg';
-import longLoadingThumbnail from '../images/longLoadingDescriptionThumbnail.svg';
-import questionThumbnail from '../images/questionThumbnail.svg';
-import cameraThumbnail from '../images/cameraDescriptionThumbnail.svg';
+import SlideBackground from '../backgrounds/SlideBackground';
+import punchThumbnail from '../../images/punchDescriptionThumbnail.svg';
+import kickThumbnail from '../../images/kickDescriptionThumbnail.svg';
+import longLoadingThumbnail from '../../images/longLoadingDescriptionThumbnail.svg';
+import questionThumbnail from '../../images/questionThumbnail.svg';
+import cameraThumbnail from '../../images/cameraDescriptionThumbnail.svg';
 
 const AboutJudge = () => {
   return (
@@ -49,7 +49,7 @@ const AboutJudge = () => {
                   　キックの判定では、足を地面に下ろした状態から、足(膝)をしっかりと上まで上げられているかという点を見ています。上手く判定されない時は、足をもっと上にあげてみてください。
                 </p>
                 <p>
-                  　キックをするときは、蹴り出す足の反対側の腕を振り出しながら蹴るのがポイントです。
+                  　キックをするときは、蹴り出す足と同じ側の腕を振り出しながら蹴るのがポイントです。
                 </p>
               </div>
               <img
