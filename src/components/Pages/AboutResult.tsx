@@ -1,6 +1,8 @@
 import PageSection from './PageSection';
 import SlideBackground from '../backgrounds/SlideBackground';
 import resultDescriptionThumbnail from '../../images/resultDescriptionThumbnail.png';
+import pieGraphImage from '../../images/pieGraph.svg';
+import scoreChartsImage from '../../images/scoreCharts.png';
 
 const AboutResult = () => {
   return (
@@ -15,27 +17,74 @@ const AboutResult = () => {
             <div className="flex justify-center items-center flex-wrap">
               <img
                 src={resultDescriptionThumbnail}
-                alt="パンチしている画像"
-                className="h-36 md:h-72 object-contain"
+                alt="トレーニング結果"
+                className="max-h-36 md:max-h-72 object-contain"
               />
             </div>
             <div>
               <p>
-                　パンチの判定では、パンチを繰り出す前にちゃんと腕を曲げることができているかという点と、パンチをした時にちゃんと腕が伸びているかという点を判定しています。
+                　トレーニングメニューを最後まで行うと、トーレニング結果が表示されます。
               </p>
               <p>
-                　上手く判定されないと思った時は、これら２つの点を意識してみてください。
+                　トレーニング結果では、トレーニング中の瞬発力、体力を評価した
+                <span className="font-bold">ボクシフル年齢</span>
+                や、100点満点での評価点、キック・パンチそれぞれの評価点、トレーニングで消費したカロリーが確認できます。
               </p>
               <p>
-                　パンチやキックの合間は両手を胸の前で構えてブロックする体制を整え、すぐにパンチを繰り出せるようにするのがポイントです。
+                トレーニング結果はLineやTwitterで共有できます。友達や家族に共有してみましょう！
               </p>
             </div>
           </div>
         </PageSection>
         {/* ボクシフル年齢 */}
-        <PageSection sectionTitle="ボクシフル年齢"></PageSection>
+        <PageSection sectionTitle="ボクシフル年齢">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div>
+              <p>
+                　ボクシフル年齢はパンチやキックをどれだけ速く繰り出せたかを評価して計算されます。
+              </p>
+              <p>
+                　あくまで目安の数値で、何らかの統計に基づいてるわけではない点はご了承ください。
+              </p>
+              <p>
+                メニューの難易度を考慮した数値ではないので、メニューが難しければ難しいほどボクシフル年齢は高くなりやすいです。
+              </p>
+            </div>
+            <div className="flex justify-center items-center flex-wrap">
+              <img
+                src={pieGraphImage}
+                alt="円グラフ"
+                className="h-36 md:h-56 object-contain"
+              />
+            </div>
+          </div>
+        </PageSection>
         {/* 評価点について */}
-        <PageSection sectionTitle="評価点について"></PageSection>
+        <PageSection sectionTitle="評価点について">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="flex justify-center items-center flex-wrap">
+              <img
+                src={scoreChartsImage}
+                alt="複数の評価点グラフ"
+                className="h-36 md:h-72 object-contain"
+              />
+            </div>
+            <div>
+              <p>
+                　全体の評価点と、パンチ・キックそれぞれの評価点を見ることができます。
+              </p>
+              <p>
+                　パンチとキックどちらかの点数が著しく低いときは、点数が低い方の改善を心がけてトレーニングしてみましょう。
+              </p>
+              <p>
+                特に、キックに関してはフォームを改善することで大幅に点数が改善できます。フォームを確認してみましょう。
+              </p>
+              <p>
+                パンチは常にガードをあげるように意識すると点数が改善するかもしれません。
+              </p>
+            </div>
+          </div>
+        </PageSection>
       </div>
       <SlideBackground />
     </div>
