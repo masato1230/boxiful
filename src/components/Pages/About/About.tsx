@@ -2,11 +2,11 @@ import { Fragment } from 'react';
 import SlideBackground from '../../backgrounds/SlideBackground';
 import { GiBoxingGlove } from 'react-icons/gi';
 import './About.css';
-import playingImage from '../../images/playing.png';
-import overallThumbnail from '../../images/overallDescriptionThumbnail.svg';
-import askCameraAccessImage from '../../images/askCameraAccess.png';
-import selectTrainingThumbnail from '../../images/selectTrainingDescriptionThumbnail.png';
-import managerIcon from '../../images/managerIcon.jpg';
+import playingImage from '../../../images/playing.png';
+import overallThumbnail from '../../../images/overallDescriptionThumbnail.svg';
+import askCameraAccessImage from '../../../images/askCameraAccess.png';
+import selectTrainingThumbnail from '../../../images/selectTrainingDescriptionThumbnail.png';
+import managerIcon from '../../../images/managerIcon.jpg';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { BiNote } from 'react-icons/bi';
 

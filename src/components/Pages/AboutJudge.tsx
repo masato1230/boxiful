@@ -1,10 +1,10 @@
 import { Fragment } from 'react';
 import SlideBackground from '../backgrounds/SlideBackground';
-import punchThumbnail from '../images/punchDescriptionThumbnail.svg';
-import kickThumbnail from '../images/kickDescriptionThumbnail.svg';
-import longLoadingThumbnail from '../images/longLoadingDescriptionThumbnail.svg';
-import questionThumbnail from '../images/questionThumbnail.svg';
-import cameraThumbnail from '../images/cameraDescriptionThumbnail.svg';
+import punchThumbnail from '../../images/punchDescriptionThumbnail.svg';
+import kickThumbnail from '../../images/kickDescriptionThumbnail.svg';
+import longLoadingThumbnail from '../../images/longLoadingDescriptionThumbnail.svg';
+import questionThumbnail from '../../images/questionThumbnail.svg';
+import cameraThumbnail from '../../images/cameraDescriptionThumbnail.svg';
 
 const AboutJudge = () => {
   return (

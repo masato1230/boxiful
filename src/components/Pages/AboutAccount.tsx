@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
-import accountCreateMeritThumbnail from '../images/accountCreateMeritDescriptionThumbnail.png';
+import accountCreateMeritThumbnail from '../../images/accountCreateMeritDescriptionThumbnail.png';
 import SlideBackground from '../backgrounds/SlideBackground';
-import deleteAccountThumbnail from '../images/deleteAccountDescriptionThumbnail.svg';
+import deleteAccountThumbnail from '../../images/deleteAccountDescriptionThumbnail.svg';
 
 const AboutAccount = () => {
   return (
