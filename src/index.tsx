@@ -21,10 +21,10 @@ import TrainingResultBuffer from './components/Result/TrainingResultBuffer';
 import Footer from './components/Footer';
 import GoogleAnalytics from './components/GoogleAnalytics';
 import Privacy from './components/Privacy/Privacy';
-import About from './components/About/About';
+import About from './components/Pages/About/About';
 import ContactForm from './components/ContactForm';
-import AboutJudge from './components/AboutJudge';
-import AboutAccount from './components/AboutAccount';
+import AboutJudge from './components/Pages/AboutJudge';
+import AboutAccount from './components/Pages/AboutAccount';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);

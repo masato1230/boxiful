@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import SlideBackground from '../backgrounds/SlideBackground';
+import SlideBackground from '../../backgrounds/SlideBackground';
 import { GiBoxingGlove } from 'react-icons/gi';
 import './About.css';
 import playingImage from '../../images/playing.png';
