@@ -85,6 +85,12 @@ const Footer = () => {
           >
             アカウントについて
           </Link>
+          <Link
+            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+            to="/about_result"
+          >
+            トレーニング結果について
+          </Link>
         </div>
         <div className="text-center">
           <h6 className="font-bold mb-4">SNS</h6>
