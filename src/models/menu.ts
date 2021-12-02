@@ -48,24 +48,28 @@ export const EasyMenu: Menu = {
   durationInMinutes: 1,
 };
 
-// export const KickMenu: Menu = {
-//   title: "キックメニュー",
-//   numOfInstructions: 30,
-//   instructionTypes: [
-//     LeftLegLeftKick,
-//     LeftLegRightKick,
-//     RightLegLeftKick,
-//     RightLegRightKick,
-//   ],
-//   approximateCalorieConsumption: 
-// }
+export const KickMenu: Menu = {
+  title: 'キックメニュー',
+  description:
+    'キックだけのメニューです。キックに集中的に取り組みたい人におすすめ',
+  numOfInstructions: 30,
+  instructionTypes: [
+    LeftLegLeftKick,
+    LeftLegRightKick,
+    RightLegLeftKick,
+    RightLegRightKick,
+  ],
+  approximateCalorieConsumption: 18,
+  durationInMinutes: 2,
+  timeLimit: null,
+};
 
 export const NormalMenu: Menu = {
   title: 'ノーマルメニュー',
   description:
     'おすすめメニュー！ パンチとキックを組み合わせたコースで、短い時間で気持ちよく運動できます。',
   timeLimit: 1000,
-  numOfInstructions: 50,
+  numOfInstructions: 23,
   instructionTypes: [
     LeftHandLeftPunch,
     LeftHandRightPunch,
@@ -96,6 +100,6 @@ export const HardMenu: Menu = {
     RightLegLeftKick,
     RightLegRightKick,
   ],
-  approximateCalorieConsumption: 30,
+  approximateCalorieConsumption: 45,
   durationInMinutes: 3,
 };
