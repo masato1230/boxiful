@@ -13,7 +13,7 @@ import {
 export default interface Menu {
   title: string;
   description: string;
-  timeLimit: number;
+  timeLimit: number | null;
   numOfInstructions: number;
   instructionTypes: Instruction[];
   approximateCalorieConsumption: number;
@@ -47,6 +47,18 @@ export const EasyMenu: Menu = {
   approximateCalorieConsumption: 9,
   durationInMinutes: 1,
 };
+
+// export const KickMenu: Menu = {
+//   title: "キックメニュー",
+//   numOfInstructions: 30,
+//   instructionTypes: [
+//     LeftLegLeftKick,
+//     LeftLegRightKick,
+//     RightLegLeftKick,
+//     RightLegRightKick,
+//   ],
+//   approximateCalorieConsumption: 
+// }
 
 export const NormalMenu: Menu = {
   title: 'ノーマルメニュー',
