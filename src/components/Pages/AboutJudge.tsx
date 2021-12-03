@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+import CustomHead from '../CustomHead';
 import SlideBackground from '../backgrounds/SlideBackground';
 import punchThumbnail from '../../images/punchDescriptionThumbnail.svg';
 import kickThumbnail from '../../images/kickDescriptionThumbnail.svg';
@@ -9,6 +10,7 @@ import cameraThumbnail from '../../images/cameraDescriptionThumbnail.svg';
 const AboutJudge = () => {
   return (
     <Fragment>
+      <CustomHead title="パンチ/キックの判定について - Boxiful" />
       <div className="container mx-auto px-5 md:px-10 min-h-screen">
         <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-500">
           About Judge

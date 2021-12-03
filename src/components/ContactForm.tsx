@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import CustomHead from './CustomHead';
 import SlideBackground from './backgrounds/SlideBackground';
 import questionImage from '../images/question.svg';
 import API from '../api';
@@ -54,6 +55,7 @@ const ContactForm = () => {
 
   return (
     <Fragment>
+      <CustomHead title="お問い合わせ - Boxiful" />
       <div className="container mx-auto px-5 md:px-10 min-h-screen">
         <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-500">
           Contact Form

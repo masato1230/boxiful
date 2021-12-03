@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import React from 'react';
+import CustomHead from '../CustomHead';
 import { useActions } from '../../hooks/useActions';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { createInstructionsFromMenu } from '../../state';
@@ -32,6 +33,7 @@ const Status = () => {
 
   return (
     <React.Fragment>
+      <CustomHead title="Boxiful | 体を動かすキックボクシングゲーム" />
       <div className="container mx-auto px-5 md:px-10 min-h-screen">
         <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-500">
           {isLoggedIn ? 'Dash Board' : 'Home'}

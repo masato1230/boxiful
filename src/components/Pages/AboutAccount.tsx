@@ -2,10 +2,12 @@ import { Fragment } from 'react';
 import accountCreateMeritThumbnail from '../../images/accountCreateMeritDescriptionThumbnail.png';
 import SlideBackground from '../backgrounds/SlideBackground';
 import deleteAccountThumbnail from '../../images/deleteAccountDescriptionThumbnail.svg';
+import CustomHead from '../CustomHead';
 
 const AboutAccount = () => {
   return (
     <Fragment>
+      <CustomHead title="アカウントについて- Boxiful" />
       <div className="container mx-auto px-5 md:px-10 min-h-screen">
         <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-500">
           About Acount
