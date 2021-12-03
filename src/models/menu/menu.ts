@@ -8,7 +8,7 @@ import {
   RightHandRightPunch,
   RightLegLeftKick,
   RightLegRightKick,
-} from '../components/Training/Instructions';
+} from '../../components/Training/Instructions';
 
 export default interface Menu {
   title: string;

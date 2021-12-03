@@ -32,8 +32,8 @@ export const judgeFromScore = (score: number): 'Good' | 'Great' | 'Slow' => {
 
 export const calculateResultScore = (scores: number[]) => {
   scores.sort();
-  const extractOutliersScores = scores.slice(3, scores.length - 3);  
-  
+  const extractOutliersScores = scores.slice(3, scores.length - 3);
+
   const extractOutliersSum = extractOutliersScores.reduce(
     (accumulator: number, currentValue: number) => {
       return accumulator + currentValue;
@@ -47,18 +47,18 @@ export const calculatePunchScore = (
   instructions: Instruction[]
 ) => {
   scores.sort();
-  
+
   const extractOutliersScores = scores.slice(3, scores.length - 3);
   const punchScores = extractOutliersScores.filter((score, index) => {
-    return (
-      [LeftHandLeftPunch,
+    return [
+      LeftHandLeftPunch,
       LeftHandRightPunch,
       RightHandLeftPunch,
-      RightHandRightPunch].includes(instructions[index])
-    );
+      RightHandRightPunch,
+    ].includes(instructions[index]);
   });
   if (punchScores.length === 0) return;
-  
+
   const sum = punchScores.reduce(
     (accumulator: number, currentValue: number) => {
       return accumulator + currentValue;
@@ -74,13 +74,12 @@ export const calculateKickScore = (
   scores.sort();
   const extractOutliersScores = scores.slice(3, scores.length - 3);
   const kickScores = extractOutliersScores.filter((score, index) => {
-
-    return (
-      [LeftLegLeftKick,
-        LeftLegRightKick,
-        RightLegLeftKick,
-        RightLegRightKick].includes(instructions[index])
-    );
+    return [
+      LeftLegLeftKick,
+      LeftLegRightKick,
+      RightLegLeftKick,
+      RightLegRightKick,
+    ].includes(instructions[index]);
   });
 
   if (kickScores.length === 0) return;
@@ -95,10 +94,12 @@ export const calculateTotalCalorieFromInstructions = (
 ) => {
   const totalCalorie = instructions.reduce((accumulator, instruction) => {
     if (
-      instruction === LeftHandLeftPunch ||
-      LeftLegRightKick ||
-      RightHandLeftPunch ||
-      RightHandRightPunch
+      [
+        LeftHandLeftPunch,
+        LeftHandRightPunch,
+        RightHandLeftPunch,
+        RightHandRightPunch,
+      ].includes(instruction)
     ) {
       return accumulator + 0.3;
     } else {
