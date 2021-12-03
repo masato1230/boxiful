@@ -9,10 +9,12 @@ import selectTrainingThumbnail from '../../../images/selectTrainingDescriptionTh
 import managerIcon from '../../../images/managerIcon.jpg';
 import { AiFillTwitterCircle } from 'react-icons/ai';
 import { BiNote } from 'react-icons/bi';
+import CustomHead from '../../CustomHead';
 
 const About = () => {
   return (
     <Fragment>
+      <CustomHead title="About - Boxiful" description="BoxifulはAIとPCカメラを利用した、自宅で手軽にエクササイズを楽しめる実際に体を動かすキックボクシングゲームです。" />
       <div className="container mx-auto px-5 md:px-10 min-h-screen">
         <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-500">
           About
