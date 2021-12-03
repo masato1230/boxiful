@@ -79,7 +79,9 @@ const About = () => {
                 <p>
                   体がちゃんと写せていたら、トレーニング開始です！画面右側の指示に従って、パンチとキックを繰り出しましょう！
                 </p>
-                <p>　メニューの最後まで完了すると結果が表示されます。トレーニング中の瞬発力や体力を評価したボクシフル年齢や、トレーニングで消費したカロリーが確認できます。結果はLineやTwitterで共有できます。</p>
+                <p>
+                  　メニューの最後まで完了すると結果が表示されます。トレーニング中の瞬発力や体力を評価したボクシフル年齢や、トレーニングで消費したカロリーが確認できます。結果はLineやTwitterで共有できます。
+                </p>
               </div>
               <div className="md:w-1/2 px-1">
                 <div className="hidden md:block">
@@ -89,13 +91,17 @@ const About = () => {
                     src={selectTrainingThumbnail}
                     alt="メニュー選択画面"
                   />
-                  <p className="font-bold text-sm ml-10 mt-5">カメラへのアクセスを許可</p>
+                  <p className="font-bold text-sm ml-10 mt-5">
+                    カメラへのアクセスを許可
+                  </p>
                   <img
                     className="md:mt-5 object-contain mx-auto max-h-36"
                     src={askCameraAccessImage}
                     alt="カメラアクセス許可ダイアログ"
                   />
-                  <p className="font-bold text-sm ml-10 mt-5">トレーニング開始！</p>
+                  <p className="font-bold text-sm ml-10 mt-5">
+                    トレーニング開始！
+                  </p>
                 </div>
                 <img
                   className="md:mt-5 object-contain max-h-56 mx-auto"
@@ -122,7 +128,9 @@ const About = () => {
                 <p>
                   　愛知県出身のシステムエンジニア、サッカー鑑賞が趣味でよくプレミアリーグを見ている。ウイニングイレブンが好きだが、ウイイレのオンラインマッチが原因でスマホを破壊したことがあるので、オンラインマッチは封印中。
                 </p>
-                <p>プログラミングはReactとAndroid開発が比較的わかる。このサイト自体は、React(Typescript)とDjangoで作成。</p>
+                <p>
+                  プログラミングはReactとAndroid開発が比較的わかる。このサイト自体は、React(Typescript)とDjangoで作成。
+                </p>
                 <p>
                   　ボクシフルを作ったのは、仕事で姿勢推定を利用していたのと、学生時代にキックボクシングジムに一瞬通っていたのがきっかけ。
                 </p>
