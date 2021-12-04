@@ -1,4 +1,4 @@
-import Menu from './menu';
+import Menu from '../menu';
 import Interval from './Interval';
 
 export default interface SeriesMenu {
