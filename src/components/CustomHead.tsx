@@ -7,7 +7,7 @@ interface CustomHeadProps {
   description?: string;
 }
 
-const Head: React.FC<CustomHeadProps> = ({ title, description }) => {
+const CustomHead: React.FC<CustomHeadProps> = ({ title, description }) => {
   return (
     <Helmet>
       <title>{title}</title>
@@ -18,4 +18,4 @@ const Head: React.FC<CustomHeadProps> = ({ title, description }) => {
   );
 };
 
-export default Head;
+export default CustomHead;

@@ -28,3 +28,8 @@
 .react-calendar-heatmap .color-10{
   fill: rgb(6, 78, 59);
 }
+
+.react-calendar-heatmap text {
+  fill: black !important;
+  stroke-width: 5px;
+}
