@@ -3,6 +3,7 @@ import { BiNote } from 'react-icons/bi';
 import { Link } from 'react-router-dom';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
 import { useCameraResetReload } from '../hooks/useCameraResetReload';
+import { Fragment } from 'react';
 
 const Footer = () => {
   const backToDashBoard = useCameraResetReload();
@@ -45,18 +46,22 @@ const Footer = () => {
           >
             お問合わせ
           </Link>
-          <Link
-            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
-            to="/register"
-          >
-            アカウント作成
-          </Link>
-          <Link
-            className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
-            to="/login"
-          >
-            ログイン
-          </Link>
+          {!isLoggedIn && (
+            <Fragment>
+              <Link
+                className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+                to="/register"
+              >
+                アカウント作成
+              </Link>
+              <Link
+                className="block text-xs md:text-base text-gray-500 hover:text-black duration-300 font-medium mb-2"
+                to="/login"
+              >
+                ログイン
+              </Link>
+            </Fragment>
+          )}
         </div>
         {/* Contents */}
         <div className="text-center">
