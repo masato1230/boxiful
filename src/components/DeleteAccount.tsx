@@ -7,6 +7,7 @@ import { useHistory } from 'react-router';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
 import { useCookies } from 'react-cookie';
 import { ACCESS_TOKEN } from '../constants/cookieKeys';
+import SlideBackground from './backgrounds/SlideBackground';
 
 const DeleteAccount = () => {
   const { logout } = useIsLoggedIn();
@@ -38,7 +39,7 @@ const DeleteAccount = () => {
   return (
     <Fragment>
       <CustomHead title="アカウント削除 - Boxiful" />
-      <div className="flex flex-col items-center flex-1 px-4 sm:px-0 bg-yellow-500 h-screen pt-36">
+      <div className="flex flex-col items-center flex-1 px-4 sm:px-0 min-h-screen pt-20">
         <div
           className="flex rounded-lg shadow-lg w-full sm:w-3/4 lg:w-1/2 bg-white sm:mx-0"
           style={{ height: 500 }}
@@ -83,6 +84,7 @@ const DeleteAccount = () => {
           />
         </div>
       </div>
+      <SlideBackground />
     </Fragment>
   );
 };

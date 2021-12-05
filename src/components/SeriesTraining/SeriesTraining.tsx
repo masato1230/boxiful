@@ -2,7 +2,7 @@ import { NormalizedLandmarkList } from '@mediapipe/pose';
 import { useState, Fragment, useEffect } from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import FinishModal from '../Training/FinishModal';
-import PoseEstimation from '../Training/PoseEstimation';
+import SeriesTrainingPoseEstimation from './SeriesTrainingPoseEstimation';
 import WarningModal from '../Training/WarningModal';
 import IntervalInformation from './IntervalInformation';
 import Menu from '../../models/menu';
@@ -51,19 +51,21 @@ const SeriesTraining = () => {
           colorClass="yellow-500"
         />
       )}
-      <div className="mx-auto flex h-screen my-5 px-4 relative">
-        {/* Information */}
-        <div className="bg-white inset-0 md:w-1/2 mx-2 h-5/6 absolute md:relative z-10 bg-transparent bg-opacity-0 text-white md:text-black">
-          {(seriesMenu.menus[menuIndex] as Menu).instructionTypes !==
-          undefined ? (
-            <TrainingInformation poseLandmarks={poseLandmarks} />
-          ) : (
-            <IntervalInformation />
-          )}
-        </div>
-        {/* Pose estimation */}
-        <div className="w-full md:w-1/2 mx-2 rounded-xl h-5/6">
-          <PoseEstimation setPoseLandmarks={setPoseLandmarks} />
+      <div className="min-h-screen">
+        <div className="flex h-screen fixed top-0 bottom-0" style={{ zIndex: -1 }}>
+          {/* Information */}
+          <div className="bg-black inset-0 md:w-1/2 h-screen absolute md:relative z-10 opacity-90 md:text-black">
+            {(seriesMenu.menus[menuIndex] as Menu).instructionTypes !==
+            undefined ? (
+              <TrainingInformation poseLandmarks={poseLandmarks} />
+            ) : (
+              <IntervalInformation />
+            )}
+          </div>
+          {/* Pose estimation */}
+          <div className="w-full md:w-1/2 h-screen">
+            <SeriesTrainingPoseEstimation setPoseLandmarks={setPoseLandmarks} />
+          </div>
         </div>
       </div>
     </Fragment>

@@ -28,7 +28,7 @@ const Header = () => {
 
   return (
     <React.Fragment>
-      <nav className="bg-white shadow-lg">
+      <nav className="bg-clear shadow-lg">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between">
             <div className="flex space-x-7">
@@ -42,7 +42,7 @@ const Header = () => {
                   <div className="text-yellow-500 pr-2">
                     <GiBoxingGlove />
                   </div>
-                  <span className="font-semibold text-gray-500 text-lg">
+                  <span className="font-semibold text-white text-lg">
                     Boxi<span className="text-yellow-500">ful</span>
                   </span>
                 </button>
@@ -51,19 +51,19 @@ const Header = () => {
             {/* <!-- Secondary Navbar items --> */}
             <div className="flex items-center space-x-3">
               <Link
-                className="text-xs md:text-base text-gray-500 hover:text-black duration-300 px-2 py-2 font-medium"
+                className="text-xs md:text-base text-white opacity-70 hover:opacity-100 duration-300 px-2 py-2 font-medium"
                 to="/about"
               >
                 About
               </Link>
               <Link
-                className="md:text-sm text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-semibold"
+                className="md:text-sm hidden md:inline-block text-white opacity-70 hover:opacity-100 duration-300 px-2 py-2 font-semibold"
                 to="/about_judge"
               >
                 パンチ/キックの判定
               </Link>
               <Link
-                className="md:text-sm text-gray-500 hidden md:inline-block hover:text-black duration-300 px-2 py-2 font-semibold"
+                className="md:text-sm hidden md:inline-block text-white opacity-70 hover:opacity-100 duration-300 px-2 py-2 font-semibold"
                 to="/about_account"
               >
                 アカウントについて
@@ -92,7 +92,7 @@ const Header = () => {
                 <React.Fragment>
                   <Link
                     to="/login"
-                    className="text-xs md:text-base py-2 px-2 font-medium text-gray-500 rounded hover:bg-yellow-500 hover:text-white transition duration-300"
+                    className="text-xs md:text-base py-2 px-2 font-medium rounded hover:bg-yellow-500 text-white transition duration-300"
                   >
                     ログイン
                   </Link>

@@ -6,6 +6,7 @@ import CustomHead from './CustomHead';
 import hardMenuIcon from '../images/hardMenuIcon.svg';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants/cookieKeys';
 import API from '../api';
+import SlideBackground from './backgrounds/SlideBackground';
 
 const Login = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,9 +46,9 @@ const Login = () => {
   return (
     <Fragment>
       <CustomHead title="ログイン - Boxiful" />
-      <div className="flex flex-col items-center flex-1 px-4 sm:px-0 bg-yellow-500 h-screen pt-36">
+      <div className="flex flex-col items-center flex-1 px-4 sm:px-0 min-h-screen pt-20">
         <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-300 text-right">
-          Login
+          ログイン
         </h1>
         <div
           className="flex rounded-lg shadow-lg w-full sm:w-3/4 lg:w-1/2 bg-white sm:mx-0"
@@ -119,6 +120,7 @@ const Login = () => {
           />
         </div>
       </div>
+      <SlideBackground />
     </Fragment>
   );
 };

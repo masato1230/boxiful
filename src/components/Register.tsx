@@ -8,6 +8,7 @@ import API from '../api';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../constants/cookieKeys';
 import { useIsLoggedIn } from '../hooks/useIsLoggedIn';
 import hardMenuIcon from '../images/hardMenuIcon.svg';
+import SlideBackground from './backgrounds/SlideBackground';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -73,7 +74,7 @@ const Register = () => {
   return (
     <Fragment>
       <CustomHead title="アカウント作成 - Boxiful" />
-      <div className="flex flex-col items-center flex-1 px-4 sm:px-0 bg-yellow-500 h-screen pt-36">
+      <div className="flex flex-col items-center flex-1 px-4 sm:px-0 min-h-screen pt-20">
         <h1 className="mt-5 mb-2 ml-5 text-3xl font-bold text-yellow-300 text-right">
           Register
         </h1>
@@ -153,6 +154,7 @@ const Register = () => {
           />
         </div>
       </div>
+      <SlideBackground />
     </Fragment>
   );
 };
