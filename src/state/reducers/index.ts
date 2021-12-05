@@ -4,7 +4,7 @@ import seriesTrainingReducer from './seriesTrainingReducer';
 
 const reducers = combineReducers({
   training: trainingReducer,
-  seriesTrainingReducer: seriesTrainingReducer,
+  seriesTraining: seriesTrainingReducer,
 });
 
 export default reducers;

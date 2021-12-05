@@ -26,6 +26,7 @@ import ContactForm from './components/ContactForm';
 import AboutJudge from './components/Pages/AboutJudge';
 import AboutAccount from './components/Pages/AboutAccount';
 import AboutResult from './components/Pages/AboutResult';
+import SeriesTraining from './components/SeriesTraining/SeriesTraining';
 
 const App = () => {
   const [isTokenValid, setIsTokenValid] = useState(true);
@@ -69,6 +70,10 @@ const App = () => {
           <Header />
           {!isTokenValid && <LoginAgainHeader />}
           <Switch>
+            {/* TODO: Delete this is test route */}
+            <Route path="/test">
+              <SeriesTraining />
+            </Route>
             <Route exact path="/">
               <Status />
             </Route>

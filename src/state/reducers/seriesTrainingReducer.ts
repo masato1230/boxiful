@@ -14,7 +14,7 @@ const initialState: SeriesTrainingState = {
   scores: [],
 };
 
-const seriesTrainingReducer = (state: SeriesTrainingState, action: SeriesTrainingAction): SeriesTrainingState => {
+const seriesTrainingReducer = (state: SeriesTrainingState = initialState, action: SeriesTrainingAction): SeriesTrainingState => {
   switch (action.type) {
     case SeriesTrainingActionTypes.SET_SERIES_MENU:
       return { ...state, seriesMenu: action.payload };
