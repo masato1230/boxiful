@@ -5,6 +5,11 @@ export default interface Interval {
   durationSeconds: number;
 }
 
+export const fifteenSecondsInterval: Interval = {
+  durationMinutes: 0,
+  durationSeconds: 15,
+}
+
 export const thirtySecondsInterval: Interval = {
   durationMinutes: 0,
   durationSeconds: 30,

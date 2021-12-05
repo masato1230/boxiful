@@ -5,13 +5,13 @@ import { SeriesTrainingAction } from '../actions';
 interface SeriesTrainingState {
   seriesMenu: SeriesMenu;
   menuIndex: number;
-  scores: number[];
+  seriesTrainingScores: number[];
 }
 
 const initialState: SeriesTrainingState = {
   seriesMenu: testSeriesMenu,
   menuIndex: 0,
-  scores: [],
+  seriesTrainingScores: [],
 };
 
 const seriesTrainingReducer = (state: SeriesTrainingState = initialState, action: SeriesTrainingAction): SeriesTrainingState => {
@@ -21,9 +21,9 @@ const seriesTrainingReducer = (state: SeriesTrainingState = initialState, action
     case SeriesTrainingActionTypes.SET_MENU_INDEX:
       return { ...state, menuIndex: action.payload }
     case SeriesTrainingActionTypes.PUSH_SCORE:
-      let newScores = state.scores;
+      let newScores = state.seriesTrainingScores;
       newScores.push(action.payload);
-      return { ...state, scores: newScores };
+      return { ...state, seriesTrainingScores: newScores };
     default:
       return state;
   }

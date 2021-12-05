@@ -16,7 +16,7 @@ export const setMenuIndex = (menuIndex: number): SetMenuIndex => {
   };
 };
 
-export const pushScore = (score: number): PushScore => {
+export const pushSeriesScore = (score: number): PushScore => {
   return {
     type: SeriesTrainingActionTypes.PUSH_SCORE,
     payload: score,

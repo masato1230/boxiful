@@ -1,20 +1,23 @@
 import { NormalizedLandmarkList } from '@mediapipe/pose';
-import { useState, Fragment } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import FinishModal from '../Training/FinishModal';
 import PoseEstimation from '../Training/PoseEstimation';
 import WarningModal from '../Training/WarningModal';
 import IntervalInformation from './IntervalInformation';
 import Menu from '../../models/menu';
-import TrainingInformation from './TrainingInformation';
+import TrainingInformation from './TrainingInformation/TrainingInformation';
+import { useActions } from '../../hooks/useActions';
+import { testSeriesMenu } from '../../models/menu/SeriesMenu';
 
 const SeriesTraining = () => {
   // Redux states
-  const { seriesMenu, menuIndex, scores } = useTypedSelector((state) => {
+  const { setSeriesMenu, setMenuIndex, setMenu, setInstructions } = useActions();
+  const { seriesMenu, menuIndex, seriesTrainingScores } = useTypedSelector((state) => {
     return {
       seriesMenu: state.seriesTraining.seriesMenu,
       menuIndex: state.seriesTraining.menuIndex,
-      scores: state.seriesTraining.scores,
+      seriesTrainingScores: state.seriesTraining.seriesTrainingScores,
     };
   });
 
@@ -24,6 +27,12 @@ const SeriesTraining = () => {
   // device check result modal
   const [isShowNotWorkOsModal, setIsShowNotWorkOsModal] = useState(false);
   const [isShowTooSmallModal, setIsShowTooSmallModal] = useState(false);
+
+  // TODO: delete test setup
+  useEffect(() => {
+    setSeriesMenu(testSeriesMenu);
+    setMenuIndex(0);
+  }, []);
 
   return (
     <Fragment>
@@ -47,7 +56,7 @@ const SeriesTraining = () => {
         <div className="bg-white inset-0 md:w-1/2 mx-2 h-5/6 absolute md:relative z-10 bg-transparent bg-opacity-0 text-white md:text-black">
           {(seriesMenu.menus[menuIndex] as Menu).instructionTypes !==
           undefined ? (
-            <TrainingInformation />
+            <TrainingInformation poseLandmarks={poseLandmarks} />
           ) : (
             <IntervalInformation />
           )}
