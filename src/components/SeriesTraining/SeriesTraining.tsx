@@ -52,9 +52,9 @@ const SeriesTraining = () => {
         />
       )}
       <div className="min-h-screen">
-        <div className="flex h-screen fixed top-0 bottom-0" style={{ zIndex: -1 }}>
+        <div className="flex h-screen fixed top-0 bottom-0 w-screen" style={{ zIndex: -1 }}>
           {/* Information */}
-          <div className="bg-black inset-0 md:w-1/2 h-screen absolute md:relative z-10 opacity-90 md:text-black">
+          <div className="bg-black inset-0 md:w-1/2 h-screen absolute md:relative z-10 md:text-black">
             {(seriesMenu.menus[menuIndex] as Menu).instructionTypes !==
             undefined ? (
               <TrainingInformation poseLandmarks={poseLandmarks} />

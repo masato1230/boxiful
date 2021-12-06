@@ -178,7 +178,7 @@ const TrainingInformation: React.FC<TrainingInformationProps> = ({ poseLandmarks
   }
 
   return (
-    <div className="h-full">
+    <div className="h-full w-full">
       <h2 className="pt-5 text-3xl md:text-5xl text-white md:text-black text-center font-bold px-5 h-1/6">
         {instruction.title}
       </h2>
