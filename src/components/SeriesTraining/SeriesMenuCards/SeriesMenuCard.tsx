@@ -2,14 +2,13 @@ import './SeriesMenuCard.css';
 
 const SeriesMenuCard = () => {
   return (
-    <div className="series-menu-card">
-      <div className="series-menu-box duration-300 transform hover:translate-y-8">
+    <div className="series-menu-card h-full w-72 my-2 mx-2 whitespace-normal">
+      <div className="series-menu-box duration-300 transform hover:translate-y-2">
         <div className="series-menu-content">
           <h2>01</h2>
           <h3>Card One</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore,
-            totam velit? Iure nemo labore inventore?
+          <p className="max-w-1/4">
+            Lorem ipsum dolor sit amet consectetur adipisicing 
           </p>
           <a href="#">Read More</a>
         </div>

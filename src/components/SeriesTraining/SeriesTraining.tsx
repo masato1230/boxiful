@@ -58,7 +58,7 @@ const SeriesTraining = () => {
       <div className="min-h-screen">
         <div className="absolute w-full h-full bg-black" style={{ zIndex: -100 }}></div>
         {/* menu cards */}
-        <div className="absolute bottom-0 w-screen">
+        <div className="h-1/3 absolute bottom-0">
           <SeriesMenuCards />
         </div>
       </div>
