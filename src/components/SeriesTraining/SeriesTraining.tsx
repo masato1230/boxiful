@@ -55,6 +55,7 @@ const SeriesTraining = () => {
           colorClass="yellow-500"
         />
       )}
+      {/* clickable conponents */}
       <div className="min-h-screen">
         <div className="absolute w-full h-full bg-black" style={{ zIndex: -100 }}></div>
         {/* menu cards */}

@@ -1,5 +1,5 @@
 const IntervalInformation = () => {
-  return <div>Interval</div>;
+  return <div className="text-white">Interval</div>;
 };
 
 export default IntervalInformation;
