@@ -179,11 +179,11 @@ const TrainingInformation: React.FC<TrainingInformationProps> = ({ poseLandmarks
 
   return (
     <div className="h-full w-full text-white">
-      <h2 className="pt-5 mt-24 text-3xl md:text-5xl text-white md:text-white text-center font-bold px-5">
+      <h2 className="h-1/6 mt-36 text-3xl md:text-5xl text-center font-bold">
         {instruction.title}
       </h2>
       <div className="h-1/6 md:hidden"></div>
-      <div className="align-middle mx-auto w-min h-2/6 pt-5">
+      <div className="align-middle mx-auto w-min h-1/4">
         <instruction.icon
           color={determineInstructionColor(instruction)}
           size="250"
@@ -191,7 +191,7 @@ const TrainingInformation: React.FC<TrainingInformationProps> = ({ poseLandmarks
           className="instruction-icon w-40 h-40 md:w-auto md:w-auto bg-white rounded-full"
         />
       </div>
-      <div className="h-1/6 px-5">
+      <div className="h-1/6 px-10">
         <div className="">
           <p
             ref={judgeRef}
