@@ -9,17 +9,21 @@ import Menu from '../../models/menu';
 import TrainingInformation from './TrainingInformation/TrainingInformation';
 import { useActions } from '../../hooks/useActions';
 import { testSeriesMenu } from '../../models/menu/SeriesMenu';
+import SeriesMenuCards from './SeriesMenuCards/SeriesMenuCards';
 
 const SeriesTraining = () => {
   // Redux states
-  const { setSeriesMenu, setMenuIndex, setMenu, setInstructions } = useActions();
-  const { seriesMenu, menuIndex, seriesTrainingScores } = useTypedSelector((state) => {
-    return {
-      seriesMenu: state.seriesTraining.seriesMenu,
-      menuIndex: state.seriesTraining.menuIndex,
-      seriesTrainingScores: state.seriesTraining.seriesTrainingScores,
-    };
-  });
+  const { setSeriesMenu, setMenuIndex, setMenu, setInstructions } =
+    useActions();
+  const { seriesMenu, menuIndex, seriesTrainingScores } = useTypedSelector(
+    (state) => {
+      return {
+        seriesMenu: state.seriesTraining.seriesMenu,
+        menuIndex: state.seriesTraining.menuIndex,
+        seriesTrainingScores: state.seriesTraining.seriesTrainingScores,
+      };
+    }
+  );
 
   // Own States
   const [poseLandmarks, setPoseLandmarks] = useState<NormalizedLandmarkList>();
@@ -51,8 +55,11 @@ const SeriesTraining = () => {
           colorClass="yellow-500"
         />
       )}
-      <div className="min-h-screen">
-        <div className="flex h-screen fixed top-0 bottom-0 w-screen" style={{ zIndex: -1 }}>
+      <div className="min-h-screen pointer-events-none">
+        <div
+          className="flex h-screen fixed top-0 bottom-0 w-screen"
+          style={{ zIndex: -1 }}
+        >
           {/* Information */}
           <div className="bg-black inset-0 md:w-1/2 h-screen absolute md:relative z-10 md:text-black">
             {(seriesMenu.menus[menuIndex] as Menu).instructionTypes !==
@@ -66,6 +73,10 @@ const SeriesTraining = () => {
           <div className="w-full md:w-1/2 h-screen">
             <SeriesTrainingPoseEstimation setPoseLandmarks={setPoseLandmarks} />
           </div>
+        </div>
+        {/* menu cards */}
+        <div className="fixed bottom-0 w-screen" style={{ zIndex: -1 }}>
+          <SeriesMenuCards />
         </div>
       </div>
     </Fragment>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
@@ -64,66 +64,64 @@ const App = () => {
 
   return (
     <Provider store={store}>
-      <div>
-        <BrowserRouter>
-          <GoogleAnalytics />
-          <Header />
-          {!isTokenValid && <LoginAgainHeader />}
-          <Switch>
-            {/* TODO: Delete this is test route */}
-            <Route path="/test">
-              <SeriesTraining />
-            </Route>
-            <Route exact path="/">
-              <Status />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/about_judge">
-              <AboutJudge />
-            </Route>
-            <Route path="/about_account">
-              <AboutAccount />
-            </Route>
-            <Route path="/about_result">
-              <AboutResult />
-            </Route>
-            <Route path="/training">
-              <Training />
-            </Route>
-            <Route path="/top">
-              <Top />
-            </Route>
-            <Route path="/result">
-              <Result />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <Route path="/register">
-              <Register />
-            </Route>
-            <Route path="/delete_account">
-              <DeleteAccount />
-            </Route>
-            <Route path="/training_to_result">
-              <TrainingResultBuffer />
-            </Route>
-            <Route path="/privacy">
-              <Privacy />
-            </Route>
-            <Route path="/contact_form">
-              <ContactForm />
-            </Route>
-            {/* 404 */}
-            <Route path="*">
-              <Redirect to="/" />
-            </Route>
-          </Switch>
-          <Footer />
-        </BrowserRouter>
-      </div>
+      <BrowserRouter>
+        <GoogleAnalytics />
+        <Header />
+        {!isTokenValid && <LoginAgainHeader />}
+        <Switch>
+          {/* TODO: Delete this is test route */}
+          <Route path="/test">
+            <SeriesTraining />
+          </Route>
+          <Route exact path="/">
+            <Status />
+          </Route>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/about_judge">
+            <AboutJudge />
+          </Route>
+          <Route path="/about_account">
+            <AboutAccount />
+          </Route>
+          <Route path="/about_result">
+            <AboutResult />
+          </Route>
+          <Route path="/training">
+            <Training />
+          </Route>
+          <Route path="/top">
+            <Top />
+          </Route>
+          <Route path="/result">
+            <Result />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/register">
+            <Register />
+          </Route>
+          <Route path="/delete_account">
+            <DeleteAccount />
+          </Route>
+          <Route path="/training_to_result">
+            <TrainingResultBuffer />
+          </Route>
+          <Route path="/privacy">
+            <Privacy />
+          </Route>
+          <Route path="/contact_form">
+            <ContactForm />
+          </Route>
+          {/* 404 */}
+          <Route path="*">
+            <Redirect to="/" />
+          </Route>
+        </Switch>
+        <Footer />
+      </BrowserRouter>
     </Provider>
   );
 };
