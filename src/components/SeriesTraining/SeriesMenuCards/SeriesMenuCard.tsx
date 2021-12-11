@@ -3,7 +3,7 @@ import './SeriesMenuCard.css';
 const SeriesMenuCard = () => {
   return (
     <div className="series-menu-card">
-      <div className="series-menu-box duration-300 transform hover:translate-y-8 pointer-events-auto">
+      <div className="series-menu-box duration-300 transform hover:translate-y-8">
         <div className="series-menu-content">
           <h2>01</h2>
           <h3>Card One</h3>

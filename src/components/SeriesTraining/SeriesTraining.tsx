@@ -55,28 +55,30 @@ const SeriesTraining = () => {
           colorClass="yellow-500"
         />
       )}
-      <div className="min-h-screen pointer-events-none">
-        <div
-          className="flex h-screen fixed top-0 bottom-0 w-screen"
-          style={{ zIndex: -1 }}
-        >
-          {/* Information */}
-          <div className="bg-black inset-0 md:w-1/2 h-screen absolute md:relative z-10 md:text-black">
-            {(seriesMenu.menus[menuIndex] as Menu).instructionTypes !==
-            undefined ? (
-              <TrainingInformation poseLandmarks={poseLandmarks} />
-            ) : (
-              <IntervalInformation />
-            )}
-          </div>
-          {/* Pose estimation */}
-          <div className="w-full md:w-1/2 h-screen">
-            <SeriesTrainingPoseEstimation setPoseLandmarks={setPoseLandmarks} />
-          </div>
-        </div>
+      <div className="min-h-screen">
+        <div className="absolute w-full h-full bg-black" style={{ zIndex: -100 }}></div>
         {/* menu cards */}
-        <div className="fixed bottom-0 w-screen" style={{ zIndex: -1 }}>
+        <div className="absolute bottom-0 w-screen">
           <SeriesMenuCards />
+        </div>
+      </div>
+      {/* not clickable components */}
+      <div
+        className="flex h-screen absolute top-0 bottom-0 w-screen"
+        style={{ zIndex: -1 }}
+      >
+        {/* Information */}
+        <div className="bg-black inset-0 md:w-1/2 h-screen absolute md:relative z-10 md:text-black">
+          {(seriesMenu.menus[menuIndex] as Menu).instructionTypes !==
+          undefined ? (
+            <TrainingInformation poseLandmarks={poseLandmarks} />
+          ) : (
+            <IntervalInformation />
+          )}
+        </div>
+        {/* Pose estimation */}
+        <div className="w-full md:w-1/2 h-screen">
+          <SeriesTrainingPoseEstimation setPoseLandmarks={setPoseLandmarks} />
         </div>
       </div>
     </Fragment>
