@@ -1,7 +1,33 @@
 import { useEffect, useRef } from 'react';
 import './IntervalInformation.css';
+import Interval from '../../../models/menu/Interval';
+import { useActions } from '../../../hooks/useActions';
+import { useTypedSelector } from '../../../hooks/useTypedSelector';
 
 const IntervalInformation = () => {
+  // Redux - get actionCreators adn states
+  const {
+    setMenu,
+    setInstructions,
+    pushScore,
+    pushSeriesScore,
+    resetScores,
+    setMenuIndex,
+  } = useActions();
+  const { seriesMenu, menuIndex, seriesTrainingScores, instructions, scores } =
+    useTypedSelector((state) => {
+      return {
+        seriesMenu: state.seriesTraining.seriesMenu,
+        menuIndex: state.seriesTraining.menuIndex,
+        seriesTrainingScores: state.seriesTraining.seriesTrainingScores,
+        instructions: state.training.instructions,
+        scores: state.training.scores,
+      };
+    });
+
+  // Interval
+  const interval = seriesMenu.menus[menuIndex] as Interval;
+
   const FULL_DASH_ARRAY = 283;
   const WARNING_THRESHOLD = 10;
   const ALERT_THRESHOLD = 5;
@@ -31,6 +57,9 @@ const IntervalInformation = () => {
 
     return () => {
       // TODO: clean up interval
+      if (timerInterval) {
+        clearInterval(timerInterval);
+      }
     };
   }, []);
 
@@ -38,7 +67,7 @@ const IntervalInformation = () => {
   const timerRemainingPathRef = useRef<SVGPathElement>(null);
 
   const onTimesUp = () => {
-    if (timerInterval !== null) {
+    if (timerInterval) {
       clearInterval(timerInterval);
     }
   };
@@ -49,7 +78,6 @@ const IntervalInformation = () => {
       timeLeft = TIME_LIMIT - timePassed;
       (timerLabelRef.current as HTMLSpanElement).innerHTML =
         formatTime(timeLeft);
-      // TODO:
       setCircleDasharray();
       setRemainingPathColor(timeLeft);
 
@@ -98,40 +126,57 @@ const IntervalInformation = () => {
   };
 
   return (
-    <div className="base-timer">
-      <svg
-        className="base-timer__svg"
-        viewBox="0 0 100 100"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g className="base-timer__circle">
-          <circle
-            className="base-timer__path-elapsed"
-            cx="50"
-            cy="50"
-            r="45"
-          ></circle>
-          <path
-            ref={timerRemainingPathRef}
-            id="base-timer-path-remaining"
-            stroke-dasharray="283"
-            className={`base-timer__path-remaining ${remainingPathColor}`}
-            d="
+    <div className="h-full w-full text-white">
+      {/* Interval Title */}
+      <div className="h-1/6 flex items-end justify-center">
+        <h2 className="text-3xl md:text-5xl text-center font-bold">
+          休憩
+          {/* <p>休憩</p> */}
+          {/* {interval.durationMinutes > 0 ? `${interval.durationMinutes}:` : '00:'}
+          {interval.durationSeconds > 0
+            ? interval.durationSeconds > 10
+              ? interval.durationSeconds.toString()
+              : `0${interval.durationSeconds}`
+            : '00'} */}
+        </h2>
+      </div>
+      <div className="w-min mx-auto h-1/2 flex items-center">
+        <div className="base-timer">
+          <svg
+            className="base-timer__svg"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g className="base-timer__circle">
+              <circle
+                className="base-timer__path-elapsed"
+                cx="50"
+                cy="50"
+                r="45"
+              ></circle>
+              <path
+                ref={timerRemainingPathRef}
+                id="base-timer-path-remaining"
+                stroke-dasharray="283"
+                className={`base-timer__path-remaining ${remainingPathColor}`}
+                d="
           M 50, 50
           m -45, 0
           a 45,45 0 1,0 90,0
           a 45,45 0 1,0 -90,0
         "
-          ></path>
-        </g>
-      </svg>
-      <span
-        ref={timerLabelRef}
-        id="base-timer-label"
-        className="base-timer__label"
-      >
-        ${formatTime(timeLeft)}
-      </span>
+              ></path>
+            </g>
+          </svg>
+          <span
+            ref={timerLabelRef}
+            id="base-timer-label"
+            className="base-timer__label text-white"
+          >
+            ${formatTime(timeLeft)}
+          </span>
+        </div>
+      </div>
     </div>
   );
 };
