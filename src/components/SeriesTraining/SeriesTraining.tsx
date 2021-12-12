@@ -4,7 +4,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import FinishModal from '../Training/FinishModal';
 import SeriesTrainingPoseEstimation from './SeriesTrainingPoseEstimation';
 import WarningModal from '../Training/WarningModal';
-import IntervalInformation from './IntervalInformation';
+import IntervalInformation from './IntervalInformation/IntervalInformation';
 import Menu from '../../models/menu';
 import TrainingInformation from './TrainingInformation/TrainingInformation';
 import { useActions } from '../../hooks/useActions';
