@@ -55,15 +55,15 @@ const SeriesTraining = () => {
           colorClass="yellow-500"
         />
       )}
-      {/* clickable components */}
+      {/* Clickable components */}
       <div className="min-h-screen">
         <div className="absolute w-full h-full bg-black" style={{ zIndex: -100 }}></div>
         {/* menu cards */}
         <div className="h-1/4 absolute bottom-0">
-          <SeriesMenuCards />
+          <SeriesMenuCards menuIndex={menuIndex} />
         </div>
       </div>
-      {/* not clickable components */}
+      {/*  Not clickable components */}
       <div
         className="flex h-screen absolute top-0 bottom-0 w-screen"
         style={{ zIndex: -1 }}
