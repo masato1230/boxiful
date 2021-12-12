@@ -9,7 +9,12 @@ import finishSound from '../../../sounds/finish.mp3';
 import bgmSound from '../../../sounds/training-bgm-neffex-failure.mp3';
 import { createInstructionsFromMenu } from '../../../state';
 import { NormalizedLandmarkList } from '@mediapipe/pose';
-import { calculateNormalMenuMoveScore, calculateResultScore, calculateTotalCalorieFromInstructions, judgeFromScore } from '../../../utils/scores';
+import {
+  calculateNormalMenuMoveScore,
+  calculateResultScore,
+  calculateTotalCalorieFromInstructions,
+  judgeFromScore,
+} from '../../../utils/scores';
 import { useIsLoggedIn } from '../../../hooks/useIsLoggedIn';
 import { useTrainingResult } from '../../../hooks/useTrainingResults';
 import { determineInstructionColor } from '../../../utils/training';
@@ -18,11 +23,20 @@ interface TrainingInformationProps {
   poseLandmarks: NormalizedLandmarkList | undefined;
 }
 
-const TrainingInformation: React.FC<TrainingInformationProps> = ({ poseLandmarks }) => {
+const TrainingInformation: React.FC<TrainingInformationProps> = ({
+  poseLandmarks,
+}) => {
   // Redux - get actionCreators adn states
-  const { setMenu, setInstructions, pushScore, pushSeriesScore, resetScores, setMenuIndex } = useActions();
-  const { seriesMenu, menuIndex, seriesTrainingScores, instructions, scores } = useTypedSelector(
-    (state) => {
+  const {
+    setMenu,
+    setInstructions,
+    pushScore,
+    pushSeriesScore,
+    resetScores,
+    setMenuIndex,
+  } = useActions();
+  const { seriesMenu, menuIndex, seriesTrainingScores, instructions, scores } =
+    useTypedSelector((state) => {
       return {
         seriesMenu: state.seriesTraining.seriesMenu,
         menuIndex: state.seriesTraining.menuIndex,
@@ -30,8 +44,7 @@ const TrainingInformation: React.FC<TrainingInformationProps> = ({ poseLandmarks
         instructions: state.training.instructions,
         scores: state.training.scores,
       };
-    }
-  );
+    });
   const instruction = instructions[scores.length];
 
   // Own States
@@ -43,7 +56,7 @@ const TrainingInformation: React.FC<TrainingInformationProps> = ({ poseLandmarks
   );
 
   // hooks
-  const {isLoggedIn, logout} = useIsLoggedIn();
+  const { isLoggedIn, logout } = useIsLoggedIn();
   const { postTrainingResult } = useTrainingResult();
 
   // sounds
@@ -122,8 +135,6 @@ const TrainingInformation: React.FC<TrainingInformationProps> = ({ poseLandmarks
   useEffect(() => {
     // when menu finished
     if (instructions.length === scores.length && instructions.length > 0) {
-      // play finish sound
-      setMenuIndex(menuIndex + 1);
       setTimeout(() => {
         finishAudio.play();
       }, 500);
@@ -136,6 +147,8 @@ const TrainingInformation: React.FC<TrainingInformationProps> = ({ poseLandmarks
           score: calculateResultScore(scores),
         });
       }
+      setMenuIndex(menuIndex + 1);
+      resetScores();
       return;
     }
 
